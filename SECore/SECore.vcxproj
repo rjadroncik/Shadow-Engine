@@ -79,15 +79,18 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(SolutionDir)Bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">false</LinkIncremental>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Roman\Programming\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Roman\Programming\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\Common Files;$(SolutionDir)..\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\Common Files;$(SolutionDir)..\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)D</TargetName>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(SolutionDir)..\Common Files;$(SolutionDir)..\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">$(SolutionDir)..\Common Files;$(SolutionDir)..\Shadow Common Files\Include;$(IncludePath)</IncludePath>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(ProjectName)SSE3</TargetName>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">D:\Roman\Programming\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(SolutionDir)..\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">
+    <LibraryPath>$(SolutionDir)..\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
