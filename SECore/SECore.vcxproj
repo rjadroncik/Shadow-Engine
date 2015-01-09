@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release SSE3|Win32">
+      <Configuration>Release SSE3</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release SSE|Win32">
+      <Configuration>Release SSE</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F5C1EF61-D38D-4968-99E6-8B3A84101166}</ProjectGuid>
+    <RootNamespace>SECore</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">$(SolutionDir)Bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(SolutionDir)Bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">false</LinkIncremental>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Roman\Programming\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Roman\Programming\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)D</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">D:\Roman\Programming\Common Files;D:\Roman\Programming\Shadow Common Files\Include;$(IncludePath)</IncludePath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(ProjectName)SSE3</TargetName>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">D:\Roman\Programming\Shadow Common Files\Bin;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SECORE_EXPORTS;_BETA;_WIN32_WINNT=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <BrowseInformation>
+      </BrowseInformation>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>StdCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;GLu32.lib;SCFMathematicsD.lib;SCFTimerD.lib;SCFXMLD.lib;SCFScriptingD.lib;SCFObjectExtensionsD.lib;SCFImagingD.lib;SCFDatafileIOD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)D.dll</OutputFile>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>100000000</HeapReserveSize>
+      <StackReserveSize>50000000</StackReserveSize>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SECORE_EXPORTS;_WIN32_WINNT=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <CallingConvention>StdCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;GLu32.lib;SCFMathematics.lib;SCFTimer.lib;SCFXML.lib;SCFScripting.lib;SCFObjectExtensions.lib;SCFImaging.lib;SCFDatafileIO.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SECORE_EXPORTS;_SSE;_WIN32_WINNT=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <CallingConvention>StdCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;GLu32.lib;SCFMathematicsSSE.lib;SCFTimer.lib;SCFXML.lib;SCFScripting.lib;SCFObjectExtensions.lib;SCFImaging.lib;SCFDatafileIO.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)SSE.dll</OutputFile>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SECORE_EXPORTS;_SSE;_SSE2;_SSE3;_WIN32_WINNT=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <CallingConvention>StdCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;GLu32.lib;SCFMathematicsSSE3.lib;SCFTimer.lib;SCFXML.lib;SCFScripting.lib;SCFObjectExtensions.lib;SCFImaging.lib;SCFDatafileIO.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)SSE3.dll</OutputFile>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Classes.h" />
+    <ClInclude Include="Source\Errors.h" />
+    <ClInclude Include="Source\SECore.h" />
+    <ClInclude Include="Source\Animation\Animation.h" />
+    <ClInclude Include="Source\Animation\AnimationMorph.h" />
+    <ClInclude Include="Source\Animation\AnimationMotion.h" />
+    <ClInclude Include="Source\Animation\AnimationParameter.h" />
+    <ClInclude Include="Source\Animation\Path.h" />
+    <ClInclude Include="Source\Animation\PathFerguson.h" />
+    <ClInclude Include="Source\Rendering\Camera.h" />
+    <ClInclude Include="Source\Rendering\Light.h" />
+    <ClInclude Include="Source\Rendering\LightOmni.h" />
+    <ClInclude Include="Source\Rendering\LightSpot.h" />
+    <ClInclude Include="Source\Rendering\Material.h" />
+    <ClInclude Include="Source\Rendering\MaterialUsage.h" />
+    <ClInclude Include="Source\Rendering\Model.h" />
+    <ClInclude Include="Source\Rendering\ObjectBounded.h" />
+    <ClInclude Include="Source\Rendering\ObjectScene.h" />
+    <ClInclude Include="Source\Rendering\ObjectTransformable.h" />
+    <ClInclude Include="Source\Rendering\Renderer.h" />
+    <ClInclude Include="Source\Rendering\RendererDebug.h" />
+    <ClInclude Include="Source\Rendering\RendererDGC.h" />
+    <ClInclude Include="Source\Rendering\RendererIGP.h" />
+    <ClInclude Include="Source\Rendering\RendererSettings.h" />
+    <ClInclude Include="Source\Rendering\Scene.h" />
+    <ClInclude Include="Source\Rendering\Uniforms.h" />
+    <ClInclude Include="Source\Resources\DataPool.h" />
+    <ClInclude Include="Source\Resources\File3DS.h" />
+    <ClInclude Include="Source\Resources\GPUProgram.h" />
+    <ClInclude Include="Source\Resources\Manager.h" />
+    <ClInclude Include="Source\Resources\Mesh.h" />
+    <ClInclude Include="Source\Resources\Texture.h" />
+    <ClInclude Include="Source\Resources\World.h" />
+    <ClInclude Include="Source\Simulation\Gravity.h" />
+    <ClInclude Include="Source\Simulation\ParticleSystem.h" />
+    <ClInclude Include="Source\Simulation\PhysicsSolver.h" />
+    <ClInclude Include="Source\Simulation\RigidBody.h" />
+    <ClInclude Include="Source\Simulation\Simulation.h" />
+    <ClInclude Include="Source\Simulation\SimulationBox.h" />
+    <ClInclude Include="Source\Simulation\SimulationObject.h" />
+    <ClInclude Include="Source\Simulation\SimulationPlane.h" />
+    <ClInclude Include="Source\Simulation\SimulationPrimitive.h" />
+    <ClInclude Include="Source\Simulation\SimulationSphere.h" />
+    <ClInclude Include="Source\System\EventLog.h" />
+    <ClInclude Include="Source\System\HID.h" />
+    <ClInclude Include="Source\System\HIDState.h" />
+    <ClInclude Include="Source\System\OpenGL.h" />
+    <ClInclude Include="Source\System\OpenGL15.h" />
+    <ClInclude Include="Source\System\OpenGL20.h" />
+    <ClInclude Include="Source\System\RTLoop.h" />
+    <ClInclude Include="Source\System\Scripting.h" />
+    <ClInclude Include="Source\System\SEObject.h" />
+    <ClInclude Include="Source\System\Settings.h" />
+    <ClInclude Include="Source\System\Statistics.h" />
+    <ClInclude Include="Source\System\System.h" />
+    <ClInclude Include="Source\System\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\SECore.cpp" />
+    <ClCompile Include="Source\Animation\Animation.cpp" />
+    <ClCompile Include="Source\Animation\AnimationMorph.cpp" />
+    <ClCompile Include="Source\Animation\AnimationMotion.cpp" />
+    <ClCompile Include="Source\Animation\AnimationParameter.cpp" />
+    <ClCompile Include="Source\Animation\Path.cpp" />
+    <ClCompile Include="Source\Animation\PathFerguson.cpp" />
+    <ClCompile Include="Source\Rendering\Camera.cpp" />
+    <ClCompile Include="Source\Rendering\Light.cpp" />
+    <ClCompile Include="Source\Rendering\LightOmni.cpp" />
+    <ClCompile Include="Source\Rendering\LightSpot.cpp" />
+    <ClCompile Include="Source\Rendering\Material.cpp" />
+    <ClCompile Include="Source\Rendering\MaterialUsage.cpp" />
+    <ClCompile Include="Source\Rendering\Model.cpp" />
+    <ClCompile Include="Source\Rendering\ObjectBounded.cpp" />
+    <ClCompile Include="Source\Rendering\ObjectScene.cpp" />
+    <ClCompile Include="Source\Rendering\ObjectTransformable.cpp" />
+    <ClCompile Include="Source\Rendering\Renderer.cpp" />
+    <ClCompile Include="Source\Rendering\RendererDebug.cpp" />
+    <ClCompile Include="Source\Rendering\RendererDGC.cpp" />
+    <ClCompile Include="Source\Rendering\RendererIGP.cpp" />
+    <ClCompile Include="Source\Rendering\RendererSettings.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release SSE3|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release SSE|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\Scene.cpp" />
+    <ClCompile Include="Source\Rendering\Uniforms.cpp" />
+    <ClCompile Include="Source\Resources\DataPool.cpp" />
+    <ClCompile Include="Source\Resources\File3DS.cpp" />
+    <ClCompile Include="Source\Resources\GPUProgram.cpp" />
+    <ClCompile Include="Source\Resources\Manager.cpp" />
+    <ClCompile Include="Source\Resources\Mesh.cpp" />
+    <ClCompile Include="Source\Resources\Texture.cpp" />
+    <ClCompile Include="Source\Resources\World.cpp" />
+    <ClCompile Include="Source\Simulation\Gravity.cpp" />
+    <ClCompile Include="Source\Simulation\ParticleSystem.cpp" />
+    <ClCompile Include="Source\Simulation\PhysicsSolver.cpp" />
+    <ClCompile Include="Source\Simulation\RigidBody.cpp" />
+    <ClCompile Include="Source\Simulation\Simulation.cpp" />
+    <ClCompile Include="Source\Simulation\SimulationBox.cpp" />
+    <ClCompile Include="Source\Simulation\SimulationObject.cpp" />
+    <ClCompile Include="Source\Simulation\SimulationPlane.cpp" />
+    <ClCompile Include="Source\Simulation\SimulationPrimitive.cpp" />
+    <ClCompile Include="Source\Simulation\SimulationSphere.cpp" />
+    <ClCompile Include="Source\System\EventLog.cpp" />
+    <ClCompile Include="Source\System\HID.cpp" />
+    <ClCompile Include="Source\System\HIDState.cpp" />
+    <ClCompile Include="Source\System\OpenGL.cpp" />
+    <ClCompile Include="Source\System\OpenGL15.cpp" />
+    <ClCompile Include="Source\System\OpenGL20.cpp" />
+    <ClCompile Include="Source\System\RTLoop.cpp" />
+    <ClCompile Include="Source\System\Scripting.cpp" />
+    <ClCompile Include="Source\System\SEObject.cpp" />
+    <ClCompile Include="Source\System\Settings.cpp" />
+    <ClCompile Include="Source\System\Statistics.cpp" />
+    <ClCompile Include="Source\System\System.cpp" />
+    <ClCompile Include="Source\System\Window.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

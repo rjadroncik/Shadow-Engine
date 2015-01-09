@@ -1,0 +1,65 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEGUI", "SEGUI\SEGUI.vcxproj", "{0630DB2C-34D2-4429-B951-4326CB70C05A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SELauncher", "SELauncher\SELauncher.vcxproj", "{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SECore", "SECore\SECore.vcxproj", "{F5C1EF61-D38D-4968-99E6-8B3A84101166}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEEditor", "SEEditor\SEEditor.vcxproj", "{C4EDBAB2-4848-445E-ADC8-062F13DB288D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEGame", "SEGame\SEGame.vcxproj", "{2EDCCDBF-0415-40D0-A60A-9687B51311E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release SSE|Win32 = Release SSE|Win32
+		Release SSE3|Win32 = Release SSE3|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Debug|Win32.Build.0 = Debug|Win32
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Release SSE|Win32.ActiveCfg = Release SSE|Win32
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Release SSE|Win32.Build.0 = Release SSE|Win32
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Release SSE3|Win32.ActiveCfg = Release SSE3|Win32
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Release SSE3|Win32.Build.0 = Release SSE3|Win32
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Release|Win32.ActiveCfg = Release|Win32
+		{0630DB2C-34D2-4429-B951-4326CB70C05A}.Release|Win32.Build.0 = Release|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Debug|Win32.Build.0 = Debug|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Release SSE|Win32.ActiveCfg = Release|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Release SSE|Win32.Build.0 = Release|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Release SSE3|Win32.ActiveCfg = Release|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Release SSE3|Win32.Build.0 = Release|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Release|Win32.ActiveCfg = Release|Win32
+		{E802EC9F-6AF5-441F-9C79-C48BCAD6C477}.Release|Win32.Build.0 = Release|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Debug|Win32.Build.0 = Debug|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Release SSE|Win32.ActiveCfg = Release SSE|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Release SSE|Win32.Build.0 = Release SSE|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Release SSE3|Win32.ActiveCfg = Release SSE3|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Release SSE3|Win32.Build.0 = Release SSE3|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Release|Win32.ActiveCfg = Release|Win32
+		{F5C1EF61-D38D-4968-99E6-8B3A84101166}.Release|Win32.Build.0 = Release|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Debug|Win32.Build.0 = Debug|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Release SSE|Win32.ActiveCfg = Release|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Release SSE|Win32.Build.0 = Release|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Release SSE3|Win32.ActiveCfg = Release|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Release SSE3|Win32.Build.0 = Release|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Release|Win32.ActiveCfg = Release|Win32
+		{C4EDBAB2-4848-445E-ADC8-062F13DB288D}.Release|Win32.Build.0 = Release|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Debug|Win32.Build.0 = Debug|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Release SSE|Win32.ActiveCfg = Release SSE|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Release SSE|Win32.Build.0 = Release SSE|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Release SSE3|Win32.ActiveCfg = Release SSE3|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Release SSE3|Win32.Build.0 = Release SSE3|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Release|Win32.ActiveCfg = Release|Win32
+		{2EDCCDBF-0415-40D0-A60A-9687B51311E8}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
