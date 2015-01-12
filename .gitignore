@@ -1,3 +1,10 @@
+Bin/*
+!Bin/Datafiles/
+!Bin/Datafiles/**
+!Bin/Settings/
+!Bin/Settings/**
+!Bin/Datafiles.Sources/
+!Bin/Datafiles.Sources/**
 ipch
 *.suo
 *.sdf
