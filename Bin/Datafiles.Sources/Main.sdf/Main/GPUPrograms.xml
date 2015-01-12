@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<GPUPrograms xmlns:Resources="ProjectShadow.Resources">
+
+  <Resources:GPUProgram id='GPUProgram.void'>
+
+    <shaderVertex   file='\Common\Shaders\Default.vs'/>
+    <shaderFragment file='\Common\Shaders\Default.fs'/>
+
+    <attributes count='0' />
+    <uniforms   count='0' />
+    <samplers   count='0' />
+
+  </Resources:GPUProgram>
+  
+  <Resources:GPUProgram id='ParticleSystemFacing'>
+
+    <shaderVertex   file='\Main\Shaders\ParticleSystem\Facing.vs'/>
+    <shaderFragment file='\Main\Shaders\ParticleSystem\Facing.fs'/>
+
+    <attributes count='1'>
+      <attribute name='properties' source='vertex.texCoord[0]'/>
+    </attributes>
+
+    <uniforms count='2'>
+      <uniform name='cameraViewport' source='camera.viewport'/>
+      <uniform name='cameraPosition' source='camera.position'/>
+    </uniforms>
+
+    <samplers count='1'>
+      <sampler name='diffuseSampler' source='material.diffuseColor'/>
+    </samplers>
+
+  </Resources:GPUProgram>
+
+  <Resources:GPUProgram id='DiffSpecBumpSpot'>
+
+    <shaderVertex   file='\Main\Shaders\Material\DiffSpecBumpSpot.vs'/>
+    <shaderFragment file='\Main\Shaders\Material\DiffSpecBumpSpot.fs'/>
+
+    <attributes count='3'>
+      <attribute name='texCoord0' source='vertex.texCoord[0]'/>
+      <attribute name='tangent'   source='vertex.tangent'/>
+      <attribute name='normal'    source='vertex.normal'/>
+    </attributes>
+
+    <uniforms count='8'>
+      <uniform name='lightPosition'   source='light.position.local'/>
+      <uniform name='lightParameters' source='light.parameters'/>
+      <uniform name='lightTint'       source='light.tint'/>
+      <uniform name='lightAmbDifSpe'  source='light.ambientDiffuseSpecular'/>
+
+      <uniform name='cameraPosition'  source='camera.position.local'/>
+  
+      <uniform name='materialTint'         source='material.tint'/>
+      <uniform name='materialAmbDifSpeEmi' source='material.ambientDiffuseSpecularEmission'/>
+      <uniform name='materialShininess'    source='material.shininess'/>
+    </uniforms>
+
+    <samplers count='2'>
+      <sampler name='diffuseSampler'   source='material.diffuseColor'/>
+      <sampler name='normalMapSampler' source='material.normalMap'/>
+   </samplers>
+    
+  </Resources:GPUProgram>
+
+  <Resources:GPUProgram id='DiffSpecBumpSpotShadow'>
+
+    <shaderVertex   file='\Main\Shaders\Material\DiffSpecBumpSpotShadow.vs'/>
+    <shaderFragment file='\Main\Shaders\Material\DiffSpecBumpSpotShadow.fs'/>
+
+    <attributes count='3'>
+      <attribute name='texCoord0' source='vertex.texCoord[0]'/>
+      <attribute name='tangent'   source='vertex.tangent'/>
+      <attribute name='normal'    source='vertex.normal'/>
+    </attributes>
+
+    <uniforms count='9'>
+      <uniform name='lightPosition'   source='light.position.local'/>
+      <uniform name='lightParameters' source='light.parameters'/>
+      <uniform name='lightTint'       source='light.tint'/>
+      <uniform name='lightAmbDifSpe'  source='light.ambientDiffuseSpecular'/>
+
+      <uniform name='lightProjection' source='light.matrix.depthMapTransform'/>
+
+      <uniform name='cameraPosition'  source='camera.position.local'/>
+  
+      <uniform name='materialTint'         source='material.tint'/>
+      <uniform name='materialAmbDifSpeEmi' source='material.ambientDiffuseSpecularEmission'/>
+      <uniform name='materialShininess'    source='material.shininess'/>
+    </uniforms>
+
+    <samplers count='3'>
+      <sampler name='diffuseSampler'   source='material.diffuseColor'/>
+      <sampler name='normalMapSampler' source='material.normalMap'/>
+      <sampler name='shadowMap'        source='light.depthMap'/>
+   </samplers>
+    
+  </Resources:GPUProgram>
+
+  <Resources:GPUProgram id='DiffSpecBumpOmni'>
+
+    <shaderVertex   file='\Main\Shaders\Material\DiffSpecBumpOmni.vs'/>
+    <shaderFragment file='\Main\Shaders\Material\DiffSpecBumpOmni.fs'/>
+
+    <attributes count='3'>
+      <attribute name='texCoord0' source='vertex.texCoord[0]'/>
+      <attribute name='tangent'   source='vertex.tangent'/>
+      <attribute name='normal'    source='vertex.normal'/>
+    </attributes>
+
+    <uniforms count='8'>
+      <uniform name='lightPosition'   source='light.position.local'/>
+      <uniform name='lightParameters' source='light.parameters'/>
+      <uniform name='lightTint'       source='light.tint'/>
+      <uniform name='lightAmbDifSpe'  source='light.ambientDiffuseSpecular'/>
+
+      <uniform name='cameraPosition'  source='camera.position.local'/>
+  
+      <uniform name='materialTint'         source='material.tint'/>
+      <uniform name='materialAmbDifSpeEmi' source='material.ambientDiffuseSpecularEmission'/>
+      <uniform name='materialShininess'    source='material.shininess'/>
+    </uniforms>
+
+    <samplers count='2'>
+      <sampler name='diffuseSampler'   source='material.diffuseColor'/>
+      <sampler name='normalMapSampler' source='material.normalMap'/>
+    </samplers>
+    
+  </Resources:GPUProgram>
+
+  <Resources:GPUProgram id='DiffSpecBumpOmniShadow'>
+
+    <shaderVertex   file='\Main\Shaders\Material\DiffSpecBumpOmniShadow.vs'/>
+    <shaderFragment file='\Main\Shaders\Material\DiffSpecBumpOmniShadow.fs'/>
+
+    <attributes count='3'>
+      <attribute name='texCoord0' source='vertex.texCoord[0]'/>
+      <attribute name='tangent'   source='vertex.tangent'/>
+      <attribute name='normal'    source='vertex.normal'/>
+    </attributes>
+
+    <uniforms count='10'>
+      <uniform name='lightPosition'   source='light.position.local'/>
+      <uniform name='lightParameters' source='light.parameters'/>
+      <uniform name='lightTint'       source='light.tint'/>
+      <uniform name='lightAmbDifSpe'  source='light.ambientDiffuseSpecular'/>
+
+      <uniform name='lightProjection' source='light.matrix.depthMapTransform0'/>
+      <uniform name='lightProjection' source='light.matrix.depthMapTransform1'/>
+
+      <uniform name='cameraPosition'  source='camera.position.local'/>
+  
+      <uniform name='materialTint'         source='material.tint'/>
+      <uniform name='materialAmbDifSpeEmi' source='material.ambientDiffuseSpecularEmission'/>
+      <uniform name='materialShininess'    source='material.shininess'/>
+    </uniforms>
+
+    <samplers count='4'>
+      <sampler name='diffuseSampler'   source='material.diffuseColor'/>
+      <sampler name='normalMapSampler' source='material.normalMap'/>
+      <sampler name='shadowMap0'       source='light.depthMap0'/>
+      <sampler name='shadowMap1'       source='light.depthMap1'/>
+  </samplers>
+    
+  </Resources:GPUProgram>
+
+</GPUPrograms>

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<settings>
+
+  <display width='640' height='480' bitDepth='32' fullScreen='false' />
+
+  <renderer codePath="OpenGL20DGC">
+    <shadows maxResolution="512" />
+  </renderer>
+
+  <!--This identifies the directories where the datafiles are located-->
+  <datafileDirectories>
+
+    <datafileDirectory directory='Datafiles/' />
+
+  </datafileDirectories>
+
+  <datafileDirectoriesSource>
+
+    <datafileDirectorySource directory='Datafiles.Sources/' />
+
+  </datafileDirectoriesSource>
+
+  <!--This identifies the file from which the resource definitions are to be loaded-->
+  <resourceFiles>
+
+    <resourceFile file='\Main\Resources.xml' />
+    <resourceFile file='\GUI\Resources.xml' />
+
+  </resourceFiles>
+
+  <startup>
+
+    <!--Scene & GUI module which should be displayed at startup-->
+    <scene      id='SceneMain' />
+    <GUIModule  id='GUIModuleMain' />
+
+  </startup>
+
+  <userInterface>
+
+    <mouse>
+      <sensitivity>
+        
+      </sensitivity>
+    </mouse>
+    
+    <keyboard>
+
+      <bindings>
+
+        <binding keys='w W' action='user.move.forward' />
+        <binding keys='s S' action='user.move.back' />
+        <binding keys='a A' action='user.move.left' />
+        <binding keys='d D' action='user.move.right' />
+
+      </bindings>
+
+    </keyboard>
+
+  </userInterface>
+
+</settings>

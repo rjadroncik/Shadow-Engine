@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Rendering:Scene id='SceneMain' activeCamera='Camera_02'>
+
+  <models count='5'>
+
+    <model id='Ground'/>
+    <model id='Spaceship'/>
+    <model id='Tiger_Tank'/>
+    <model id='Sphere'/>
+    <model id='Box'/>
+
+  </models>
+
+  <lights count='2'>
+
+    <light id='Light_01'/>
+    <light id='Light_02'/>
+   
+  </lights>
+
+  <cameras count='3'>
+
+    <camera id='Camera_01'/>
+    <camera id='Camera_02'/>
+    <camera id='Camera_03'/>
+
+  </cameras>
+
+  <particleSystems count='2'>
+
+     <particleSystem id='ParticleSystem_02'/> 
+     <particleSystem id='ParticleSystem_03'/> 
+
+  </particleSystems>
+  
+</Rendering:Scene>

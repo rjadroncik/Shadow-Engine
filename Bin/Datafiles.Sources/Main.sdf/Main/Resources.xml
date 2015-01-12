@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<resources>
+
+  <include file='Textures.xml'/>
+  <include file='GPUPrograms.xml'/>
+  <include file='Materials.xml'/>
+  <include file='Meshes.xml'/>
+  <include file='Models.xml'/>
+  <include file='Lights.xml'/>
+  <include file='Cameras.xml'/>
+  <include file='ParticleSystems.xml'/>
+  <include file='Scenes.xml'/>
+
+</resources>

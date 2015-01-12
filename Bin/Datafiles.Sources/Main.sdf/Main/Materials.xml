@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<materials xmlns:Rendering="ProjectShadow.Rendering">
+  
+  <Rendering:Material id='material.void' transparent='false' tint='1.0 1.0 1.0' ambient='1.0' diffuse='1.0' specular='0.0' shininess='0'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='GPUProgram.void'/>
+        <textures count='0' />
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='GPUProgram.void'/>
+        <textures count='0' />
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='Fire' transparent='true' factorSource='srcAlpha' factorDestination='one' tint='1.0 1.0 1.0' ambient='1.0' diffuse='1.0' specular='0.0' shininess='0'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='ParticleSystemFacing'/>
+        <textures count='1'>
+          <texture source='material.diffuseColor' id='Fire_Diffuse'/>
+        </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='ParticleSystemFacing'/>
+        <textures count='1'>
+          <texture source='material.diffuseColor' id='Fire_Diffuse'/>
+        </textures>
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='Smoke' transparent='true' factorSource='srcAlpha' factorDestination='oneMinusSrcAlpha' tint='0.3 0.3 0.3' ambient='1.0' diffuse='1.0' specular='0.0' shininess='0'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='ParticleSystemFacing'/>
+        <textures count='1'>
+          <texture source='material.diffuseColor' id='Smoke_Diffuse'/>
+        </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='ParticleSystemFacing'/>
+        <textures count='1'>
+          <texture source='material.diffuseColor' id='Smoke_Diffuse'/>
+        </textures>
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='D3_Sample_01' transparent='false' tint='1.0 1.0 1.0' ambient='1.0' diffuse='1.0' specular='0.6' shininess='80'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='DiffSpecBumpSpotShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='D3_Sample_01_Diffuse'/>
+          <texture source='material.normalMap'    id='D3_Sample_01_Normal_Map'/>
+        </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='DiffSpecBumpOmniShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='D3_Sample_01_Diffuse'/>
+          <texture source='material.normalMap'    id='D3_Sample_01_Normal_Map'/>
+        </textures>
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='Wood' transparent='false' tint='0.6 0.6 0.6' ambient='1.0' diffuse='1.0' specular='0.9' shininess='120'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='DiffSpecBumpSpotShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Wood_Diffuse'/>
+          <texture source='material.normalMap'    id='Wood_Normal_Map'/>
+        </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='DiffSpecBumpOmniShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Wood_Diffuse'/>
+          <texture source='material.normalMap'    id='Wood_Normal_Map'/>
+        </textures>
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='Spaceship_Material' transparent='false' tint='1.0 1.0 1.0' ambient='1.0' diffuse='0.8' specular='0.2' shininess='30'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='DiffSpecBumpSpotShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Spaceship_Diffuse'/>
+          <texture source='material.normalMap'    id='Spaceship_Normal_Map'/>
+        </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='DiffSpecBumpOmniShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Spaceship_Diffuse'/>
+          <texture source='material.normalMap'    id='Spaceship_Normal_Map'/>
+        </textures>
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='Tiger_Tank_Material' transparent='false' tint='1.0 1.0 1.0' ambient='0.7' diffuse='0.7' specular='0.15' shininess='32'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='DiffSpecBumpSpotShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Tiger_Tank_Diffuse'/>
+          <texture source='material.normalMap'    id='Tiger_Tank_Normal_Map'/>
+        </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='DiffSpecBumpOmniShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Tiger_Tank_Diffuse'/>
+          <texture source='material.normalMap'    id='Tiger_Tank_Normal_Map'/>
+        </textures>
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='Tiles_01' transparent='false' tint='1.0 0.9 0.8' ambient='1.0' diffuse='1.0' specular='0.8' shininess='100'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='DiffSpecBumpSpotShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Tiles_01_Diffuse'/>
+          <texture source='material.normalMap'    id='Tiles_01_Normal_Map'/>
+        </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='DiffSpecBumpOmniShadow'/>
+        <textures count='2'>
+          <texture source='material.diffuseColor' id='Tiles_01_Diffuse'/>
+          <texture source='material.normalMap'    id='Tiles_01_Normal_Map'/>
+        </textures>
+      </usage>
+
+
+    </usages>
+  </Rendering:Material>
+
+  <Rendering:Material id='Travertine' transparent='false' tint='1.0 1.0 1.0' ambient='1.0' diffuse='1.0' specular='1.0' shininess='16'>
+    <usages count='2'>
+
+      <usage type='spotShadow'>
+        <GPUProgram id='DiffSpecBumpSpotShadow'/>
+
+          <textures count='2'>
+            <texture source='material.diffuseColor' id='Travertine_Diffuse'/>
+            <texture source='material.normalMap'    id='Travertine_Normal_Map'/>
+          </textures>
+      </usage>
+      <usage type='omniShadow'>
+        <GPUProgram id='DiffSpecBumpOmniShadow'/>
+
+          <textures count='2'>
+            <texture source='material.diffuseColor' id='Travertine_Diffuse'/>
+            <texture source='material.normalMap'    id='Travertine_Normal_Map'/>
+          </textures>
+      </usage>
+
+    </usages>
+  </Rendering:Material>
+
+</materials>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<controls xmlns:GUI="ProjectShadow.GUI">
+
+  <GUI:Label id='Label.Console.History'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:EditField id='EditField.Console.Command'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:EditField>
+
+  <GUI:Label id='Label.Statistics.RPS'>
+    <text font='Tahoma_12px' alignment='right'>RPS:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Statistics.RPS_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Statistics.UPS'>
+    <text font='Tahoma_12px' alignment='right'>UPS:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Statistics.UPS_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Optimizations.Shadows_Processed'>
+    <text font='Tahoma_12px' alignment='right'>Shadows:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Optimizations.Shadows_Processed_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Optimizations.Lights_Processed'>
+    <text font='Tahoma_12px' alignment='right'>Lights:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Optimizations.Lights_Processed_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Optimizations.Objects_Processed'>
+    <text font='Tahoma_12px' alignment='right'>Objects:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.Optimizations.Objects_Processed_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.System.Memory_Usage'>
+    <text font='Tahoma_12px' alignment='right'>Memory usage:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.System.Memory_Usage_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.System.Object_Count'>
+    <text font='Tahoma_12px' alignment='right'>Objects:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.System.Object_Count_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.System.Block_Count'>
+    <text font='Tahoma_12px' alignment='right'>Memory blocks:</text>
+  </GUI:Label>
+
+  <GUI:Label id='Label.System.Block_Count_Value'>
+    <text font='Tahoma_12px' alignment='left'></text>
+  </GUI:Label>
+
+</controls>

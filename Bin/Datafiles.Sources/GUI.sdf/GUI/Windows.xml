@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<windows xmlns:GUI="ProjectShadow.GUI">
+
+  <GUI:Window id='Window.Console' rect='0 200 300 200' sizeMin='0 0' sizeMax='300 300' resizable='1' buttonMin='0' buttonMax='0' buttonClose='1'>
+
+    <elements count='2'>
+
+      <element id='Label.Console.History'/>
+      <element id='EditField.Console.Command'/>
+ 
+    </elements>
+    
+    <text font='Tahoma_13px' alignment='center' color='1 1 0.75 0.75'>Console</text>
+
+    <layout id='Layout.Console'/>
+ 
+  </GUI:Window>
+
+  <GUI:Window id='Window.Statistics' rect='0 0 0 0' sizeMin='0 0' sizeMax='300 300' resizable='0' buttonMin='0' buttonMax='0' buttonClose='1'>
+
+    <elements count='4'>
+
+      <element id='Label.Statistics.RPS'/>
+      <element id='Label.Statistics.RPS_Value'/>
+      <element id='Label.Statistics.UPS'/>
+      <element id='Label.Statistics.UPS_Value'/>
+
+    </elements>
+
+    <text font='Tahoma_13px' alignment='center' color='1 1 0.75 0.75'>Statistics</text>
+
+    <layout id='Layout.Statistics'/>
+
+  </GUI:Window>
+
+  <GUI:Window id='Window.Optimizations' rect='150 0 0 0' sizeMin='0 0' sizeMax='300 300' resizable='0' buttonMin='0' buttonMax='0' buttonClose='1'>
+
+    <elements count='6'>
+
+      <element id='Label.Optimizations.Shadows_Processed'/>
+      <element id='Label.Optimizations.Shadows_Processed_Value'/>
+      <element id='Label.Optimizations.Lights_Processed'/>
+      <element id='Label.Optimizations.Lights_Processed_Value'/>
+      <element id='Label.Optimizations.Objects_Processed'/>
+      <element id='Label.Optimizations.Objects_Processed_Value'/>
+
+    </elements>
+
+    <text font='Tahoma_13px' alignment='center' color='1 1 0.75 0.75'>Optimizations</text>
+
+    <layout id='Layout.Optimizations'/>
+
+  </GUI:Window>
+
+  <GUI:Window id='Window.System' rect='350 0 0 0' sizeMin='0 0' sizeMax='300 300' resizable='0' buttonMin='0' buttonMax='0' buttonClose='1'>
+
+    <elements count='6'>
+
+      <element id='Label.System.Memory_Usage'/>
+      <element id='Label.System.Memory_Usage_Value'/>
+      <element id='Label.System.Object_Count'/>
+      <element id='Label.System.Object_Count_Value'/>
+      <element id='Label.System.Block_Count'/>
+      <element id='Label.System.Block_Count_Value'/>
+
+    </elements>
+
+    <text font='Tahoma_13px' alignment='center' color='1 1 0.75 0.75'>System</text>
+
+    <layout id='Layout.System'/>
+
+  </GUI:Window>
+
+</windows>

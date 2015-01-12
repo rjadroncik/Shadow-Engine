@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<models xmlns:Rendering="ProjectShadow.Rendering">
+
+  <Rendering:Model id='Spaceship'   position='300.0 300.0   0.0' rotation='-100.0  0.0 0.0' mesh='Spaceship_Mesh'  material='Spaceship_Material'  shadowCasts='true'/>
+  <Rendering:Model id='Sphere'      position='350.0  75.0 235.0' rotation=' 45.0  45.0 0.0' mesh='Sphere_Mesh'     material='Wood'                shadowCasts='true'/>
+  <Rendering:Model id='Ground'      position='0.0     0.0   0.0' rotation=' 90.0   0.0 0.0' mesh='Ground_Mesh'     material='Tiles_01'            shadowCasts='false'/>
+  <Rendering:Model id='Box'         position='400.0  76.0 350.0' rotation='  0.0  90.0 0.0' mesh='Box_Mesh'        material='D3_Sample_01'        shadowCasts='true'/>
+  <Rendering:Model id='Tiger_Tank'  position='100.0  52.0 300.0' rotation='  0.0   0.0 0.0' mesh='Tiger_Tank_Mesh' material='Tiger_Tank_Material' shadowCasts='true'/>
+ 
+</models>

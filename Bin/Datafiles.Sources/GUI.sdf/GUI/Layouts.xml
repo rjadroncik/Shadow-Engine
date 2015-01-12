@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<layouts xmlns:GUI="ProjectShadow.GUI">
+
+  <GUI:LayoutSplit id='Layout.Console' splitType='horizontalFixedBottom' splitValue='20' splitPadding='2'/>
+
+  <GUI:LayoutTable id='Layout.Statistics' width='2' height='2' cellPadding='2'>
+
+    <columns count='2'>
+      <column type='percentual' width='70'/>
+      <column type='percentual' width='30'/>
+    </columns>
+
+    <rows count='2'>
+      <row type='fixed' height=''/>
+      <row type='fixed' height=''/>
+    </rows>
+
+  </GUI:LayoutTable>
+
+  <GUI:LayoutTable id='Layout.Optimizations' width='2' height='3' cellPadding='2'>
+
+    <columns count='2'>
+      <column type='percentual' width='70'/>
+      <column type='percentual' width='30'/>
+    </columns>
+    
+    <rows count='3'>
+      <row type='fixed' height=''/>
+      <row type='fixed' height=''/>
+      <row type='fixed' height=''/>
+    </rows>
+
+  </GUI:LayoutTable>
+
+  <GUI:LayoutTable id='Layout.System' width='2' height='3' cellPadding='2'>
+
+    <columns count='2'>
+      <column type='percentual' width='70'/>
+      <column type='percentual' width='30'/>
+    </columns>
+
+    <rows count='3'>
+      <row type='fixed' height=''/>
+      <row type='fixed' height=''/>
+      <row type='fixed' height=''/>
+    </rows>
+
+  </GUI:LayoutTable>
+
+</layouts>

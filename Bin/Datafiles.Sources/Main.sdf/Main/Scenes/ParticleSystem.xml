@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Rendering:Scene id='SceneMain' activeCamera='Camera_02'>
+
+  <models count='0'>
+  </models>
+
+  <lights count='1'>
+     <light id='Light_01'/>
+  </lights>
+
+  <cameras count='1'>
+    <camera id='Camera_02'/>
+  </cameras>
+
+  <particleSystems count='1'>
+     <particleSystem id='ParticleSystem_02'/> 
+  </particleSystems>
+  
+</Rendering:Scene>

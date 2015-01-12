@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<textures xmlns:Resources="ProjectShadow.Resources">
+
+  <Resources:Texture id='Texture.Cursor.Arrow' file='\GUI\Textures\Cursors\Arrow.tga' target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Beam'  file='\GUI\Textures\Cursors\Beam.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Busy'  file='\GUI\Textures\Cursors\Busy.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Cross' file='\GUI\Textures\Cursors\Cross.tga' target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Hand'  file='\GUI\Textures\Cursors\Hand.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Help'  file='\GUI\Textures\Cursors\Help.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Move'  file='\GUI\Textures\Cursors\Move.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.No'    file='\GUI\Textures\Cursors\No.tga'    target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+ 
+  <Resources:Texture id='Texture.Cursor.Size1' file='\GUI\Textures\Cursors\Size1.tga' target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Size2' file='\GUI\Textures\Cursors\Size2.tga' target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Size3' file='\GUI\Textures\Cursors\Size3.tga' target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+  <Resources:Texture id='Texture.Cursor.Size4' file='\GUI\Textures\Cursors\Size4.tga' target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+
+  <Resources:Texture id='Texture.Cursor.Wait'  file='\GUI\Textures\Cursors\Wait.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
+
+</textures>

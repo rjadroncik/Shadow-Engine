@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<particleSystems xmlns:Simulation="ProjectShadow.Simulation">
+
+  <Simulation:ParticleSystem id='ParticleSystem_01' position='-200.0 20.0 200.0' rotation='-90.0 0.0 0.0' material='Fire'>
+
+    <emitter box='100.0 10.0 100.0'/>
+
+    <particles count='150' life='35' spread='15.0'>
+
+      <speed    value='5'   variation='0.025' change='0.0065'/>
+      <size     value='60'  variation='0.8'   change='-2.0'/>
+      <rotation value='180' variation='2.0'   change='0.6'/>
+      <opacity  value='0.1' variation='0.1'   change='-0.055'/>
+
+    </particles>
+
+  </Simulation:ParticleSystem>
+
+  <Simulation:ParticleSystem id='ParticleSystem_02' position='-200.0 -10.0 200.0' rotation='-90.0 0.0 0.0' material='Fire'>
+
+    <emitter box='100.0 10.0 100.0'/>
+
+    <particles count='160' life='35' spread='13.0'>
+
+      <speed    value='5.2' variation='0.025' change='0.0065'/>
+      <size     value='110' variation='0.6'   change='-2.0'/>
+      <rotation value='180' variation='2.0'   change='0.6'/>
+      <opacity  value='0.1' variation='0.05'  change='-0.03'/>
+
+    </particles>
+
+  </Simulation:ParticleSystem>
+
+  <Simulation:ParticleSystem id='ParticleSystem_03' position='-200.0 50.0 200.0' rotation='-90.0 0.0 0.0' material='Smoke'>
+
+    <emitter box='110.0 80.0 110.0'/>
+
+    <particles count='150' life='45' spread='15.0'>
+
+      <speed    value='5.2' variation='0.025' change='-0.0065'/>
+      <size     value='120' variation='0.3'   change='3.0'/>
+      <rotation value='180' variation='2.0'   change='0.6'/>
+      <opacity  value='0.15' variation='0.05'  change='-0.003'/>
+
+    </particles>
+
+  </Simulation:ParticleSystem>
+
+</particleSystems>

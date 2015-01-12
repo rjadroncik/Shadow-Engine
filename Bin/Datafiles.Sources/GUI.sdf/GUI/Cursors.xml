@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<cursors xmlns:Resources="ProjectShadow.Resources">
+
+  <Resources:Cursor id='Cursor.Arrow' texture='Texture.Cursor.Arrow' size='32 32' hotSpot='0 4'/>
+  <Resources:Cursor id='Cursor.Beam'  texture='Texture.Cursor.Beam'  size='32 32' hotSpot='16 16'/>
+  <Resources:Cursor id='Cursor.Busy'  texture='Texture.Cursor.Busy'  size='32 32' hotSpot='16 16'/>
+  <Resources:Cursor id='Cursor.Cross' texture='Texture.Cursor.Cross' size='32 32' hotSpot='16 16'/>
+  <Resources:Cursor id='Cursor.Hand'  texture='Texture.Cursor.Hand'  size='32 32' hotSpot='5 6'/>
+  <Resources:Cursor id='Cursor.Help'  texture='Texture.Cursor.Help'  size='32 32' hotSpot='1 4'/>
+  <Resources:Cursor id='Cursor.Move'  texture='Texture.Cursor.Move'  size='32 32' hotSpot='16 16'/>
+  <Resources:Cursor id='Cursor.No'    texture='Texture.Cursor.No'    size='32 32' hotSpot='16 16'/>
+ 
+  <Resources:Cursor id='Cursor.Size1' texture='Texture.Cursor.Size1' size='32 32' hotSpot='16 16'/>
+  <Resources:Cursor id='Cursor.Size2' texture='Texture.Cursor.Size2' size='32 32' hotSpot='16 16'/>
+  <Resources:Cursor id='Cursor.Size3' texture='Texture.Cursor.Size3' size='32 32' hotSpot='16 16'/>
+  <Resources:Cursor id='Cursor.Size4' texture='Texture.Cursor.Size4' size='32 32' hotSpot='16 16'/>
+ 
+  <Resources:Cursor id='Cursor.Wait'  texture='Texture.Cursor.Wait'  size='32 32' hotSpot='0 4'/>
+
+</cursors>

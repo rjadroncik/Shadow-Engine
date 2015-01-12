@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<GUIModules xmlns:GUI="ProjectShadow.GUI">
+
+  <GUI:Module id='GUIModuleMain'>
+
+    <cursors count='13'>
+
+      <cursor id='Cursor.Arrow' type='Cursor.Arrow'/>
+      <cursor id='Cursor.Beam'  type='Cursor.Beam'/>
+      <cursor id='Cursor.Busy'  type='Cursor.Busy'/>
+      <cursor id='Cursor.Cross' type='Cursor.Cross'/>
+      <cursor id='Cursor.Hand'  type='Cursor.Hand'/>
+      <cursor id='Cursor.Help'  type='Cursor.Help'/>
+      <cursor id='Cursor.Move'  type='Cursor.Move'/>
+      <cursor id='Cursor.No'    type='Cursor.No'/>
+
+      <cursor id='Cursor.Size1' type='Cursor.Size1'/>
+      <cursor id='Cursor.Size2' type='Cursor.Size2'/>
+      <cursor id='Cursor.Size3' type='Cursor.Size3'/>
+      <cursor id='Cursor.Size4' type='Cursor.Size4'/>
+
+      <cursor id='Cursor.Wait' type='Cursor.Wait'/>
+
+    </cursors>
+
+   <windows count='4'>
+
+      <window id='Window.Statistics'/>
+      <window id='Window.Optimizations'/>
+      <window id='Window.System'/>
+      <window id='Window.Console'/>
+
+    </windows>
+
+  </GUI:Module>
+
+</GUIModules>
