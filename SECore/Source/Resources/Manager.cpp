@@ -169,6 +169,9 @@ bool __fastcall CManager::ObjectsLoad(_IN CString& rFile)
 
 bool  __fastcall CManager::ObjectsSave(_IN CString& rDirectory)
 {
+	CDirectory directory(rDirectory);
+	if (!directory.Exists()) { directory.Create(); }
+
 	for (SCF::UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
 	{
 		CString*   pCategory  = (CString*)  &((CAssociation&)Manager_ObjectTypes[i - 1]).Key();
