@@ -13,10 +13,13 @@ using namespace Resources;
 using namespace System;
 
 CVector<CAssociation> Manager_ObjectTypes;
+CDictionaryString<CString> Manager_ObjectTypeNamespaces;
 
-bool __fastcall CManager::ObjectTypesAdd(_IN CString& rCategory, _IN _REF CArrayInt& rClassKeys) 
+bool __fastcall CManager::ObjectTypesAdd(_IN CString& rCategory, _IN CString& rNamespace, _IN _REF CArrayInt& rClassKeys) 
 {
-	 Manager_ObjectTypes.LastAdd(*(new CAssociation(rCategory, rClassKeys)));
+	 Manager_ObjectTypes.LastAdd(*(new CAssociation(*(new CString(rCategory)), rClassKeys)));
+	 Manager_ObjectTypeNamespaces.AtPut(rCategory, *(new CString(rNamespace)));
+
 	 return TRUE;
 }
 
@@ -26,56 +29,56 @@ bool __fastcall CManager::Initialize()
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassTexture);
 
-		CManager::ObjectTypesAdd(*(new STRING("textures")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("textures"), STRING("Resources"),  *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassGPUProgram);
 
-		CManager::ObjectTypesAdd(*(new STRING("GPUPrograms")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("GPUPrograms"), STRING("Resources"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassMaterial);
 
-		CManager::ObjectTypesAdd(*(new STRING("materials")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("materials"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassMesh);
 
-		CManager::ObjectTypesAdd(*(new STRING("meshes")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("meshes"), STRING("Resources"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassModel);
 
-		CManager::ObjectTypesAdd(*(new STRING("models")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("models"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(2);
 		pClassKeys->AtPut(0, ClassLightSpot);
 		pClassKeys->AtPut(1, ClassLightOmni);
 
-		CManager::ObjectTypesAdd(*(new STRING("lights")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("lights"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassCamera);
 
-		CManager::ObjectTypesAdd(*(new STRING("cameras")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("cameras"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassParticleSystem);
 
-		CManager::ObjectTypesAdd(*(new STRING("particleSystems")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("particleSystems"), STRING("Simulation"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassScene);
 
-		CManager::ObjectTypesAdd(*(new STRING("scenes")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("scenes"), STRING("Rendering"), *pClassKeys);
 	}
 
 	return TRUE;
@@ -176,13 +179,13 @@ bool  __fastcall CManager::ObjectsSave(_IN CString& rDirectory)
 	{
 		CString*   pCategory  = (CString*)  &((CAssociation&)Manager_ObjectTypes[i - 1]).Key();
 		CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation&)Manager_ObjectTypes[i - 1]).Value();
+		CString*   pNamespace = Manager_ObjectTypeNamespaces.At(*pCategory);
 
 		CFile* pFile = new CFile(rDirectory, *pCategory, STRING("xml"));
 		if (pFile->Exists()) { pFile->Delete(); }
 
 		CXMLDocumentFile Document(*pFile);
-		CXMLStreamWrite Writer(Document);
-		Writer.BlockStart(*pCategory);
+		CXMLStreamWrite Writer(Document, *pCategory, *pNamespace, STRING("ProjectShadow.") + *pNamespace);
 
 		CXMLStreamWriteObject WriterObject(Document);
 		ObjectsSave(WriterObject, *pClassKeys);

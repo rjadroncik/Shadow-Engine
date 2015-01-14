@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<Rendering:Scene id='SceneMain' activeCamera='Camera_02'>
+<Rendering:Scene id='SceneMain' activeCamera='Camera_02' xmlns:Rendering="ProjectShadow.Rendering">
 
   <models count='5'>
 

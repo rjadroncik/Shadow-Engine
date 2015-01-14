@@ -36,39 +36,39 @@ bool SEGUI_API __fastcall GUI::Initialize(_IN void* hModule)
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassFont);
 
-		CManager::ObjectTypesAdd(*(new STRING("fonts")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("fonts"), STRING("Resources"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassCursor);
 
-		CManager::ObjectTypesAdd(*(new STRING("cursors")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("cursors"), STRING("Resources"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(2);
 		pClassKeys->AtPut(0, ClassLabel);
 		pClassKeys->AtPut(1, ClassEditField);
 
-		CManager::ObjectTypesAdd(*(new STRING("controls")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("controls"), STRING("GUI"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(2);
 		pClassKeys->AtPut(0, ClassLayoutSplit);
 		pClassKeys->AtPut(1, ClassLayoutTable);
 
-		CManager::ObjectTypesAdd(*(new STRING("layouts")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("layouts"), STRING("GUI"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassWindow);
 
-		CManager::ObjectTypesAdd(*(new STRING("windows")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("windows"), STRING("GUI"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
 		pClassKeys->AtPut(0, ClassModule);
 
-		CManager::ObjectTypesAdd(*(new STRING("GUIModules")), *pClassKeys);
+		CManager::ObjectTypesAdd(STRING("GUIModules"), STRING("GUI"), *pClassKeys);
 	}
 
 	CXMLEnumeration* pEnumeration = new SCFXML::CXMLEnumeration();

@@ -13,7 +13,7 @@ namespace Resources
 	public:
 		//Initializations
 		static bool __fastcall Initialize();
-		static bool __fastcall ObjectTypesAdd(_IN _REF CString& rCategory, _IN _REF CArrayInt& rClassKeys);
+		static bool __fastcall ObjectTypesAdd(_IN _REF CString& rCategory, _IN CString& rNamespace, _IN _REF CArrayInt& rClassKeys);
 
 	public:
 		//Load objects that are defined in the specified file OR save existing objects
