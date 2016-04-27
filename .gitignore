@@ -10,3 +10,4 @@ ipch
 *.sdf
 *.tlog
 *.opensdf
+*.db
