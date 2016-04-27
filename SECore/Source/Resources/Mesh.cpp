@@ -239,9 +239,9 @@ void __fastcall CMesh::AttributeTNCompute()
 	for (SCF::UINT i = 0; i < m_usTriangleCount; i++)
 	{
 		ComputeTN(
-			*(Float3*)(&m_pVertices[m_pTriangles[i][0]]),
-			*(Float3*)(&m_pVertices[m_pTriangles[i][1]]),
-			*(Float3*)(&m_pVertices[m_pTriangles[i][2]]),
+			m_pVertices[m_pTriangles[i][0]],
+			m_pVertices[m_pTriangles[i][1]],
+			m_pVertices[m_pTriangles[i][2]],
 			((Float2*)m_pAttributes[0].vpData)[m_pTriangles[i][0]],
 			((Float2*)m_pAttributes[0].vpData)[m_pTriangles[i][1]],
 			((Float2*)m_pAttributes[0].vpData)[m_pTriangles[i][2]],
@@ -299,7 +299,7 @@ void __fastcall CMesh::ComputeTNsPerVertex(_IN Float3* pTriangleTangents, _IN Fl
 			ZeroVector3(TempTangent);
 			ZeroVector3(TempBinormal);
 
-			for (USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
+			for (SCF::USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
 			{
 				if (IsIn(m_pSmoothingGroups[k], m_pSeamVertices[i].uspTriangles[j]))
 				{
@@ -311,7 +311,7 @@ void __fastcall CMesh::ComputeTNsPerVertex(_IN Float3* pTriangleTangents, _IN Fl
 			NormalizeVector3(TempTangent,  TempTangent);
 			NormalizeVector3(TempBinormal, TempBinormal);
 		
-			for (USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
+			for (SCF::USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
 			{
 				if (IsIn(m_pSmoothingGroups[k], m_pSeamVertices[i].uspTriangles[j]))
 				{
@@ -425,7 +425,7 @@ void __fastcall CMesh::AddIndex(_INOUT SVertexList& rVertexList, _IN USHORT usIn
 	if (IsIn(rVertexList, usIndex)) { return; }
 
 	rVertexList.usCount++;			
-	rVertexList.uspTriangles = (SCF::USHORT*)CMemory::Reallocate(rVertexList.uspTriangles, sizeof(USHORT) * rVertexList.usCount);
+	rVertexList.uspTriangles = (SCF::USHORT*)CMemory::Reallocate(rVertexList.uspTriangles, sizeof(SCF::USHORT) * rVertexList.usCount);
 
 	rVertexList.uspTriangles[rVertexList.usCount - 1] = usIndex;
 }

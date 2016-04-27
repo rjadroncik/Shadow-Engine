@@ -2,7 +2,6 @@
 
 #include "../Rendering/Renderer.h"
 
-#include <SCFWinAPIUndef.h>
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 

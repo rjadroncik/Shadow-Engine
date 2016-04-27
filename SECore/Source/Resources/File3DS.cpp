@@ -93,7 +93,7 @@ bool CFile3DS::ConvertTo(_INOUT CMesh& rMesh)
 		{
 			for (SCF::USHORT j = (i + 1); j < rMesh.m_usVertexCount; j++)
 			{
-				if (CompareVectors3(*(Float3*)&rMesh.m_pVertices[i], *(Float3*)&rMesh.m_pVertices[j]))
+				if (CompareVectors3(rMesh.m_pVertices[i], rMesh.m_pVertices[j]))
 				{
 					CMesh::AddIndex(rMesh.m_pSeamVertices[i], i);
 					CMesh::AddIndex(rMesh.m_pSeamVertices[i], j);
