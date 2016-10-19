@@ -132,7 +132,6 @@
     <ClCompile Include="Source\SEEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Classes.h" />
     <ClInclude Include="Source\Errors.h" />
     <ClInclude Include="Source\SEEditor.h" />
   </ItemGroup>

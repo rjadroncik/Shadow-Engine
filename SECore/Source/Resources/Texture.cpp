@@ -8,12 +8,12 @@ CTexture::CTexture()
 	Construct(NULL, GL_TEXTURE_2D, FALSE);
 }
 
-CTexture::CTexture(_IN SCF::ENUM eTarget)
+CTexture::CTexture(_IN ENUM eTarget)
 {
 	Construct(NULL, eTarget, FALSE);
 }
 
-CTexture::CTexture(_IN CImage& rImage, _IN SCF::ENUM eTarget, _IN bool bMipmaps)
+CTexture::CTexture(_IN CImage& rImage, _IN ENUM eTarget, _IN bool bMipmaps)
 {
 	Construct(&rImage, eTarget, bMipmaps);
 }
@@ -23,7 +23,7 @@ CTexture::~CTexture()
 	glDeleteTextures(1, &m_uiID);
 }
 
-void CTexture::Construct(_IN _OPT CImage* pImage, _IN SCF::ENUM eTarget, _IN bool bMipmaps)
+void CTexture::Construct(_IN _OPT CImage* pImage, _IN ENUM eTarget, _IN bool bMipmaps)
 {
 	//Texture properties
 	m_eCoordClamp = GL_REPEAT;
@@ -78,7 +78,7 @@ bool CTexture::LoadImage2D(_IN CImage& rImage)
 		}
 		else
 		{
-			for (SCF::UINT i = 0; i < pImageDDS->MipmapCount(); i++)
+			for (UINT i = 0; i < pImageDDS->MipmapCount(); i++)
 			{
 				glCompressedTexImage2D(m_eTarget, i, pImageDDS->GLFormat(), pImageDDS->MipmapWidth(i), pImageDDS->MipmapWidth(i), 0, pImageDDS->MipmapDataSize(i), pImageDDS->MipmapData(i));
 			}
@@ -93,7 +93,7 @@ bool CTexture::LoadImage2D(_IN CImage& rImage)
 	return TRUE;
 }
   
-bool CTexture::LoadImage3D(_IN SCF::BYTE* bpData, _IN SCF::UINT uiWidth, _IN SCF::UINT uiHeight, _IN SCF::UINT uiDepth, _IN GLenum eFormat)
+bool CTexture::LoadImage3D(_IN BYTE* bpData, _IN UINT uiWidth, _IN UINT uiHeight, _IN UINT uiDepth, _IN GLenum eFormat)
 {
 	if (!bpData) { return FALSE; }
 

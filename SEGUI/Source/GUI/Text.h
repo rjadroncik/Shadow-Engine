@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Classes.h"
 #include "../Resources/Font.h"
 
 namespace GUI
@@ -8,7 +7,7 @@ namespace GUI
 	class SEGUI_API CText : public SCFBase::CObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassText; }
+		CString XmlName() _GET { return STRING("Text"); }
 
 	public:
 		CText();
@@ -33,7 +32,7 @@ namespace GUI
 		void RangeToRect(_IN Int2&   rRange, _OUT Float4& rOutRect);
 		bool RectToRange(_IN Float4& rRect,  _OUT Int2&   rOutRange);
 	
-		SCF::UINT PositionToIndex(_IN Float2& rPosition);
+		UINT PositionToIndex(_IN Float2& rPosition);
 
 	public:
 		void Render();

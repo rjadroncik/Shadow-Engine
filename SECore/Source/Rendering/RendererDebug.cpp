@@ -36,7 +36,7 @@ void CRendererDebug::Scene::RenderDataVisualisation(_IN CScene& rScene)
 
 void CRendererDebug::Scene::BoundsRender(_IN CScene& rScene)
 {
-	for (SCF::UINT i = 0; i < rScene.ModelCount(); i++)
+	for (UINT i = 0; i < rScene.ModelCount(); i++)
 	{
 		if (rScene.CameraCurrent()->CheckVisibilityByBounds(rScene.Model(i)))
 		{
@@ -49,7 +49,7 @@ void CRendererDebug::Scene::BoundsRender(_IN CScene& rScene)
 		}
 	}
 
-	for (SCF::UINT i = 0; i < rScene.ParticleSystemCount(); i++)
+	for (UINT i = 0; i < rScene.ParticleSystemCount(); i++)
 	{
 		if (rScene.CameraCurrent()->CheckVisibilityByBounds(rScene.ParticleSystem(i)))
 		{
@@ -65,7 +65,7 @@ void CRendererDebug::Scene::BoundsRender(_IN CScene& rScene)
 
 void CRendererDebug::Scene::RenderTBNs(_IN CScene& rScene)
 {
-	for (SCF::UINT i = 0; i < rScene.ModelCount(); i++)
+	for (UINT i = 0; i < rScene.ModelCount(); i++)
 	{
 		_PENDING; //rScene.Model(i).RenderTBNs();
 		_PENDING; //rScene.Model(i).RenderSeam();
@@ -74,7 +74,7 @@ void CRendererDebug::Scene::RenderTBNs(_IN CScene& rScene)
 
 void CRendererDebug::Scene::RenderCameras(_IN CScene& rScene)
 {
-	for (SCF::UINT i = 0; i < rScene.CameraCount(); i++)
+	for (UINT i = 0; i < rScene.CameraCount(); i++)
 	{
 		if (&rScene.Camera(i) == rScene.CameraCurrent()) { continue; }
 
@@ -123,7 +123,7 @@ void CRendererDebug::Scene::RenderWireFrame(_IN CScene& rScene, _IN bool bFillDe
 	CMaterial::ApplyDefault();
 	glColor4f(1, 1, 1, 1);
 
-	for (SCF::UINT i = 0; i < rScene.ModelCount(); i++)
+	for (UINT i = 0; i < rScene.ModelCount(); i++)
 	{
 	if (rScene.CameraCurrent()->CheckVisibilityByBounds(rScene.Model(i)))
 	{
@@ -167,7 +167,7 @@ void CRendererDebug::Scene::RenderWireFrame(_IN CScene& rScene, _IN bool bFillDe
 	CMaterial::ApplyDefault();
 	glColor4f(1, 1, 1, 1);
 
-	for (SCF::UINT i = 0; i < rScene.ModelCount(); i++)
+	for (UINT i = 0; i < rScene.ModelCount(); i++)
 	{
 	if (rScene.CameraCurrent()->CheckVisibilityByBounds(rScene.Model(i)))
 	{
@@ -201,14 +201,14 @@ void CRendererDebug::Scene::RenderShadowCones(_IN CScene& rScene)
 		Float3 NormalVector;
 
 		//Go through all lights
-		for (SCF::UINT i = 0; i < rScene.LightCount(); i++)
+		for (UINT i = 0; i < rScene.LightCount(); i++)
 		{
 			//Skip light that are currently turned off
 			if (!rScene.Light(i).Enabled()) { continue; }
 
 			if (rScene.Light(i).Shadows()) 
 			{ 
-				for (SCF::UINT j = 0; j < rScene.ModelCount(); j++)
+				for (UINT j = 0; j < rScene.ModelCount(); j++)
 				{
 //					if (!(rScene.CameraCurrent()->ClassifyShadowRendering(rScene.Light(i), rScene.Model(j)) & SVO_RENDER_BACK_CAP)) { continue; }
 					if (MeasureDistance3((Float3&)rScene.Model(j).Position(), (Float3&)rScene.Light(i).Position()) < rScene.Model(j).BoundsRadius()) { continue; }
@@ -239,7 +239,7 @@ void CRendererDebug::Scene::RenderShadowCones(_IN CScene& rScene)
 
 					glBegin(GL_TRIANGLES);
 					{
-						for (SCF::UINT k = 0; k < 36; k++)
+						for (UINT k = 0; k < 36; k++)
 						{
 							glVertex3fv(&(rScene.Light(i).Position()[0]));
 
@@ -264,7 +264,7 @@ void CRendererDebug::Scene::RenderLights(_IN CScene& rScene)
 {
 	glColor3d(1, 1, 0);
 
-	for (SCF::UINT i = 0; i < rScene.LightCount(); i++)
+	for (UINT i = 0; i < rScene.LightCount(); i++)
 	{
 		//Skip light that are currently turned off
 		if (!rScene.Light(i).Enabled()) { continue; }
@@ -299,7 +299,7 @@ void Resources::CMesh::RenderTBNs() const
 
 		glBegin(GL_LINES);
 		{
-			for (SCF::UINT i = 0; i < m_usVertexCount; i++)
+			for (UINT i = 0; i < m_usVertexCount; i++)
 			{
 				ScaleVector3(Temp, pTangentCoord[i], 20);
 				AddVectors3 (Temp, Temp, *(Float3*)&m_pVertices[i]);
@@ -350,9 +350,9 @@ void Resources::CMesh::RenderSeam() const
 
 		glBegin(GL_POINTS);
 		{
-			for (SCF::UINT i = 0; i < m_usSeamVertexListCount; i++)
+			for (UINT i = 0; i < m_usSeamVertexListCount; i++)
 			{
-				for (SCF::UINT j = 0; j < m_pSeamVertices[i].uiCount; j++)
+				for (UINT j = 0; j < m_pSeamVertices[i].uiCount; j++)
 				{
 					glVertex3fv(m_pVertices[m_pSeamVertices[i].uipTriangles[j]]);
 				}

@@ -10,7 +10,7 @@ namespace GUI
 	class SEGUI_API CButtonClick : public CButton
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassButtonClick; }
+		CString XmlName() _GET { return STRING("ButtonClick"); }
 
 	public:
 		CButtonClick();

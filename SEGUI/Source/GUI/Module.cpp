@@ -38,7 +38,7 @@ CModule::CCursor::CCursor()
 	m_Bounds[2] = (float)CSettings::CDisplay::Width();
 	m_Bounds[3] = (float)CSettings::CDisplay::Height();
 
-	for (SCF::UINT i = 0; i < CursorTypeCount; i++) { m_pCursors[i] = NULL; }
+	for (UINT i = 0; i < CursorTypeCount; i++) { m_pCursors[i] = NULL; }
 }
 
 CModule::CCursor::~CCursor()
@@ -54,13 +54,13 @@ CModule::~CModule()
 bool CModule::CCursor::Show()               _GET { return m_bShow; }
 void CModule::CCursor::Show(_IN bool bShow) _SET { m_bShow = bShow; ShowCursor(bShow); }
 
-void CModule::CCursor::Use(_IN SCF::UINT uiIndex) _SET 
+void CModule::CCursor::Use(_IN UINT uiIndex) _SET 
 {
 	m_pCursor = m_pCursors[uiIndex];
 	if (m_pCursor) { SetCursor((HCURSOR)m_pCursor); }
 }
 
-void CModule::CCursor::Enlist(_IN SCF::ENUM eType, _IN Resources::CCursor* pCursor) _SET
+void CModule::CCursor::Enlist(_IN ENUM eType, _IN Resources::CCursor* pCursor) _SET
 {
 	switch (eType)
 	{
@@ -129,7 +129,7 @@ bool CModule::MouseLocalPos(_IN Float2& rMousePos, _IN CWindowAbstract& rElement
 
 void CModule::ChildMakeTopmost(_IN CWindowAbstract& rChild) _SET
 {
-	for (SCF::UINT i = 0; i < (m_Windows.Size() - 1); i++)
+	for (UINT i = 0; i < (m_Windows.Size() - 1); i++)
 	{
 		if (&m_Windows[i] == &rChild)
 		{
@@ -149,7 +149,7 @@ void CModule::Render()
 	PositionPush();
 	{
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+		for (UINT i = 0; i < m_Windows.Size(); i++)
 		{
 			((CWindowAbstract&)m_Windows[i]).Render();
 		}
@@ -177,10 +177,10 @@ void CModule::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Cursors
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 
@@ -190,7 +190,7 @@ void CModule::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 
 				GETVALUE 
 				{ 
-					SCF::ENUM eCursorType = CXMLEnumeration::Translate(STRING("CursorTypes"), *pValue)->Value();
+					ENUM eCursorType = CXMLEnumeration::Translate(STRING("CursorTypes"), *pValue)->Value();
 					Cursor.Enlist(eCursorType, pCursor);
 				}
 			}
@@ -200,10 +200,10 @@ void CModule::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Windows
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			GETVALUE { ChildAdd(*(CWindow*)CScripting::Object(*pValue)); }

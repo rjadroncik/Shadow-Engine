@@ -10,8 +10,8 @@ namespace Rendering
 	class SECORE_API CModel : public CObjectScene
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassModel; }
-		CString   ToString() _GET { return STRING("{Model}"); }
+		CString XmlName() _GET { return STRING("Model"); }
+		CString ToString() _GET { return STRING("{Model}"); }
 
 	public:
 		CModel(_IN _REF Resources::CMesh& rMesh, _IN _REF CMaterial& rMaterial);

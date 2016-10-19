@@ -10,7 +10,6 @@
 #include <SCFScripting.h>
 #include <SCFXML.h>
 
-#include "../Classes.h"
 #include "../Errors.h"
 
 namespace System

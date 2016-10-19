@@ -6,8 +6,8 @@ namespace Rendering
 	class SECORE_API CLightOmni : public CLight
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassLightOmni; }
-		CString   ToString() _GET { return STRING("{LightOmni}"); }
+		CString XmlName() _GET { return STRING("LightOmni"); }
+		CString ToString() _GET { return STRING("{LightOmni}"); }
 
 	public:
 		CLightOmni();

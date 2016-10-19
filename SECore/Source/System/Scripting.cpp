@@ -27,17 +27,17 @@ CDictionaryString<CObject> CScripting::s_Objects;
 
 void __fastcall CScripting::Initialize(_IN void* hModule)
 {
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassTexture,    Resources::CTexture,    (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassGPUProgram, Resources::CGPUProgram, (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassMesh,       Resources::CMesh,       (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Texture",    Resources::CTexture,    (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("GPUProgram", Resources::CGPUProgram, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Mesh",       Resources::CMesh,       (HMODULE)hModule);
 	
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassMaterial,       Rendering::CMaterial,        (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassModel,          Rendering::CModel,           (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassLightSpot,      Rendering::CLightSpot,       (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassLightOmni,      Rendering::CLightOmni,       (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassCamera,         Rendering::CCamera,          (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassParticleSystem, Simulation::CParticleSystem, (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassScene,          Rendering::CScene,           (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Material",       Rendering::CMaterial,        (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Model",          Rendering::CModel,           (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("LightSpot",      Rendering::CLightSpot,       (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("LightOmni",      Rendering::CLightOmni,       (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Camera",         Rendering::CCamera,          (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("ParticleSystem", Simulation::CParticleSystem, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Scene",          Rendering::CScene,           (HMODULE)hModule);
 
 	SCFXML::CXMLEnumeration* pEnumeration = new SCFXML::CXMLEnumeration();
 	{

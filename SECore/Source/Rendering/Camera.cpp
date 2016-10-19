@@ -218,9 +218,9 @@ void CCamera::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
 	CObjectScene::XMLSerialize(rWriter);
 
-	PUTVALUENEW("fov",  FOV(),  CFloat);
-	PUTVALUENEW("near", Near(), CFloat);
-	PUTVALUENEW("far",  Far(),  CFloat);
+	PUTVALUE_TOSTRING("fov",  FOV(),  CFloat);
+	PUTVALUE_TOSTRING("near", Near(), CFloat);
+	PUTVALUE_TOSTRING("far",  Far(),  CFloat);
 }
 
 void CCamera::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)

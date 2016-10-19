@@ -22,23 +22,23 @@ namespace Rendering
 	const CModel** Renderer_ppModelsShadow = NULL;
 	const CLight** Renderer_ppLights       = NULL;
 
-	SCF::UINT Renderer_uiModelCount       = 0;
-	SCF::UINT Renderer_uiModelShadowCount = 0;
-	SCF::UINT Renderer_uiLightCount       = 0;
+	UINT Renderer_uiModelCount       = 0;
+	UINT Renderer_uiModelShadowCount = 0;
+	UINT Renderer_uiLightCount       = 0;
 
 	//Levels of depth maps from highest to lowest resolution
 	const CTexture* Renderer_paShadowMaps[LOD_LEVELS][2] = { NULL, NULL,  NULL, NULL,  NULL, NULL };
 
 	const CGPUProgram* Renderer_pShadowMapProgram = NULL;
-	SCF::UINT          Renderer_uiShadowMapBuffer = 0;
+	UINT          Renderer_uiShadowMapBuffer = 0;
 
 	struct SGPUProgramState
 	{
 		struct SLast
 		{
 			//These are used to eliminate redundant state changes
-			SCF::ENUM uiaAttributes[32];
-			SCF::UINT uiAttributesCount;
+			ENUM uiaAttributes[32];
+			UINT uiAttributesCount;
 
 			GLhandleARB hProgram;
 
@@ -67,7 +67,7 @@ inline void CRenderer::GPUProgramBind(_IN CGPUProgram& rProgram)
 
 void __fastcall CRenderer::GPUProgramAttributesDisable()
 {
-	for (SCF::UINT i = 0; i < GPUProgram_State.Last.uiAttributesCount; i++) 
+	for (UINT i = 0; i < GPUProgram_State.Last.uiAttributesCount; i++) 
 	{
 		glDisableVertexAttribArrayARB(GPUProgram_State.Last.uiaAttributes[i]);
 	}
@@ -78,14 +78,14 @@ void __fastcall CRenderer::GPUProgramAttributesDisable()
 void __fastcall CRenderer::AttributesBindMesh(_IN CGPUProgram& rProgram, _IN CMesh& rMesh)
 {
 	//Disable unneeded texture units
-	for (SCF::UINT i = rProgram.AttributesCount(); i < GPUProgram_State.Last.uiAttributesCount; i++) 
+	for (UINT i = rProgram.AttributesCount(); i < GPUProgram_State.Last.uiAttributesCount; i++) 
 	{
 		glDisableVertexAttribArrayARB(GPUProgram_State.Last.uiaAttributes[i]);
 	}
 
-	for (SCF::UINT i = 0; i < rProgram.AttributesCount(); i++) 
+	for (UINT i = 0; i < rProgram.AttributesCount(); i++) 
 	{
-		for (SCF::UINT j = 0; j < rMesh.AttributesCount(); j++)
+		for (UINT j = 0; j < rMesh.AttributesCount(); j++)
 		{
 			if (rMesh.Attribute(j)->eDataType == rProgram.Attribute(i)->eSource)
 			{
@@ -106,12 +106,12 @@ void __fastcall CRenderer::AttributesBindMesh(_IN CGPUProgram& rProgram, _IN CMe
 void __fastcall CRenderer::AttributesBindParticleSystem(_IN CGPUProgram& rProgram, _IN CParticleSystem& rParticleSystem)
 {
 	//Disable unneeded texture units
-	for (SCF::UINT i = rProgram.AttributesCount(); i < GPUProgram_State.Last.uiAttributesCount; i++) 
+	for (UINT i = rProgram.AttributesCount(); i < GPUProgram_State.Last.uiAttributesCount; i++) 
 	{
 		glDisableVertexAttribArrayARB(GPUProgram_State.Last.uiaAttributes[i]);
 	}
 
-	for (SCF::UINT i = 0; i < rProgram.AttributesCount(); i++) 
+	for (UINT i = 0; i < rProgram.AttributesCount(); i++) 
 	{
 		if (rProgram.Attribute(i)->eSource == AS_VERTEX_TEXCOORD0)
 		{
@@ -139,11 +139,11 @@ bool __fastcall CRenderer::Initialize()
 
 		//Prepare depth map textures & framebuffer
 		{
-			SCF::UINT uiShadowMapResolution = CRendererSettings::MaxShadowMapResolution();
+			UINT uiShadowMapResolution = CRendererSettings::MaxShadowMapResolution();
 
-			for (SCF::UINT i = 0; i < LOD_LEVELS; i++)
+			for (UINT i = 0; i < LOD_LEVELS; i++)
 			{
-				for (SCF::UINT j = 0; j < 2; j++)
+				for (UINT j = 0; j < 2; j++)
 				{
 					CTexture* pTexture = new CTexture(GL_TEXTURE_2D);
 
@@ -212,8 +212,8 @@ bool __fastcall CRenderer::Initialize()
 	return FALSE;
 }
 
-inline const CTexture* CRenderer::ShadowMapFront(_IN SCF::UINT uiLOD) { return Renderer_paShadowMaps[uiLOD][0]; }
-inline const CTexture* CRenderer::ShadowMapBack (_IN SCF::UINT uiLOD) { return Renderer_paShadowMaps[uiLOD][1]; }
+inline const CTexture* CRenderer::ShadowMapFront(_IN UINT uiLOD) { return Renderer_paShadowMaps[uiLOD][0]; }
+inline const CTexture* CRenderer::ShadowMapBack (_IN UINT uiLOD) { return Renderer_paShadowMaps[uiLOD][1]; }
 
 void __fastcall CRenderer::ShadowMapBindFront()
 {
@@ -234,7 +234,7 @@ void __fastcall CRenderer::ShadowMapBindBack()
 
 void __fastcall CRenderer::LightsUpdateState()
 {
-	for (SCF::UINT i = 0; i < Renderer_pScene->LightCount(); i++) 
+	for (UINT i = 0; i < Renderer_pScene->LightCount(); i++) 
 	{ 
 		register CLight& rLight = Renderer_pScene->Light(i);
 
@@ -255,9 +255,9 @@ void __fastcall CRenderer::LightsChoose()
 {
 	Renderer_uiLightCount = 0;
 
-	SCF::UINT uiMaxLights = __min(Renderer_pScene->LightCount(), CRendererSettings::MaxLights());
+	UINT uiMaxLights = __min(Renderer_pScene->LightCount(), CRendererSettings::MaxLights());
 
-	for (SCF::UINT i = 0; i < uiMaxLights; i++)
+	for (UINT i = 0; i < uiMaxLights; i++)
 	{
 		if (Renderer_pScene->Light(i).VisibleToCamera())
 		{
@@ -308,9 +308,9 @@ void __fastcall CRenderer::RenderListUpdate()
 {
 	Renderer_uiModelCount = 0;
 
-	SCF::UINT uiMaxModels = __min(Renderer_pScene->ModelCount(), CRendererSettings::MaxModels());
+	UINT uiMaxModels = __min(Renderer_pScene->ModelCount(), CRendererSettings::MaxModels());
 
-	for (SCF::UINT i = 0; i < uiMaxModels; i++)
+	for (UINT i = 0; i < uiMaxModels; i++)
 	{
 		register CModel& rModel = Renderer_pScene->Model(i);
 
@@ -332,7 +332,7 @@ void __fastcall CRenderer::RenderListShadowUpdate()
 {
 	Renderer_uiModelShadowCount = 0;
 
-	for (SCF::UINT i = 0; i < Renderer_pScene->ModelCount(); i++)
+	for (UINT i = 0; i < Renderer_pScene->ModelCount(); i++)
 	{
 		if (Renderer_pScene->Model(i).ShadowCasts())
 		{

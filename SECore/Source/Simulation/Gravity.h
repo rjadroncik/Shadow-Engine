@@ -12,9 +12,9 @@ namespace Simulation
 		void ObjectsAffectedAdd   (_IN Rendering::CObjectScene& rObject);
 		
 		void ObjectsAffectedRemove(_IN Rendering::CObjectScene& rObject);
-		void ObjectsAffectedRemove(_IN SCF::UINT uiIndex);
+		void ObjectsAffectedRemove(_IN UINT uiIndex);
 
-		SCF::UINT ObjectsAffectedCount() { return m_uiObjectsAffectedCount; }
+		UINT ObjectsAffectedCount() { return m_uiObjectsAffectedCount; }
 
 		void ObjectsAffectedUpdate();
 
@@ -40,6 +40,6 @@ namespace Simulation
 		} m_Properties;
 
 		Rendering::CObjectScene* m_pObjectsAffected;
-		SCF::UINT                     m_uiObjectsAffectedCount;
+		UINT                     m_uiObjectsAffectedCount;
 	};
 };

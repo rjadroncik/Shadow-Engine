@@ -14,7 +14,7 @@ void CInputHandlerGUI::InputHandler()
 	else                                 { InputHandlerGUINormal(); }*/
 }
 
-void CInputHandlerGUI::KeyDownHandler(SCF::UINT uiVKey, SCF::UINT uiRepeatCount)
+void CInputHandlerGUI::KeyDownHandler(UINT uiVKey, UINT uiRepeatCount)
 {
 /*	if (uiVKey == VK_F1)
 	{
@@ -33,13 +33,13 @@ void CInputHandlerGUI::KeyDownHandler(SCF::UINT uiVKey, SCF::UINT uiRepeatCount)
 			TrackerObject.Enabled(TRUE);
 			TrackerMemory.Enabled(TRUE);
 
-			//SCF::UINT64 uiAllocatedBytes01 = CMemory::AllocatedBytes();
-			for (SCF::UINT i = 0; i < CSettings::Resources::DefinitionFiles().Size(); i++)
+			//UINT64 uiAllocatedBytes01 = CMemory::AllocatedBytes();
+			for (UINT i = 0; i < CSettings::Resources::DefinitionFiles().Size(); i++)
 			{
 				Resources::CManager::ObjectsCreate((CString&)CSettings::Resources::DefinitionFiles()[i]);
 			}
 			Resources::CManager::ObjectsDelete();
-			//SCF::UINT64 uiAllocatedBytes02 = CMemory::AllocatedBytes();
+			//UINT64 uiAllocatedBytes02 = CMemory::AllocatedBytes();
 
 			TrackerObject.Enabled(FALSE);
 			TrackerMemory.Enabled(FALSE);
@@ -59,7 +59,7 @@ void CInputHandlerGUI::KeyDownHandler(SCF::UINT uiVKey, SCF::UINT uiRepeatCount)
 			}
 
 			StreamWriteText.PutLine("Memory leaks:");
-			SCF::UINT uiSizeLeaked = 0;
+			UINT uiSizeLeaked = 0;
 
 			CEnumeratorBag EnumeratorBlocks(TrackerMemory.Blocks());
 			while (EnumeratorBlocks.Next())
@@ -77,7 +77,7 @@ void CInputHandlerGUI::KeyDownHandler(SCF::UINT uiVKey, SCF::UINT uiRepeatCount)
 		}
 #endif
 
-		for (SCF::UINT i = 0; i < CSettings::Resources::DefinitionFiles().Size(); i++)
+		for (UINT i = 0; i < CSettings::Resources::DefinitionFiles().Size(); i++)
 		{
 			Resources::CManager::ObjectsCreate((CString&)CSettings::Resources::DefinitionFiles()[i]);
 		}
@@ -115,11 +115,11 @@ void CInputHandlerGUI::KeyDownHandler(SCF::UINT uiVKey, SCF::UINT uiRepeatCount)
 	}*/
 }
 
-void CInputHandlerGUI::KeyUpHandler(SCF::UINT uiVKey, SCF::UINT uiRepeatCount)
+void CInputHandlerGUI::KeyUpHandler(UINT uiVKey, UINT uiRepeatCount)
 {
 }
 
-void CInputHandlerGUI::TypeHandler(SCF::UINT uiChar, SCF::UINT uiRepeatCount)
+void CInputHandlerGUI::TypeHandler(UINT uiChar, UINT uiRepeatCount)
 {
 }
 
@@ -127,15 +127,15 @@ void CInputHandlerGUI::TypeHandler(SCF::UINT uiChar, SCF::UINT uiRepeatCount)
 /*
 void CDispatcher::RenderHandler()
 {
-	static SCF::UINT uiFPS = 0;
-	static SCF::UINT uiRPS = 0;
-	static SCF::UINT uiUPS = 0;
+	static UINT uiFPS = 0;
+	static UINT uiRPS = 0;
+	static UINT uiUPS = 0;
 
 	//Frame Render Time & Frame Update Time in micro-seconds
-	static SCF::UINT uiFRT = 0;
-	static SCF::UINT uiFUT = 0;
+	static UINT uiFRT = 0;
+	static UINT uiFUT = 0;
 
-	static SCF::UINT uiDisplayUpdateCounter = Simulation::CSimulation::Settings::UpdateRate() - 1;
+	static UINT uiDisplayUpdateCounter = Simulation::CSimulation::Settings::UpdateRate() - 1;
 
 	static float fRenderTimeSum = 100000000000.0f;
 	static float fUpdateTimeSum = 100000000000.0f;

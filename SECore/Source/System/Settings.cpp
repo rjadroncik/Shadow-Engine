@@ -4,9 +4,9 @@
 using namespace SCFXML;
 using namespace System;
 
-SCF::UINT CSettings::CDisplay::s_uiWidth = 640;
-SCF::UINT CSettings::CDisplay::s_uiHeight = 480;
-SCF::UINT CSettings::CDisplay::s_uiBitDepth = 32;
+UINT CSettings::CDisplay::s_uiWidth = 640;
+UINT CSettings::CDisplay::s_uiHeight = 480;
+UINT CSettings::CDisplay::s_uiBitDepth = 32;
 
 bool CSettings::CDisplay::s_bFullScreen = FALSE;
 

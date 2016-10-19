@@ -11,7 +11,7 @@ namespace GUI
 
 		union UData
 		{
-			SCF::BYTE ucButton;
+			BYTE ucButton;
 			char      cWheelDelta;
 
 		} Data;
@@ -19,8 +19,8 @@ namespace GUI
 
 	struct SEventKey
 	{
-		SCF::BYTE  ucVirtualKey;
-		SCF::TCHAR cCharacter;
+		BYTE  ucVirtualKey;
+		TCHAR cCharacter;
 	};
 
  	class SEGUI_API CWindowAbstract;
@@ -122,7 +122,7 @@ namespace GUI
 		virtual ~CWindowAbstract();
 
 	protected:
-		static void TextLayOut(_INOUT CText& rText, _IN Float4& rRect, _IN SCF::DWORD dwAligment);
+		static void TextLayOut(_INOUT CText& rText, _IN Float4& rRect, _IN DWORD dwAligment);
 
 	private:
 		CWindowContainer* m_pParent;

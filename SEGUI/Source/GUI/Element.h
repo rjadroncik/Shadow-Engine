@@ -78,11 +78,11 @@ namespace GUI
 
 	private:
 		static Float2 s_Positions[64];
-		static SCF::UINT   s_uiPositionCount;
+		static UINT   s_uiPositionCount;
 
 	private:
 		static Int4 s_ScissorRects[64];
-		static SCF::UINT s_uiScissorRectCount;
+		static UINT s_uiScissorRectCount;
 
 	protected:
 		CElement();

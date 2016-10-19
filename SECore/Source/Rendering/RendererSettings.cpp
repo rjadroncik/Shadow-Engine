@@ -4,24 +4,24 @@ using namespace SCFXML;
 using namespace System;
 using namespace Rendering;
 
-SCF::ENUM Settings_eCodePath = CodePathOpenGL20IGP;
+ENUM Settings_eCodePath = CodePathOpenGL20IGP;
 
-SCF::UINT Settings_uiMaxModels = 1024;
-SCF::UINT Settings_uiMaxLights = 4;
+UINT Settings_uiMaxModels = 1024;
+UINT Settings_uiMaxLights = 4;
 
-SCF::UINT Settings_uiMaxShadowMapResolution = 2048;
+UINT Settings_uiMaxShadowMapResolution = 2048;
 
-inline SCF::ENUM CRendererSettings::CodePath()                     { return Settings_eCodePath; }
-inline void      CRendererSettings::CodePath(_IN SCF::ENUM eValue) { Settings_eCodePath = eValue; }
+inline ENUM CRendererSettings::CodePath()                     { return Settings_eCodePath; }
+inline void      CRendererSettings::CodePath(_IN ENUM eValue) { Settings_eCodePath = eValue; }
 
-inline SCF::UINT CRendererSettings::MaxModels()                      { return Settings_uiMaxModels; }
-inline void      CRendererSettings::MaxModels(_IN SCF::UINT uiValue) { Settings_uiMaxModels = uiValue; }
+inline UINT CRendererSettings::MaxModels()                      { return Settings_uiMaxModels; }
+inline void      CRendererSettings::MaxModels(_IN UINT uiValue) { Settings_uiMaxModels = uiValue; }
 
-inline SCF::UINT CRendererSettings::MaxLights()                      { return Settings_uiMaxLights; }
-inline void      CRendererSettings::MaxLights(_IN SCF::UINT uiValue) { Settings_uiMaxLights = uiValue; }
+inline UINT CRendererSettings::MaxLights()                      { return Settings_uiMaxLights; }
+inline void      CRendererSettings::MaxLights(_IN UINT uiValue) { Settings_uiMaxLights = uiValue; }
 
-inline SCF::UINT CRendererSettings::MaxShadowMapResolution()                      { return Settings_uiMaxShadowMapResolution; }
-inline void      CRendererSettings::MaxShadowMapResolution(_IN SCF::UINT uiValue) { Settings_uiMaxShadowMapResolution = uiValue; }
+inline UINT CRendererSettings::MaxShadowMapResolution()                      { return Settings_uiMaxShadowMapResolution; }
+inline void      CRendererSettings::MaxShadowMapResolution(_IN UINT uiValue) { Settings_uiMaxShadowMapResolution = uiValue; }
 
 bool CRendererSettings::Load(_IN CXMLDocument& rDocument)
 {

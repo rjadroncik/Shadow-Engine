@@ -73,7 +73,7 @@ void CWindowAbstract::RenderBackground()
 	this->OnWindowPaintBackground();
 }
 
-void CWindowAbstract::TextLayOut(_INOUT CText& rText, _IN Float4& rRect, _IN SCF::DWORD dwAligment)
+void CWindowAbstract::TextLayOut(_INOUT CText& rText, _IN Float4& rRect, _IN DWORD dwAligment)
 {
 	if (!rText.Font()) { return; }
 

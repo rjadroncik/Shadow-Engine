@@ -23,13 +23,13 @@ namespace Simulation
 		static bool IsRunning();
 
 	public:
-		static SCF::UINT UpdateCountTotal();
+		static UINT UpdateCountTotal();
 
  		class SECORE_API CSettings
 		{
 		public:
-			static void      UpdateRate(SCF::UINT uiUpdateRate);
-			static SCF::UINT UpdateRate();
+			static void      UpdateRate(UINT uiUpdateRate);
+			static UINT UpdateRate();
 
 			static void  UpdateTime(float fUpdateTime);
 			static float UpdateTime();

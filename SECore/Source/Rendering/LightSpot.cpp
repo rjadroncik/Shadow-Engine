@@ -168,7 +168,7 @@ void CLightSpot::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
 	CLight::XMLSerialize(rWriter);
 
-	PUTVALUENEW("cutoff", Cutoff(), CFloat);
+	PUTVALUE_TOSTRING("cutoff", Cutoff(), CFloat);
 }
 
 void CLightSpot::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)

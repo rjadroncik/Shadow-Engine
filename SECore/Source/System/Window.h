@@ -39,7 +39,7 @@ namespace System
 	public:
 		static void MessageLoopEnter();
 		static void OnSizeChanged();
-		static LRESULT CALLBACK WindowProcedure(HWND hWnd, SCF::UINT message, WPARAM wParam, LPARAM lParam);
+		static LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 	private:
 		struct SRuntime

@@ -16,7 +16,7 @@ namespace Resources
 	class SEGUI_API CFont : public System::CSEObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassFont; }
+		CString XmlName() _GET { return STRING("Font"); }
 
 	public:
 		CFont();
@@ -49,10 +49,10 @@ namespace Resources
 		void XMLDeserialize(_INOUT SCFXML::IXMLStreamRead&  rReader);
 
 	private:
-		SCF::UINT m_uiListBase;
-		SCF::UINT m_uiTexture;
+		UINT m_uiListBase;
+		UINT m_uiTexture;
 
-		SCF::UINT m_uiCharacterMax;
+		UINT m_uiCharacterMax;
 		float* m_fpCharWidths;
 
 	private:

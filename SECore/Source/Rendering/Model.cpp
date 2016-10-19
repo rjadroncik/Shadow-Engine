@@ -43,7 +43,7 @@ void __fastcall CModel::BoundsUpdate()
 	ZeroVector3(s_BoundsMin);
 	ZeroVector3(s_BoundsMax);
 
-	for (SCF::USHORT i = 0; i < m_pMesh->VertexCount(); i++)
+	for (USHORT i = 0; i < m_pMesh->VertexCount(); i++)
 	{
 		register const Float3& rPosition = (Float3&)(m_pMesh->Vertices()[i]);
 
@@ -67,10 +67,10 @@ void CModel::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
 	CObjectScene::XMLSerialize(rWriter);
 
-	PUTVALUENEW("mesh",     m_pMesh->ID(), CString);
-	PUTVALUENEW("material", m_pMaterial->ID(), CString);
+	PUTVALUE_TOSTRING("mesh",     m_pMesh->ID(), CString);
+	PUTVALUE_TOSTRING("material", m_pMaterial->ID(), CString);
 
-	PUTVALUENEW("shadowCasts", ShadowCasts(), CBool);
+	PUTVALUE_TOSTRING("shadowCasts", ShadowCasts(), CBool);
 }
 
 void CModel::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)

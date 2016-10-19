@@ -16,7 +16,6 @@
 #include <OpenGL\glext.h>
 #include <OpenGL\glu.h>
 
-#include "../Classes.h"
 #include "../Errors.h"
 
 using namespace SCFMathematics;
@@ -38,16 +37,16 @@ namespace System
 		//The [uiRefreshRate] information is relevant only for full-screen modes
 		struct SResolution
 		{
-			SCF::UINT uiHorizontal;
-			SCF::UINT uiVertical;
+			UINT uiHorizontal;
+			UINT uiVertical;
 
-			SCF::UINT uiRefreshRate;
+			UINT uiRefreshRate;
 		};
 
 		//The most basic characteristics of an OpenGL display mode (windowed or full-screen)
-		SCF::UINT uiColorBits;
-		SCF::UINT uiDepthBits;
-		SCF::UINT uiStencilBits;
+		UINT uiColorBits;
+		UINT uiDepthBits;
+		UINT uiStencilBits;
 	};
 
 	class SECORE_API COpenGL
@@ -57,8 +56,8 @@ namespace System
 
 	public:
 		//The [COpenGL] class maintains a zero based list of supported display modes that can be queried/applied
-		static SCF::UINT ModeSupportedCount();
-		static void ModeSupported(_IN SCF::UINT uiIndex, _OUT SDisplayMode* pOutDisplayMode);
+		static UINT ModeSupportedCount();
+		static void ModeSupported(_IN UINT uiIndex, _OUT SDisplayMode* pOutDisplayMode);
 		
 		static bool ModeSupports(_IN SDisplayMode* pDisplayMode);
 
@@ -71,8 +70,8 @@ namespace System
 		static CString Version();
 
 	public:
-		static SCF::UINT VersionNumber();
-		static SCF::ENUM VendorID();
+		static UINT VersionNumber();
+		static ENUM VendorID();
 
 	private:
 		static void InitializeOpenGLState();

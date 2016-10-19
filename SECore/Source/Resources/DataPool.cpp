@@ -37,23 +37,23 @@ bool CDataPool::Rebuild()
 		DataPool_FilesOpen.AllDelete();
 		DataPool_Files.AllDelete();
 
-		for (SCF::UINT i = 0; i < CSettings::CResources::DatafileDirectoriesSource().Size(); i++)
+		for (UINT i = 0; i < CSettings::CResources::DatafileDirectoriesSource().Size(); i++)
 		{
 			CDirectory SDFDirectory((CString&)(CSettings::CResources::DatafileDirectoriesSource()[i]));
 
 			CVector<CString> SDFContentDirectories;
 			SDFDirectory.Read(NULL, &SDFContentDirectories);
 
-			for (SCF::UINT k = 0; k < SDFContentDirectories.Size(); k++)
+			for (UINT k = 0; k < SDFContentDirectories.Size(); k++)
 			{
 				CDirectory SDFContentDirectory(SDFDirectory.PathFull() + (CString&)SDFContentDirectories[k] + STRING("\\"));
 
 				CVector<CString> Files;
 				SDFContentDirectory.ListContents(&Files, NULL);
 
-				SCF::UINT uiPathLength = SDFContentDirectory.PathFull().Length() - 1;
+				UINT uiPathLength = SDFContentDirectory.PathFull().Length() - 1;
 
-				for (SCF::UINT j = 0; j < Files.Size(); j++)
+				for (UINT j = 0; j < Files.Size(); j++)
 				{
 					DataPool_Files.AtPut(CStringRange((CString&)Files[j], uiPathLength), (CString&)Files[j]);
 				}
@@ -72,14 +72,14 @@ bool CDataPool::Initialize()
 {
 	if (CSettings::CResources::DatafilesUse())
 	{
-		for (SCF::UINT i = 0; i < CSettings::CResources::DatafileDirectories().Size(); i++)
+		for (UINT i = 0; i < CSettings::CResources::DatafileDirectories().Size(); i++)
 		{
 			CDirectory Directory((CString&)(CSettings::CResources::DatafileDirectories()[i]));
 
 			CVector<CString> Files;
 			Directory.ListContents(&Files, NULL);
 
-			for (SCF::UINT j = 0; j < Files.Size(); j++)
+			for (UINT j = 0; j < Files.Size(); j++)
 			{
 				Resources::CDataPool::DatafileAdd((CString&)Files[j]);
 			}
@@ -102,7 +102,7 @@ IStreamRead* CDataPool::FileOpen(_IN CString& rFilePath)
 			SCFDatafileIO::CDFStreamFileRead* pReadStream = new SCFDatafileIO::CDFStreamFileRead(*pDFFile);
 			if (pReadStream)
 			{
-				DataPool_FilesOpen.AtPut((SCF::UINT64)((IStreamRead*)pReadStream), *pReadStream);
+				DataPool_FilesOpen.AtPut((UINT64)((IStreamRead*)pReadStream), *pReadStream);
 
 				delete pDFFile;
 				return pReadStream;
@@ -121,7 +121,7 @@ IStreamRead* CDataPool::FileOpen(_IN CString& rFilePath)
 			CStreamFileRead* pReadStream = new CStreamFileRead(*pFilePath);
 			if (pReadStream)
 			{
-				DataPool_FilesOpen.AtPut((SCF::UINT64)((IStreamRead*)pReadStream), *pReadStream);
+				DataPool_FilesOpen.AtPut((UINT64)((IStreamRead*)pReadStream), *pReadStream);
 
 				return pReadStream;
 			}
@@ -133,7 +133,7 @@ IStreamRead* CDataPool::FileOpen(_IN CString& rFilePath)
 
 void CDataPool::FileClose(_INOUT IStreamRead* pStream)
 {
-	CObject* pObject = DataPool_FilesOpen.Remove((SCF::UINT64)pStream);
+	CObject* pObject = DataPool_FilesOpen.Remove((UINT64)pStream);
 	if (pObject)
 	{
 		delete pObject;

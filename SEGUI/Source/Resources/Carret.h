@@ -10,8 +10,8 @@ namespace Resources
 	class SEGUI_API CCarret : public System::CSEObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassCarret; }
-		CString   ToString() _GET { return STRING("{Carret}"); }
+		CString XmlName() _GET { return STRING("Carret"); }
+		CString ToString() _GET { return STRING("{Carret}"); }
 
 	public:
 		CCarret();
@@ -36,7 +36,7 @@ namespace Resources
 	private:
 		Float2 m_Size;
 
-		SCF::UINT m_uiTimer;
-		SCF::UINT m_uiUpTime;
+		UINT m_uiTimer;
+		UINT m_uiUpTime;
 	};
 };

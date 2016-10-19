@@ -251,7 +251,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Classes.h" />
     <ClInclude Include="Source\Errors.h" />
     <ClInclude Include="Source\SECore.h" />
     <ClInclude Include="Source\Animation\Animation.h" />

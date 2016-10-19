@@ -73,21 +73,21 @@ void __fastcall CScene::Update()
 
 void __fastcall CScene::AllChangeStateReset()
 {
-	for (SCF::UINT i = 0; i < m_uiModelCount;          i++) { m_ppModels[i]->Changed(FALSE); }
-	for (SCF::UINT i = 0; i < m_uiLightCount;          i++) { m_ppLights[i]->Changed(FALSE); }
-	for (SCF::UINT i = 0; i < m_uiCameraCount;         i++) { m_ppCameras[i]->Changed(FALSE); }
-	for (SCF::UINT i = 0; i < m_uiParticleSystemCount; i++) { m_ppParticleSystems[i]->Changed(FALSE); }
+	for (UINT i = 0; i < m_uiModelCount;          i++) { m_ppModels[i]->Changed(FALSE); }
+	for (UINT i = 0; i < m_uiLightCount;          i++) { m_ppLights[i]->Changed(FALSE); }
+	for (UINT i = 0; i < m_uiCameraCount;         i++) { m_ppCameras[i]->Changed(FALSE); }
+	for (UINT i = 0; i < m_uiParticleSystemCount; i++) { m_ppParticleSystems[i]->Changed(FALSE); }
 }
 
 void __fastcall CScene::AllChangeStateInvalidate()
 {
-	for (SCF::UINT i = 0; i < m_uiModelCount;          i++) { m_ppModels[i]->Changed(TRUE); }
-	for (SCF::UINT i = 0; i < m_uiLightCount;          i++) { m_ppLights[i]->Changed(TRUE); }
-	for (SCF::UINT i = 0; i < m_uiCameraCount;         i++) { m_ppCameras[i]->Changed(TRUE); }
-	for (SCF::UINT i = 0; i < m_uiParticleSystemCount; i++) { m_ppParticleSystems[i]->Changed(TRUE); }
+	for (UINT i = 0; i < m_uiModelCount;          i++) { m_ppModels[i]->Changed(TRUE); }
+	for (UINT i = 0; i < m_uiLightCount;          i++) { m_ppLights[i]->Changed(TRUE); }
+	for (UINT i = 0; i < m_uiCameraCount;         i++) { m_ppCameras[i]->Changed(TRUE); }
+	for (UINT i = 0; i < m_uiParticleSystemCount; i++) { m_ppParticleSystems[i]->Changed(TRUE); }
 }
 
-bool __fastcall CScene::CameraSelect(_IN SCF::UINT i)
+bool __fastcall CScene::CameraSelect(_IN UINT i)
 {
 	if (i >= m_uiCameraCount) { return FALSE; }
 
@@ -97,7 +97,7 @@ bool __fastcall CScene::CameraSelect(_IN SCF::UINT i)
 
 void __fastcall CScene::CameraSelectNext()
 {
-	for (SCF::UINT i = 0; i < m_uiCameraCount; i++)
+	for (UINT i = 0; i < m_uiCameraCount; i++)
 	{
 		if (m_ppCameras[i] == m_pCameraCurrent)
 		{
@@ -168,7 +168,7 @@ void __fastcall CScene::UpdateParticleSystems()
 {
 	if (!this->CameraCurrent()) { return; }
 
-	for (SCF::UINT i = 0; i < m_uiParticleSystemCount; i++)
+	for (UINT i = 0; i < m_uiParticleSystemCount; i++)
 	{
 		if (m_pCameraCurrent->CheckVisibilityByBounds(*m_ppParticleSystems[i]))
 		{
@@ -183,7 +183,7 @@ CObjectScene* __fastcall CScene::CameraCurrentLookingAt() _GET
 
 	CObjectScene* pFoundObject = NULL;
 
-	for (SCF::UINT i = 0; i < m_uiModelCount; i++)
+	for (UINT i = 0; i < m_uiModelCount; i++)
 	{
 		if (m_pCameraCurrent->IsLookingAt(*m_ppModels[i]))
 		{
@@ -204,7 +204,7 @@ CObjectScene* __fastcall CScene::CameraCurrentLookingAt() _GET
 		}
 	}
 
-	for (SCF::UINT i = 0; i < m_uiParticleSystemCount; i++)
+	for (UINT i = 0; i < m_uiParticleSystemCount; i++)
 	{
 		if (m_pCameraCurrent->IsLookingAt(*m_ppParticleSystems[i]))
 		{
@@ -229,49 +229,49 @@ CObjectScene* __fastcall CScene::CameraCurrentLookingAt() _GET
 
 void CScene::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
-	if (m_pCameraCurrent) { PUTVALUENEW("activeCamera", m_pCameraCurrent->ID(), CString); }
-	else                  { PUTVALUENEW("activeCamera", STRING(""), CString); }
+	if (m_pCameraCurrent) { PUTVALUE_TOSTRING("activeCamera", m_pCameraCurrent->ID(), CString); }
+	else                  { PUTVALUE_TOSTRING("activeCamera", STRING(""), CString); }
 
 	rWriter.BlockStart(STRING("cameras"));
-	PUTVALUENEW("count", m_uiCameraCount, CInt);
+	PUTVALUE_TOSTRING("count", m_uiCameraCount, CInt);
 
-	for (SCF::UINT i = 0; i < m_uiCameraCount; i++)
+	for (UINT i = 0; i < m_uiCameraCount; i++)
 	{
 		rWriter.BlockStart(STRING("camera"));
-		PUTVALUENEW("id", m_ppCameras[i]->ID(), CString);
+		PUTVALUE_TOSTRING("id", m_ppCameras[i]->ID(), CString);
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("lights"));
-	PUTVALUENEW("count", m_uiLightCount, CInt);
+	PUTVALUE_TOSTRING("count", m_uiLightCount, CInt);
 
-	for (SCF::UINT i = 0; i < m_uiLightCount; i++)
+	for (UINT i = 0; i < m_uiLightCount; i++)
 	{
 		rWriter.BlockStart(STRING("light"));
-		PUTVALUENEW("id", m_ppLights[i]->ID(), CString);
+		PUTVALUE_TOSTRING("id", m_ppLights[i]->ID(), CString);
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("models"));
-	PUTVALUENEW("count", m_uiModelCount, CInt);
+	PUTVALUE_TOSTRING("count", m_uiModelCount, CInt);
 
-	for (SCF::UINT i = 0; i < m_uiModelCount; i++)
+	for (UINT i = 0; i < m_uiModelCount; i++)
 	{
 		rWriter.BlockStart(STRING("model"));
-		PUTVALUENEW("id", m_ppModels[i]->ID(), CString);
+		PUTVALUE_TOSTRING("id", m_ppModels[i]->ID(), CString);
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("particleSystems"));
-	PUTVALUENEW("count", m_uiParticleSystemCount, CInt);
+	PUTVALUE_TOSTRING("count", m_uiParticleSystemCount, CInt);
 
-	for (SCF::UINT i = 0; i < m_uiParticleSystemCount; i++)
+	for (UINT i = 0; i < m_uiParticleSystemCount; i++)
 	{
 		rWriter.BlockStart(STRING("particleSystem"));
-		PUTVALUENEW("id", m_ppParticleSystems[i]->ID(), CString);
+		PUTVALUE_TOSTRING("id", m_ppParticleSystems[i]->ID(), CString);
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
@@ -285,10 +285,10 @@ void CScene::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Models
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			GETVALUE { Add(*(CModel*)CScripting::Object(*pValue)); }
@@ -298,10 +298,10 @@ void CScene::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Lights
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			GETVALUE { Add(*(CLight*)CScripting::Object(*pValue)); }
@@ -311,10 +311,10 @@ void CScene::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Cameras
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			GETVALUE { Add(*(CCamera*)CScripting::Object(*pValue)); }
@@ -329,10 +329,10 @@ void CScene::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//ParticleSystems
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			GETVALUE { Add(*(CParticleSystem*)CScripting::Object(*pValue)); }

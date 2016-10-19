@@ -23,12 +23,12 @@ namespace Rendering
 	extern const CModel** Renderer_ppModelsShadow;
 	extern const CLight** Renderer_ppLights;
 
-	extern SCF::UINT Renderer_uiModelCount;
-	extern SCF::UINT Renderer_uiModelShadowCount;
-	extern SCF::UINT Renderer_uiLightCount;
+	extern UINT Renderer_uiModelCount;
+	extern UINT Renderer_uiModelShadowCount;
+	extern UINT Renderer_uiLightCount;
 
 	extern const CGPUProgram* Renderer_pShadowMapProgram;
-	extern SCF::UINT          Renderer_uiShadowMapBuffer;
+	extern UINT          Renderer_uiShadowMapBuffer;
 };
 
 bool __fastcall CRendererIGP::Initialize()
@@ -87,7 +87,7 @@ void CRendererIGP::LightDepthMapUpdate()
 		CMaterialUsage::TexturesDisable();
 		GPUProgramBind(*Renderer_pShadowMapProgram);
 
-		for (SCF::UINT i = 0; i < Renderer_uiModelShadowCount; i++)
+		for (UINT i = 0; i < Renderer_uiModelShadowCount; i++)
 		{
 			glPushMatrix();
 			{
@@ -119,7 +119,7 @@ void __fastcall CRendererIGP::Render(_IN CScene& rScene)
 	LightsChoose();
 
 	CStatistics::CRendering::Reset();
-	for (SCF::UINT i = 0 ; i < Renderer_uiLightCount; i++)
+	for (UINT i = 0 ; i < Renderer_uiLightCount; i++)
 	{
 		//Shadow preparation
 		Renderer_pLight = Renderer_ppLights[i];
@@ -167,10 +167,10 @@ void __fastcall CRendererIGP::RenderModels()
 	glDepthMask(1);
 	glBlendFunc(GL_ONE, GL_ONE);
 
-	SCF::UINT uiObjectsProcessed = 0;
+	UINT uiObjectsProcessed = 0;
 
 	//Render all models
-	for (SCF::UINT i = 0; i < Renderer_pScene->ModelCount(); i++)
+	for (UINT i = 0; i < Renderer_pScene->ModelCount(); i++)
 	{
 		Renderer_pModel = &Renderer_pScene->Model(i);
 		if (Renderer_pModel->VisibleToCamera()) 
@@ -201,7 +201,7 @@ void __fastcall CRendererIGP::RenderModels()
 
 void __fastcall CRendererIGP::RenderParticleSystems(_IN CScene& rScene)
 {
-	SCF::UINT uiObjectsProcessed = 0;
+	UINT uiObjectsProcessed = 0;
 
 	glDepthMask(0);
 	glEnable(GL_POINT_SPRITE);
@@ -210,7 +210,7 @@ void __fastcall CRendererIGP::RenderParticleSystems(_IN CScene& rScene)
 		glBindBufferARB(GL_ARRAY_BUFFER, 0);
 		glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-		for (SCF::UINT i = 0; i < rScene.ParticleSystemCount(); i++)
+		for (UINT i = 0; i < rScene.ParticleSystemCount(); i++)
 		{
 			if (rScene.CameraCurrent()->CheckVisibilityByBounds(rScene.ParticleSystem(i)))
 			{

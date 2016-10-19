@@ -85,7 +85,7 @@ namespace GUI
 					Float2 CursorPositionDrag;
 
 					bool  bDragging;
-					SCF::DWORD bDraggingEgdeMask;
+					DWORD bDraggingEgdeMask;
 
 					Float2 SizeDrag;
 

@@ -11,7 +11,7 @@ namespace GUI
 	class SEGUI_API CEditField : public CLabel
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassEditField; }
+		CString XmlName() _GET { return STRING("EditField"); }
 
 	public:
 		CEditField();

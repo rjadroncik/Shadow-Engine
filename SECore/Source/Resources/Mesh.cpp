@@ -26,7 +26,7 @@ bool CMesh::Save(_INOUT IStreamWrite& rStream) const
 
 	//Per-vertex attributes
 	rStream.PutWord(m_usAttributesCount); 
-	for (SCF::UINT i = 0 ; i < m_usAttributesCount; i++)
+	for (UINT i = 0 ; i < m_usAttributesCount; i++)
 	{
 		rStream.PutInt  (m_pAttributes[i].eDataType);
 		rStream.PutInt  (m_pAttributes[i].eBufferUsage);
@@ -55,8 +55,8 @@ bool CMesh::Load(_INOUT IStreamRead& rStream)
 	BufferVertexEnable(rStream.GetInt());
 	
 	//Per-vertex attributes
-	SCF::USHORT usAttributesCount = rStream.GetWord(); 
-	for (SCF::UINT i = 0 ; i < usAttributesCount; i++)
+	USHORT usAttributesCount = rStream.GetWord(); 
+	for (UINT i = 0 ; i < usAttributesCount; i++)
 	{
 		SAttribute Attrib = { 0, NULL, 0, 0, 0 };
 
@@ -118,7 +118,7 @@ CMesh::~CMesh()
 	
 	if (m_pSeamVertices)
 	{
-		for (SCF::UINT i = 0; i < m_usSeamVertexListCount; i++)
+		for (UINT i = 0; i < m_usSeamVertexListCount; i++)
 		{
 			CMemory::Free(m_pSeamVertices[i].uspTriangles);
 		}
@@ -127,7 +127,7 @@ CMesh::~CMesh()
 
 	if (m_pSmoothingGroups)
 	{
-		for (SCF::UINT i = 0; i < m_usSmoothingGroupCount; i++)
+		for (UINT i = 0; i < m_usSmoothingGroupCount; i++)
 		{
 			CMemory::Free(m_pSmoothingGroups[i].uspTriangles);
 		}
@@ -139,7 +139,7 @@ CMesh::~CMesh()
 
 	if (m_pAttributes) 
 	{
-		for (SCF::UINT i = 0; i < m_usAttributesCount; i++)
+		for (UINT i = 0; i < m_usAttributesCount; i++)
 		{
 			if (m_pAttributes[i].vpData)	
 			{
@@ -236,7 +236,7 @@ void __fastcall CMesh::AttributeTNCompute()
 	Float3* pTriangleNormals  = (Float3*)CMemory::Allocate(sizeof(Float3) * m_usTriangleCount);
 
 	//Go through all triangles
-	for (SCF::UINT i = 0; i < m_usTriangleCount; i++)
+	for (UINT i = 0; i < m_usTriangleCount; i++)
 	{
 		ComputeTN(
 			m_pVertices[m_pTriangles[i][0]],
@@ -271,9 +271,9 @@ void __fastcall CMesh::ComputeTNsPerVertex(_IN Float3* pTriangleTangents, _IN Fl
 	ZeroMemory(pOutVertexNormals,  sizeof(Float3) * m_usVertexCount);
 
 	//Go through all triangles
-	for (SCF::UINT i = 0; i < m_usTriangleCount; i++)
+	for (UINT i = 0; i < m_usTriangleCount; i++)
 	{
-		for (SCF::UINT j = 0; j < 3; j++)
+		for (UINT j = 0; j < 3; j++)
 		{
 			//Sum up the tangent & binormal vectors for each vertex, to smooth out the texture space of the mesh
 			AddVectors3(pOutVertexTangents[m_pTriangles[i][j]], pOutVertexTangents[m_pTriangles[i][j]], pTriangleTangents[i]);
@@ -282,7 +282,7 @@ void __fastcall CMesh::ComputeTNsPerVertex(_IN Float3* pTriangleTangents, _IN Fl
 	}
 
 	//Go through all vertices..
-	for (SCF::UINT i = 0; i < m_usVertexCount; i++)
+	for (UINT i = 0; i < m_usVertexCount; i++)
 	{
 		//..normalize tangent & binormal of each vertex
 		NormalizeVector3(pOutVertexTangents[i], pOutVertexTangents[i]);
@@ -292,14 +292,14 @@ void __fastcall CMesh::ComputeTNsPerVertex(_IN Float3* pTriangleTangents, _IN Fl
 	Float3 TempTangent;
 	Float3 TempBinormal;
 
-	for (SCF::UINT k = 0; k < m_usSmoothingGroupCount; k++)
+	for (UINT k = 0; k < m_usSmoothingGroupCount; k++)
 	{
-		for (SCF::UINT i = 0; i < m_usSeamVertexListCount; i++)
+		for (UINT i = 0; i < m_usSeamVertexListCount; i++)
 		{
 			ZeroVector3(TempTangent);
 			ZeroVector3(TempBinormal);
 
-			for (SCF::USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
+			for (USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
 			{
 				if (IsIn(m_pSmoothingGroups[k], m_pSeamVertices[i].uspTriangles[j]))
 				{
@@ -311,7 +311,7 @@ void __fastcall CMesh::ComputeTNsPerVertex(_IN Float3* pTriangleTangents, _IN Fl
 			NormalizeVector3(TempTangent,  TempTangent);
 			NormalizeVector3(TempBinormal, TempBinormal);
 		
-			for (SCF::USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
+			for (USHORT j = 0; j < m_pSeamVertices[i].usCount; j++)
 			{
 				if (IsIn(m_pSmoothingGroups[k], m_pSeamVertices[i].uspTriangles[j]))
 				{
@@ -351,7 +351,7 @@ void __fastcall CMesh::TrianglesUpload(_IN Short3* pTriangles, _IN USHORT usCoun
 	Triangles(m_pTriangles, usCount);
 }
 
-void __fastcall CMesh::AttributeAdd(_IN SCF::ENUM eDataType, _IN void* vpData, _IN SCF::UINT uiComponents)
+void __fastcall CMesh::AttributeAdd(_IN ENUM eDataType, _IN void* vpData, _IN UINT uiComponents)
 {
 	m_usAttributesCount++;
 	m_pAttributes = (SAttribute*)CMemory::Reallocate(m_pAttributes, sizeof(SAttribute) * m_usAttributesCount);
@@ -363,7 +363,7 @@ void __fastcall CMesh::AttributeAdd(_IN SCF::ENUM eDataType, _IN void* vpData, _
 	m_pAttributes[m_usAttributesCount - 1].uiBufferID   = 0;
 }
 
-void __fastcall CMesh::AttributeUpload(_IN SCF::ENUM eDataType, _IN void* vpData, _IN SCF::UINT uiComponents)
+void __fastcall CMesh::AttributeUpload(_IN ENUM eDataType, _IN void* vpData, _IN UINT uiComponents)
 { 
 	void* tmpPtr = CMemory::Allocate(sizeof(float)* uiComponents * m_usVertexCount);
 
@@ -372,7 +372,7 @@ void __fastcall CMesh::AttributeUpload(_IN SCF::ENUM eDataType, _IN void* vpData
 	AttributeAdd(eDataType, tmpPtr, uiComponents);
 }
 
-void __fastcall CMesh::BufferIndexEnable(_IN SCF::ENUM eUsage) _SET
+void __fastcall CMesh::BufferIndexEnable(_IN ENUM eUsage) _SET
 {
 	glGenBuffersARB(1, &m_uiBufferIndex);
 	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, m_uiBufferIndex);
@@ -382,7 +382,7 @@ void __fastcall CMesh::BufferIndexEnable(_IN SCF::ENUM eUsage) _SET
 	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void __fastcall CMesh::BufferVertexEnable(_IN SCF::ENUM eUsage)	_SET
+void __fastcall CMesh::BufferVertexEnable(_IN ENUM eUsage)	_SET
 {
 	glGenBuffersARB(1, &m_uiBufferVertex);
 	glBindBufferARB(GL_ARRAY_BUFFER, m_uiBufferVertex);
@@ -392,9 +392,9 @@ void __fastcall CMesh::BufferVertexEnable(_IN SCF::ENUM eUsage)	_SET
 	glBindBufferARB(GL_ARRAY_BUFFER, 0);
 }
 
-void __fastcall CMesh::BufferAttributeEnable(_IN SCF::ENUM eSource, _IN SCF::ENUM eUsage) _SET
+void __fastcall CMesh::BufferAttributeEnable(_IN ENUM eSource, _IN ENUM eUsage) _SET
 {
-	for (SCF::UINT i = 0; i < m_usAttributesCount; i++)
+	for (UINT i = 0; i < m_usAttributesCount; i++)
 	{
 		if (m_pAttributes[i].eDataType == eSource)
 		{
@@ -413,7 +413,7 @@ void __fastcall CMesh::BufferAttributeEnable(_IN SCF::ENUM eSource, _IN SCF::ENU
 
 bool __fastcall CMesh::IsIn(_INOUT SVertexList& rVertexList, _IN USHORT usIndex)
 {
-	for (SCF::UINT i = 0; i < rVertexList.usCount; i++)
+	for (UINT i = 0; i < rVertexList.usCount; i++)
 	{
 		if (rVertexList.uspTriangles[i] == usIndex) { return TRUE; }
 	}
@@ -425,7 +425,7 @@ void __fastcall CMesh::AddIndex(_INOUT SVertexList& rVertexList, _IN USHORT usIn
 	if (IsIn(rVertexList, usIndex)) { return; }
 
 	rVertexList.usCount++;			
-	rVertexList.uspTriangles = (SCF::USHORT*)CMemory::Reallocate(rVertexList.uspTriangles, sizeof(SCF::USHORT) * rVertexList.usCount);
+	rVertexList.uspTriangles = (USHORT*)CMemory::Reallocate(rVertexList.uspTriangles, sizeof(USHORT) * rVertexList.usCount);
 
 	rVertexList.uspTriangles[rVertexList.usCount - 1] = usIndex;
 }

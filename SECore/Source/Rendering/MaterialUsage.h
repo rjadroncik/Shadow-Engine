@@ -21,8 +21,8 @@ namespace Rendering
 	class SECORE_API CMaterialUsage : public System::CSEObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassMaterialUsage; }
-		CString   ToString() _GET { return STRING("{MaterialUsage}"); }
+		CString XmlName() _GET { return STRING("MaterialUsage"); }
+		CString ToString() _GET { return STRING("{MaterialUsage}"); }
 
 	public:
 		//Need to call this if we use GPU program outside the material scope
@@ -41,10 +41,10 @@ namespace Rendering
 
 	public:
 		//Texture bond functions
-		void __fastcall  TextureAdd(_IN _REF Resources::CTexture& rTexture, _IN SCF::UINT uiSampler) _SET;
+		void __fastcall  TextureAdd(_IN _REF Resources::CTexture& rTexture, _IN UINT uiSampler) _SET;
 		void __fastcall  TexturesBind() const;
 
-		inline SCF::UINT TextureCount() _GET { return m_uiTextureCount; }
+		inline UINT TextureCount() _GET { return m_uiTextureCount; }
 
 	public:
 		//GPU programs
@@ -65,11 +65,11 @@ namespace Rendering
 		struct STextureBond
 		{
 			const Resources::CTexture* pTexture; 
-			SCF::UINT uiSampler; 
+			UINT uiSampler; 
 
 		}* m_pTextures;
 
-		SCF::UINT m_uiTextureCount;
+		UINT m_uiTextureCount;
 
 	protected:
 		//Keeps track of the bind points for the shadow maps

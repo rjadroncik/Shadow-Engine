@@ -12,12 +12,12 @@ using namespace SCFXML;
 using namespace Resources;
 using namespace System;
 
-CVector<CAssociation> Manager_ObjectTypes;
+CVector<CAssociation<CString, CArrayInt>> Manager_ObjectTypes;
 CDictionaryString<CString> Manager_ObjectTypeNamespaces;
 
 bool __fastcall CManager::ObjectTypesAdd(_IN CString& rCategory, _IN CString& rNamespace, _IN _REF CArrayInt& rClassKeys) 
 {
-	 Manager_ObjectTypes.LastAdd(*(new CAssociation(*(new CString(rCategory)), rClassKeys)));
+	 Manager_ObjectTypes.LastAdd(*(new CAssociation<CString, CArrayInt>(*(new CString(rCategory)), rClassKeys)));
 	 Manager_ObjectTypeNamespaces.AtPut(rCategory, *(new CString(rNamespace)));
 
 	 return TRUE;
@@ -150,9 +150,9 @@ bool __fastcall CManager::ObjectsLoad(_IN CString& rFile)
 				Source.Write(FWTS);
 			}
 
-			for (SCF::UINT i = 0; i < Manager_ObjectTypes.Size(); i++)
+			for (UINT i = 0; i < Manager_ObjectTypes.Size(); i++)
 			{
-				CString* pCategory = (CString*)&((CAssociation&)Manager_ObjectTypes[i]).Key();
+				CString* pCategory = (CString*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i]).Key();
 
 				CXMLNode* pNode = Source.RootElement()->ChildNamed(*pCategory);
 				if (pNode) 
@@ -175,10 +175,10 @@ bool  __fastcall CManager::ObjectsSave(_IN CString& rDirectory)
 	CDirectory directory(rDirectory);
 	if (!directory.Exists()) { directory.Create(); }
 
-	for (SCF::UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
+	for (UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
 	{
-		CString*   pCategory  = (CString*)  &((CAssociation&)Manager_ObjectTypes[i - 1]).Key();
-		CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation&)Manager_ObjectTypes[i - 1]).Value();
+		CString*   pCategory  = (CString*)  &((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Key();
+		CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Value();
 		CString*   pNamespace = Manager_ObjectTypeNamespaces.At(*pCategory);
 
 		CFile* pFile = new CFile(rDirectory, *pCategory, STRING("xml"));
@@ -222,13 +222,13 @@ void __fastcall CManager::ObjectsLoad(_IN CXMLNode& rNode, _IN CString& rBlockTe
 
 void __fastcall CManager::ObjectsSave(_OUT CXMLStreamWriteObject& rStream, _IN CArrayInt& rClassKeys)
 {
-	CEnumeratorDictionaryString* pEnumerator = &CScripting::Objects();
+	CEnumeratorDictionaryString<CObject>* pEnumerator = &CScripting::Objects();
 
 	while (pEnumerator->Next()) 
 	{
-		for (SCF::UINT i = 0; i < rClassKeys.Size(); i++)
+		for (UINT i = 0; i < rClassKeys.Size(); i++)
 		{ 
-			if (pEnumerator->Current()->ClassKey() == (SCF::ENUM)rClassKeys[i])
+			if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
 			{
 				rStream.Next((CXMLObjectSerializable*)pEnumerator->Current());
 				break;
@@ -243,10 +243,10 @@ void __fastcall CManager::ObjectsDelete()
 {
 	CEventLog::BlockNew(STRING("Deleting objects"));
 	{
-		for (SCF::UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
+		for (UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
 		{
-			CString*   pCategory  = (CString*)  &((CAssociation&)Manager_ObjectTypes[i - 1]).Key();
-			CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation&)Manager_ObjectTypes[i - 1]).Value();
+			CString*   pCategory  = (CString*)  &((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Key();
+			CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Value();
 
 			ObjectsDelete(*pClassKeys, *pCategory);
 		}
@@ -258,13 +258,13 @@ void __fastcall CManager::ObjectsDelete(_IN CArrayInt& rClassKeys, _IN CString& 
 {
 	CEventLog::BlockNew(rBlockText);
 	{
-		CEnumeratorDictionaryString* pEnumerator = &CScripting::Objects();
+		CEnumeratorDictionaryString<CObject>* pEnumerator = &CScripting::Objects();
 
 		while (pEnumerator->Next()) 
 		{
-			for (SCF::UINT i = 0; i < rClassKeys.Size(); i++)
+			for (UINT i = 0; i < rClassKeys.Size(); i++)
 			{ 
-				if (pEnumerator->Current()->ClassKey() == (SCF::ENUM)rClassKeys[i])
+				if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
 				{
 					CEventLog::EventNew(pEnumerator->CurrentPath());
 					pEnumerator->CurrentShallowDelete();

@@ -20,7 +20,7 @@ CFile3DS::~CFile3DS()
 {
 	if (m_pObjects)
 	{
-		for (SCF::UINT i = 0; i < m_uiObjectCount; i++)
+		for (UINT i = 0; i < m_uiObjectCount; i++)
 		{
 			delete m_pObjects[i].pName;
 
@@ -46,15 +46,15 @@ bool CFile3DS::ConvertTo(_INOUT CMesh& rMesh)
 
 		SVertexList TempList = { 0, NULL };
 
-		for (SCF::USHORT i = 0; i < m_pObjects[0].usTriangleCount; i++)
+		for (USHORT i = 0; i < m_pObjects[0].usTriangleCount; i++)
 		{
-			SCF::UINT dwMask = 0x1;
+			UINT dwMask = 0x1;
 
-			for (SCF::USHORT j = 0; j < 32; j++)
+			for (USHORT j = 0; j < 32; j++)
 			{
 				if (m_pObjects[0].pSmoothGroups[i] & dwMask)
 				{
-					CMesh::AddIndex(TempList, (SCF::USHORT)dwMask);
+					CMesh::AddIndex(TempList, (USHORT)dwMask);
 				}
 
 				dwMask <<= 1;
@@ -67,9 +67,9 @@ bool CFile3DS::ConvertTo(_INOUT CMesh& rMesh)
 
 		ZeroMemory(rMesh.m_pSmoothingGroups, sizeof(SVertexList) * rMesh.m_usSmoothingGroupCount);
 
-		for (SCF::USHORT i = 0; i < rMesh.m_usSmoothingGroupCount; i++)
+		for (USHORT i = 0; i < rMesh.m_usSmoothingGroupCount; i++)
 		{
-			for (SCF::USHORT j = 0; j < m_pObjects[0].usTriangleCount; j++)
+			for (USHORT j = 0; j < m_pObjects[0].usTriangleCount; j++)
 			{
 				if (m_pObjects[0].pSmoothGroups[j] & TempList.uspTriangles[i]) 
 				{ 
@@ -89,9 +89,9 @@ bool CFile3DS::ConvertTo(_INOUT CMesh& rMesh)
 		ZeroMemory(rMesh.m_pSeamVertices, sizeof(SVertexList) * rMesh.m_usSeamVertexListCount);
 
 		//Go through all vertices
-		for (SCF::USHORT i = 0; i < rMesh.m_usVertexCount; i++)
+		for (USHORT i = 0; i < rMesh.m_usVertexCount; i++)
 		{
-			for (SCF::USHORT j = (i + 1); j < rMesh.m_usVertexCount; j++)
+			for (USHORT j = (i + 1); j < rMesh.m_usVertexCount; j++)
 			{
 				if (CompareVectors3(rMesh.m_pVertices[i], rMesh.m_pVertices[j]))
 				{
@@ -120,8 +120,8 @@ bool CFile3DS::Next(_INOUT IStreamRead& rStream)
 {
 	if (rStream.BytesLeft())
 	{
-		SCF::USHORT usID     = rStream.GetWord();
-		SCF::UINT   uiLength = rStream.GetInt();
+		USHORT usID     = rStream.GetWord();
+		UINT   uiLength = rStream.GetInt();
 
 		switch (usID)
 		{
@@ -191,7 +191,7 @@ bool CFile3DS::ChunkProcessFacesDescription(_INOUT IStreamRead& rStream)
 
 	m_pObjects[m_uiObjectCount -1].pTriangles = (Short3*)CMemory::Allocate(sizeof(Short3) * m_pObjects[m_uiObjectCount -1].usTriangleCount);
 
-	for (SCF::UINT i = 0; i < m_pObjects[m_uiObjectCount -1].usTriangleCount; i++)
+	for (UINT i = 0; i < m_pObjects[m_uiObjectCount -1].usTriangleCount; i++)
 	{
 		rStream.GetBytes(&(m_pObjects[m_uiObjectCount -1].pTriangles[i]), sizeof(Short3));
 
@@ -212,7 +212,7 @@ bool CFile3DS::ChunkProcessMappingCoordinatesList(_INOUT IStreamRead& rStream)
 
 	rStream.GetBytes(m_pObjects[m_uiObjectCount -1].pTexCoords, sizeof(Float2) * m_pObjects[m_uiObjectCount -1].usTexCoordCount);
 
-	for (SCF::UINT i = 0; i < m_pObjects[m_uiObjectCount -1].usTexCoordCount; i++)
+	for (UINT i = 0; i < m_pObjects[m_uiObjectCount -1].usTexCoordCount; i++)
 	{
 		m_pObjects[m_uiObjectCount -1].pTexCoords[i][1] = 1 - m_pObjects[m_uiObjectCount -1].pTexCoords[i][1];
 	}
@@ -221,9 +221,9 @@ bool CFile3DS::ChunkProcessMappingCoordinatesList(_INOUT IStreamRead& rStream)
 }
 bool CFile3DS::ChunkProcessSmoothingGroupList(_INOUT IStreamRead& rStream)
 {
-	m_pObjects[m_uiObjectCount -1].pSmoothGroups = (SCF::UINT*)CMemory::Allocate(sizeof(SCF::UINT) * m_pObjects[m_uiObjectCount -1].usTriangleCount);
+	m_pObjects[m_uiObjectCount -1].pSmoothGroups = (UINT*)CMemory::Allocate(sizeof(UINT) * m_pObjects[m_uiObjectCount -1].usTriangleCount);
 
-	rStream.GetBytes(m_pObjects[m_uiObjectCount -1].pSmoothGroups, sizeof(SCF::UINT) * m_pObjects[m_uiObjectCount -1].usTriangleCount);
+	rStream.GetBytes(m_pObjects[m_uiObjectCount -1].pSmoothGroups, sizeof(UINT) * m_pObjects[m_uiObjectCount -1].usTriangleCount);
 
 	return Next(rStream);
 }

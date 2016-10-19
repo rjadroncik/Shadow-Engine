@@ -19,8 +19,8 @@ namespace Rendering
 		struct SLast
 		{
 			//These are used to eliminate redundant state changes
-			SCF::ENUM eaTextureTargets[32];
-			SCF::UINT uiTexturesCount;
+			ENUM eaTextureTargets[32];
+			UINT uiTexturesCount;
 
 			const CMaterialUsage* pMaterialUsage;
 
@@ -71,7 +71,7 @@ void __fastcall CMaterialUsage::Initialize()
 
 void __fastcall CMaterialUsage::TexturesDisable()
 {
-	for (SCF::UINT i = 0; i < MaterialUsage_State.Last.uiTexturesCount; i++) 
+	for (UINT i = 0; i < MaterialUsage_State.Last.uiTexturesCount; i++) 
 	{
 		glActiveTexture(GL_TEXTURE2 + i);
 		glDisable(MaterialUsage_State.Last.eaTextureTargets[i]);
@@ -88,13 +88,13 @@ void __fastcall CMaterialUsage::TexturesBind() const
 	else                              { glActiveTexture(GL_TEXTURE1); glDisable(GL_TEXTURE_2D); }
 
 	//Disable unneeded texture units
-	for (SCF::UINT i = m_uiTextureCount; i < MaterialUsage_State.Last.uiTexturesCount; i++) 
+	for (UINT i = m_uiTextureCount; i < MaterialUsage_State.Last.uiTexturesCount; i++) 
 	{
 		glActiveTexture(GL_TEXTURE2 + i);
 		glDisable(MaterialUsage_State.Last.eaTextureTargets[i]);
 	}
 
-	for (SCF::UINT i = 0; i < m_uiTextureCount; i++) 
+	for (UINT i = 0; i < m_uiTextureCount; i++) 
 	{
 		register const CTexture* const pTexture = m_pTextures[i].pTexture;
 
@@ -112,7 +112,7 @@ void __fastcall CMaterialUsage::TexturesBind() const
 	MaterialUsage_State.Last.uiTexturesCount = m_uiTextureCount;
 }
 
-void __fastcall CMaterialUsage::TextureAdd(_IN _REF Resources::CTexture& rTexture, _IN SCF::UINT uiSampler) _SET
+void __fastcall CMaterialUsage::TextureAdd(_IN _REF Resources::CTexture& rTexture, _IN UINT uiSampler) _SET
 {
 	m_uiTextureCount++;
 	m_pTextures = (STextureBond*)CMemory::Reallocate(m_pTextures, sizeof(STextureBond) * m_uiTextureCount);

@@ -6,26 +6,6 @@
 #define SEGUI_API __declspec(dllimport)
 #endif
 
-enum GUIClasses
-{
-	ClassText = 0x2000,
-	ClassLabel,
-	ClassEditField,
-	ClassWindow,
-	ClassModule,
-	ClassButtonClick,
-	ClassButtonCheck,
-	ClassButtonPush,
-	ClassButtonRadio,
-	ClassFont,
-	ClassCursor,
-	ClassCarret,
-
-	ClassLayoutTable = 0x20F0,
-	ClassLayoutSplit,
-	ClassWindowManager,
-};
-
 namespace GUI
 {
 	enum Actions

@@ -45,9 +45,9 @@ CGPUProgram::~CGPUProgram()
 	glDeleteObjectARB(m_hGLShaderVertex);
 	glDeleteObjectARB(m_hGLShaderFragment);
 
-	for (SCF::UINT i = 0; i < m_uiSamplersCount;   i++) { delete m_pSamplers[i].pName; }
-	for (SCF::UINT i = 0; i < m_uiUniformsCount;   i++) { delete m_pUniforms[i].pName; }
-	for (SCF::UINT i = 0; i < m_uiAttributesCount; i++) { delete m_pAttributes[i].pName; }
+	for (UINT i = 0; i < m_uiSamplersCount;   i++) { delete m_pSamplers[i].pName; }
+	for (UINT i = 0; i < m_uiUniformsCount;   i++) { delete m_pUniforms[i].pName; }
+	for (UINT i = 0; i < m_uiAttributesCount; i++) { delete m_pAttributes[i].pName; }
 
 	CMemory::Free(m_pSamplers);
 	CMemory::Free(m_pUniforms);
@@ -63,8 +63,8 @@ bool __fastcall CGPUProgram::ShaderVertex(_IN CString& rFilePath)
 		CEventLog::EventNew(STRING("Loading vertex shader:") + rFilePath);
 		m_ShaderFileVertex = rFilePath;
 
-		CMemoryBlock MemoryBlock((SCF::UINT)pReadStream->BytesLeft());
-		pReadStream->GetBytes((SCF::BYTE*)MemoryBlock.Value(), MemoryBlock.Size());
+		CMemoryBlock MemoryBlock((UINT)pReadStream->BytesLeft());
+		pReadStream->GetBytes((BYTE*)MemoryBlock.Value(), MemoryBlock.Size());
 
 		//Load shader source..
 		const GLcharARB* Strings[] = { (GLcharARB*)MemoryBlock.Value() };
@@ -88,8 +88,8 @@ bool __fastcall CGPUProgram::ShaderFragment(_IN CString& rFilePath)
 		CEventLog::EventNew(STRING("Loading fragment shader:") + rFilePath);
 		m_ShaderFileFragment = rFilePath;
 
-		CMemoryBlock MemoryBlock((SCF::UINT)pReadStream->BytesLeft());
-		pReadStream->GetBytes((SCF::BYTE*)MemoryBlock.Value(), MemoryBlock.Size());
+		CMemoryBlock MemoryBlock((UINT)pReadStream->BytesLeft());
+		pReadStream->GetBytes((BYTE*)MemoryBlock.Value(), MemoryBlock.Size());
 
 		//Load shader source..
 		const GLcharARB* Strings[] = { (GLcharARB*)MemoryBlock.Value() };
@@ -192,7 +192,7 @@ bool __fastcall CGPUProgram::CompileAndLink()
 	
 	for (int i = 0; i < iActiveAttributes; i++)
 	{
-		SCF::ENUM eAttribType = 0;
+		ENUM eAttribType = 0;
 		int  iAttribSize = 0;
 		glGetActiveAttribARB(m_hGLProgram, i, 4096, NULL, &iAttribSize, &eAttribType, GPUProgram_szBuffer);
 	}
@@ -251,7 +251,7 @@ void __fastcall CGPUProgram::InfoLogsPrint()
 	CEventLog::BlockClose();
 }
 
-void __fastcall CGPUProgram::SamplerAdd(_IN CString& rName, _IN SCF::ENUM eSource) _SET
+void __fastcall CGPUProgram::SamplerAdd(_IN CString& rName, _IN ENUM eSource) _SET
 {
 	int iTarget = UniformTarget(rName);
 
@@ -266,7 +266,7 @@ void __fastcall CGPUProgram::SamplerAdd(_IN CString& rName, _IN SCF::ENUM eSourc
 	}
 }
 
-void __fastcall CGPUProgram::UniformAdd(_IN CString& rName, _IN SCF::ENUM eSource) _SET
+void __fastcall CGPUProgram::UniformAdd(_IN CString& rName, _IN ENUM eSource) _SET
 { 
 	int iTarget = UniformTarget(rName);
 
@@ -281,7 +281,7 @@ void __fastcall CGPUProgram::UniformAdd(_IN CString& rName, _IN SCF::ENUM eSourc
 	}
 }
 
-void __fastcall CGPUProgram::AttributeAdd(_IN CString& rName, _IN SCF::ENUM eSource) _SET
+void __fastcall CGPUProgram::AttributeAdd(_IN CString& rName, _IN ENUM eSource) _SET
 { 
 	int iTarget = AttributeTarget(rName);
 
@@ -299,50 +299,50 @@ void __fastcall CGPUProgram::AttributeAdd(_IN CString& rName, _IN SCF::ENUM eSou
 void CGPUProgram::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
 	rWriter.BlockStart(STRING("shaderVertex"));
-	PUTVALUENEW("file", ShaderVertex(), CString);
+	PUTVALUE_TOSTRING("file", ShaderVertex(), CString);
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("shaderFragment"));
-	PUTVALUENEW("file", ShaderFragment(), CString);
+	PUTVALUE_TOSTRING("file", ShaderFragment(), CString);
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("attributes"));
-	PUTVALUENEW("count", AttributesCount(), CInt);
+	PUTVALUE_TOSTRING("count", AttributesCount(), CInt);
 
-	for (SCF::UINT i = 0; i < AttributesCount(); i++)
+	for (UINT i = 0; i < AttributesCount(); i++)
 	{
 		rWriter.BlockStart(STRING("attribute"));
 
-		PUTVALUENEW("name",    *(Attribute(i)->pName), CString);
-		PUTVALUENEW("source",  *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesAttributes"), Attribute(i)->eSource)), CString);
+		PUTVALUE_TOSTRING("name",    *(Attribute(i)->pName), CString);
+		PUTVALUE_TOSTRING("source",  *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesAttributes"), Attribute(i)->eSource)), CString);
 
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("uniforms"));
-	PUTVALUENEW("count", UniformsCount(), CInt);
+	PUTVALUE_TOSTRING("count", UniformsCount(), CInt);
 
-	for (SCF::UINT i = 0; i < UniformsCount(); i++)
+	for (UINT i = 0; i < UniformsCount(); i++)
 	{
 		rWriter.BlockStart(STRING("uniform"));
 
-		PUTVALUENEW("name",   *(Uniform(i)->pName), CString);
-		PUTVALUENEW("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesUniforms"), Uniform(i)->eSource)), CString);
+		PUTVALUE_TOSTRING("name",   *(Uniform(i)->pName), CString);
+		PUTVALUE_TOSTRING("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesUniforms"), Uniform(i)->eSource)), CString);
 
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("samplers"));
-	PUTVALUENEW("count", SamplersCount(), CInt);
+	PUTVALUE_TOSTRING("count", SamplersCount(), CInt);
 
-	for (SCF::UINT i = 0; i < SamplersCount(); i++)
+	for (UINT i = 0; i < SamplersCount(); i++)
 	{
 		rWriter.BlockStart(STRING("sampler"));
 
-		PUTVALUENEW("name",   *(Sampler(i)->pName), CString);
-		PUTVALUENEW("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesSamplers"), Sampler(i)->eSource)), CString);
+		PUTVALUE_TOSTRING("name",   *(Sampler(i)->pName), CString);
+		PUTVALUE_TOSTRING("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesSamplers"), Sampler(i)->eSource)), CString);
 
 		rWriter.BlockEnd();
 	}
@@ -363,10 +363,10 @@ void CGPUProgram::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Attributes
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			CString* pName   = rReader.GetValue();
@@ -383,10 +383,10 @@ void CGPUProgram::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Uniforms
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			CString* pName   = rReader.GetValue();
@@ -403,10 +403,10 @@ void CGPUProgram::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Samplers
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			CString* pName   = rReader.GetValue();

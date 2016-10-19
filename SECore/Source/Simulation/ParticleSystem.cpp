@@ -6,7 +6,6 @@
 #include <limits.h>
 #include <xmmintrin.h>
 
-using namespace SCF;
 using namespace Simulation;
 using namespace Rendering;
 using namespace System;
@@ -14,13 +13,13 @@ using namespace System;
 Float3 ParticleSystem_TempVector3;
 
 float*  ParticleSystem_fpRandomFloats1To1 = NULL;
-SCF::USHORT* ParticleSystem_uspRandomUSHORT    = NULL;
+USHORT* ParticleSystem_uspRandomUSHORT    = NULL;
 
-SCF::BYTE ParticleSystem_ucCurrentFloat  = 0;
-SCF::BYTE ParticleSystem_ucCurrentUSHORT = 0;
+BYTE ParticleSystem_ucCurrentFloat  = 0;
+BYTE ParticleSystem_ucCurrentUSHORT = 0;
 
 inline float       CParticleSystem::RandomFloat1To1() { ParticleSystem_ucCurrentFloat++;  return ParticleSystem_fpRandomFloats1To1[ParticleSystem_ucCurrentFloat]; }
-inline SCF::USHORT CParticleSystem::RandomUSHORT()    { ParticleSystem_ucCurrentUSHORT++; return ParticleSystem_uspRandomUSHORT[ParticleSystem_ucCurrentUSHORT]; }
+inline USHORT CParticleSystem::RandomUSHORT()    { ParticleSystem_ucCurrentUSHORT++; return ParticleSystem_uspRandomUSHORT[ParticleSystem_ucCurrentUSHORT]; }
 
 void CParticleSystem::Construct(_IN Rendering::CMaterial* pMaterial)
 {
@@ -28,7 +27,7 @@ void CParticleSystem::Construct(_IN Rendering::CMaterial* pMaterial)
 	{
 		ParticleSystem_fpRandomFloats1To1 = (float*)CMemory::Allocate(sizeof(float) * (UCHAR_MAX + 1));
 
-		for (SCF::UINT i = 0; i < (UCHAR_MAX + 1); i++)
+		for (UINT i = 0; i < (UCHAR_MAX + 1); i++)
 		{
 			ParticleSystem_fpRandomFloats1To1[i] = SCFMathematics::RandomFloat1To1();
 		}
@@ -36,11 +35,11 @@ void CParticleSystem::Construct(_IN Rendering::CMaterial* pMaterial)
 
 	if (!ParticleSystem_uspRandomUSHORT)
 	{
-		ParticleSystem_uspRandomUSHORT = (SCF::USHORT*)CMemory::Allocate(sizeof(SCF::USHORT) * (UCHAR_MAX + 1));
+		ParticleSystem_uspRandomUSHORT = (USHORT*)CMemory::Allocate(sizeof(USHORT) * (UCHAR_MAX + 1));
 
-		for (SCF::UINT i = 0; i < (UCHAR_MAX + 1); i++)
+		for (UINT i = 0; i < (UCHAR_MAX + 1); i++)
 		{
-			ParticleSystem_uspRandomUSHORT[i] = (SCF::USHORT)(rand() % USHRT_MAX);
+			ParticleSystem_uspRandomUSHORT[i] = (USHORT)(rand() % USHRT_MAX);
 		}
 	}
 
@@ -103,7 +102,7 @@ CParticleSystem::~CParticleSystem()
 
 void CParticleSystem::ApplyForce(_IN Float3& rForce, _IN _OPT Float3* pPoint)
 {
-	for (SCF::USHORT i = 0; i < m_usParticleCount; i++)
+	for (USHORT i = 0; i < m_usParticleCount; i++)
 	{
 		//AddVectors3(m_pVelocities[i], m_pVelocities[i], rForce);
 	}
@@ -116,7 +115,7 @@ void CParticleSystem::UpdatePositionsOnly()
 		register __m128 a;
 		register __m128 b;
 
-		for (SCF::USHORT i = 0; i < m_usParticleCount; i++)
+		for (USHORT i = 0; i < m_usParticleCount; i++)
 		{
 			//Velocity - Load
 			b = _mm_load_ps(m_pVelocities[i]);
@@ -130,7 +129,7 @@ void CParticleSystem::UpdatePositionsOnly()
 	}
 	#else
 	{
-		for (SCF::USHORT i = 0; i < m_usParticleCount; i++)
+		for (USHORT i = 0; i < m_usParticleCount; i++)
 		{
 			AddVectors3((Float3&)m_pPositions[i], (Float3&)m_pPositions[i], (Float3&)m_pVelocities[i]);
 		}
@@ -140,7 +139,7 @@ void CParticleSystem::UpdatePositionsOnly()
 
 void CParticleSystem::UpdatePositionsAndProperties()
 {
-	for (SCF::USHORT i = 0; i < m_usParticleCount; i++)
+	for (USHORT i = 0; i < m_usParticleCount; i++)
 	{
 		if (!m_uspTimesLeft[i])
 		{
@@ -215,7 +214,7 @@ void CParticleSystem::Update()
 
 void CParticleSystem::Create()
 {
-	m_uspTimesLeft = (SCF::USHORT*)CMemory::Aligned16Reallocate(m_uspTimesLeft, sizeof(SCF::USHORT) * m_usParticleCount);
+	m_uspTimesLeft = (USHORT*)CMemory::Aligned16Reallocate(m_uspTimesLeft, sizeof(USHORT) * m_usParticleCount);
 
 	m_pPositions  = (Float4*)CMemory::Aligned16Reallocate(m_pPositions,  sizeof(Float4) * m_usParticleCount);
 	m_pVelocities = (Float4*)CMemory::Aligned16Reallocate(m_pVelocities, sizeof(Float4) * m_usParticleCount);
@@ -228,13 +227,13 @@ void CParticleSystem::Create()
 
 void CParticleSystem::Reset()
 {
-	for (SCF::USHORT i = 0; i < m_usParticleCount; i++)
+	for (USHORT i = 0; i < m_usParticleCount; i++)
 	{
 		CreateNewParticle(i);
 	}
 }
 
-void CParticleSystem::CreateNewParticle(_IN SCF::UINT uiIndex)
+void CParticleSystem::CreateNewParticle(_IN UINT uiIndex)
 {
 	m_uspTimesLeft[uiIndex] = CParticleSystem::RandomUSHORT() % m_usParticleLife;
 
@@ -283,8 +282,8 @@ void CParticleSystem::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Particles
 	rReader.GetBlock();
 	{
-		GETVALUE { ParticleCount((SCF::USHORT)CInt(*pValue).Value()); }
-		GETVALUE { ParticleLife ((SCF::USHORT)CInt(*pValue).Value()); }
+		GETVALUE { ParticleCount((USHORT)CInt(*pValue).Value()); }
+		GETVALUE { ParticleLife ((USHORT)CInt(*pValue).Value()); }
 		GETVALUE { ParticleSpread          (CFloat(*pValue).Value()); }
 
 		//Speed

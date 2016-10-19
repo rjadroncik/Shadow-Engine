@@ -14,7 +14,7 @@ namespace System
 		static inline CObject* Object(_IN CString& rName)                       { return s_Objects.At(rName); }
 
 	public:
-		static inline CEnumeratorDictionaryString& Objects() { return *(new CEnumeratorDictionaryString(s_Objects)); }
+		static inline CEnumeratorDictionaryString<CObject>& Objects() { return *(new CEnumeratorDictionaryString<CObject>(s_Objects)); }
 	
 	private:
 		#pragma warning(disable:4251)

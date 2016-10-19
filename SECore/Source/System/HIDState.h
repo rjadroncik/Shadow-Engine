@@ -19,34 +19,34 @@ namespace System
 
 		//These keep track of the last 2 keys pressed, thus they replace the arguments of event handlers 
 		public:
-			static SCF::UINT KeyLastDown()       { return s_uiKeyLastDown; }
-			static SCF::UINT KeyLastUp()         { return s_uiKeyLastUp; }
-			static SCF::UINT KeyLastRepeat()     { return s_uiKeyLastRepeat; }
+			static UINT KeyLastDown()       { return s_uiKeyLastDown; }
+			static UINT KeyLastUp()         { return s_uiKeyLastUp; }
+			static UINT KeyLastRepeat()     { return s_uiKeyLastRepeat; }
 
-			static SCF::UINT KeyPreviousDown()   { return s_uiKeyPreviousDown; }
-			static SCF::UINT KeyPreviousUp()     { return s_uiKeyPreviousUp; }
-			static SCF::UINT KeyPreviousRepeat() { return s_uiKeyPreviousRepeat; }
+			static UINT KeyPreviousDown()   { return s_uiKeyPreviousDown; }
+			static UINT KeyPreviousUp()     { return s_uiKeyPreviousUp; }
+			static UINT KeyPreviousRepeat() { return s_uiKeyPreviousRepeat; }
 
 		public:
-			static SCF::TCHAR CharLast()     { return s_usCharLast; }
-			static SCF::TCHAR CharPrevious() { return s_usCharPrevious; }
+			static TCHAR CharLast()     { return s_usCharLast; }
+			static TCHAR CharPrevious() { return s_usCharPrevious; }
 
 		//Access to the state of the virtual keyboard as it is seen by the engine
 		public:
-			static bool KeyDown(_IN SCF::UINT uiVirtualKey) { return s_baKeysDown[uiVirtualKey]; }
+			static bool KeyDown(_IN UINT uiVirtualKey) { return s_baKeysDown[uiVirtualKey]; }
 
 		protected:
-			static SCF::UINT s_uiKeyLastDown;
-			static SCF::UINT s_uiKeyLastUp;
-			static SCF::UINT s_uiKeyLastRepeat;
+			static UINT s_uiKeyLastDown;
+			static UINT s_uiKeyLastUp;
+			static UINT s_uiKeyLastRepeat;
 
-			static SCF::UINT s_uiKeyPreviousDown;
-			static SCF::UINT s_uiKeyPreviousUp;
-			static SCF::UINT s_uiKeyPreviousRepeat;
+			static UINT s_uiKeyPreviousDown;
+			static UINT s_uiKeyPreviousUp;
+			static UINT s_uiKeyPreviousRepeat;
 
 		public:
-			static SCF::TCHAR s_usCharLast;
-			static SCF::TCHAR s_usCharPrevious;
+			static TCHAR s_usCharLast;
+			static TCHAR s_usCharPrevious;
 
 		protected:
 			static bool s_baKeysDown[256];
@@ -61,15 +61,15 @@ namespace System
 
 		//These keep track of the last 2 buttons pressed, thus they replace the arguments of event handlers 
 		public:
-			static SCF::UINT ButtonLastDown()     { return s_uiButtonLastDown; }
-			static SCF::UINT ButtonLastUp()       { return s_uiButtonLastUp; }
+			static UINT ButtonLastDown()     { return s_uiButtonLastDown; }
+			static UINT ButtonLastUp()       { return s_uiButtonLastUp; }
 
-			static SCF::UINT ButtonPreviousDown() { return s_uiButtonPreviousDown; }
-			static SCF::UINT ButtonPreviousUp()   { return s_uiButtonPreviousUp; }
+			static UINT ButtonPreviousDown() { return s_uiButtonPreviousDown; }
+			static UINT ButtonPreviousUp()   { return s_uiButtonPreviousUp; }
 
 		//Access to the state of the virtual mouse as it is seen by the engine
 		public:
-			static bool ButtonDown(_IN SCF::UINT uiMouseButton) { return s_baButtonsDown[uiMouseButton]; }
+			static bool ButtonDown(_IN UINT uiMouseButton) { return s_baButtonsDown[uiMouseButton]; }
 
 			static Float2& CursorPosition()                       { return s_CursorPosition; }
 			static void    CursorPosition(_IN Float2& rPosititon) { CopyVector2(s_CursorPosition, rPosititon); }
@@ -79,11 +79,11 @@ namespace System
 		
 
 		protected:
-			static SCF::UINT s_uiButtonLastDown;
-			static SCF::UINT s_uiButtonLastUp;
+			static UINT s_uiButtonLastDown;
+			static UINT s_uiButtonLastUp;
 
-			static SCF::UINT s_uiButtonPreviousDown;
-			static SCF::UINT s_uiButtonPreviousUp;
+			static UINT s_uiButtonPreviousDown;
+			static UINT s_uiButtonPreviousUp;
 
 		protected:
 			static bool s_baButtonsDown[16];

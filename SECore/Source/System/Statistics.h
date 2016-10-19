@@ -16,22 +16,22 @@ namespace System
 			friend class CRendererIGP;
 
 		public:
-			static inline SCF::UINT ProcessedObjects() { return s_uiProcessedObjects; }
-			static inline SCF::UINT ProcessedLights()  { return s_uiProcessedLights; }
-			static inline SCF::UINT ProcessedShadows() { return s_uiProcessedShadows; }
+			static inline UINT ProcessedObjects() { return s_uiProcessedObjects; }
+			static inline UINT ProcessedLights()  { return s_uiProcessedLights; }
+			static inline UINT ProcessedShadows() { return s_uiProcessedShadows; }
 
 		private:
 			static void Reset();
 
 		private:
-			static inline void ProcessedObjects(_IN SCF::UINT uiValue) { s_uiProcessedObjects = uiValue; }
-			static inline void ProcessedLights (_IN SCF::UINT uiValue) { s_uiProcessedLights  = uiValue; }
-			static inline void ProcessedShadows(_IN SCF::UINT uiValue) { s_uiProcessedShadows = uiValue; }
+			static inline void ProcessedObjects(_IN UINT uiValue) { s_uiProcessedObjects = uiValue; }
+			static inline void ProcessedLights (_IN UINT uiValue) { s_uiProcessedLights  = uiValue; }
+			static inline void ProcessedShadows(_IN UINT uiValue) { s_uiProcessedShadows = uiValue; }
 
 		private:
-			static SCF::UINT s_uiProcessedObjects;
-			static SCF::UINT s_uiProcessedLights;
-			static SCF::UINT s_uiProcessedShadows;
+			static UINT s_uiProcessedObjects;
+			static UINT s_uiProcessedLights;
+			static UINT s_uiProcessedShadows;
 		};
 
 	public:

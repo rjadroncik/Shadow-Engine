@@ -23,22 +23,22 @@ namespace Rendering
 	extern const CModel** Renderer_ppModelsShadow;
 	extern const CLight** Renderer_ppLights;
 
-	extern SCF::UINT Renderer_uiModelCount;
-	extern SCF::UINT Renderer_uiModelShadowCount;
-	extern SCF::UINT Renderer_uiLightCount;
+	extern UINT Renderer_uiModelCount;
+	extern UINT Renderer_uiModelShadowCount;
+	extern UINT Renderer_uiLightCount;
 };
 
-void __fastcall CUniforms::BindLightDepthMapTransform0(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindLightDepthMapTransform0(_IN UINT uiTarget)
 {
 	glUniformMatrix4fvARB(uiTarget, 1, FALSE, Light.DepthMapTransform[0]);
 }
 
-void __fastcall CUniforms::BindLightPosition(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindLightPosition(_IN UINT uiTarget)
 {
 	glUniform3fvARB(uiTarget, 1, Renderer_pLight->Position());
 }
 
-void __fastcall CUniforms::BindLightParameters(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindLightParameters(_IN UINT uiTarget)
 {
 	static Float4 LightParams;
 	LightParams[0] = Renderer_pLight->Range();
@@ -49,12 +49,12 @@ void __fastcall CUniforms::BindLightParameters(_IN SCF::UINT uiTarget)
 	glUniform4fvARB(uiTarget, 1, LightParams);
 }
 
-void __fastcall CUniforms::BindLightTint(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindLightTint(_IN UINT uiTarget)
 {
 	glUniform3fvARB(uiTarget, 1, Renderer_pLight->Tint());
 }
 
-void __fastcall CUniforms::BindLightAmbDifSpe(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindLightAmbDifSpe(_IN UINT uiTarget)
 {
 	static Float3 AmbDifSpe;
 	AmbDifSpe[0] = Renderer_pLight->Ambient();
@@ -64,12 +64,12 @@ void __fastcall CUniforms::BindLightAmbDifSpe(_IN SCF::UINT uiTarget)
 	glUniform3fvARB(uiTarget, 1, AmbDifSpe);
 }
 
-void __fastcall CUniforms::BindCameraPosition(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindCameraPosition(_IN UINT uiTarget)
 {
 	glUniform3fvARB(uiTarget, 1, Renderer_pCamera->Position());
 }
 
-void __fastcall CUniforms::BindCameraViewport(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindCameraViewport(_IN UINT uiTarget)
 {
 	Float4 Viewport;
 
@@ -81,12 +81,12 @@ void __fastcall CUniforms::BindCameraViewport(_IN SCF::UINT uiTarget)
 	glUniform4fvARB(uiTarget, 1, Viewport);
 }
 
-void __fastcall CUniforms::BindMaterialTint(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindMaterialTint(_IN UINT uiTarget)
 {
 	glUniform3fvARB(uiTarget, 1, Renderer_pModel->Material().Tint());
 }
 
-void __fastcall CUniforms::BindMaterialAmbDifSpeEmi(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindMaterialAmbDifSpeEmi(_IN UINT uiTarget)
 {
 	static Float4 AmbDifSpeEmi;
 	AmbDifSpeEmi[0] = Renderer_pModel->Material().Ambient();
@@ -97,12 +97,12 @@ void __fastcall CUniforms::BindMaterialAmbDifSpeEmi(_IN SCF::UINT uiTarget)
 	glUniform4fvARB(uiTarget, 1, AmbDifSpeEmi);
 }
 
-void __fastcall CUniforms::BindMaterialShininess(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindMaterialShininess(_IN UINT uiTarget)
 {
 	glUniform1fARB(uiTarget, Renderer_pModel->Material().Shininess());
 }
 
-void __fastcall CUniforms::BindModelLightPositionLocal(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindModelLightPositionLocal(_IN UINT uiTarget)
 {
 	static Float4 s_LightPositionLocal;
 
@@ -110,7 +110,7 @@ void __fastcall CUniforms::BindModelLightPositionLocal(_IN SCF::UINT uiTarget)
 	glUniform3fvARB(uiTarget, 1, s_LightPositionLocal);
 }
 
-void __fastcall CUniforms::BindModelCameraPositionLocal(_IN SCF::UINT uiTarget)
+void __fastcall CUniforms::BindModelCameraPositionLocal(_IN UINT uiTarget)
 {
 	static Float4 s_CameraPositionLocal;
 
@@ -123,7 +123,7 @@ void __fastcall CUniforms::BindModelOnlyCamera()
 {
 	const CGPUProgram* pProgram = &Renderer_pMaterialUsage->Program();
 
-	for (SCF::UINT i = 0; i < pProgram->UniformsCount(); i++)
+	for (UINT i = 0; i < pProgram->UniformsCount(); i++)
 	{
 		if ((pProgram->Uniform(i)->eSource > CAMERA_PARAMS_START) &&
 			(pProgram->Uniform(i)->eSource < CAMERA_PARAMS_END))
@@ -136,7 +136,7 @@ void __fastcall CUniforms::BindModelOnlyLight()
 {
 	const CGPUProgram* pProgram = &Renderer_pMaterialUsage->Program();
 
-	for (SCF::UINT i = 0; i < pProgram->UniformsCount(); i++)
+	for (UINT i = 0; i < pProgram->UniformsCount(); i++)
 	{
 		if ((pProgram->Uniform(i)->eSource > LIGHT_PARAMS_START) &&
 			(pProgram->Uniform(i)->eSource < LIGHT_PARAMS_END))
@@ -149,7 +149,7 @@ void __fastcall CUniforms::BindModelOnlyMaterial()
 {
 	const CGPUProgram* pProgram = &Renderer_pMaterialUsage->Program();
 
-	for (SCF::UINT i = 0; i < pProgram->UniformsCount(); i++)
+	for (UINT i = 0; i < pProgram->UniformsCount(); i++)
 	{
 		if ((pProgram->Uniform(i)->eSource > MATERIAL_PARAMS_START) &&
 			(pProgram->Uniform(i)->eSource < MATERIAL_PARAMS_END))
@@ -163,7 +163,7 @@ void __fastcall CUniforms::BindModel()
 {
 	const CGPUProgram* pProgram = &Renderer_pMaterialUsage->Program();
 
-	for (SCF::UINT i = 0; i < pProgram->UniformsCount(); i++)
+	for (UINT i = 0; i < pProgram->UniformsCount(); i++)
 	{
 		Uniforms_aBindersModel[pProgram->Uniform(i)->eSource](pProgram->Uniform(i)->uiTarget);
 	}
@@ -173,7 +173,7 @@ void __fastcall CUniforms::BindParticleSystem()
 {
 	const CGPUProgram* pProgram = &Renderer_pMaterialUsage->Program();
 
-	for (SCF::UINT i = 0; i < pProgram->UniformsCount(); i++)
+	for (UINT i = 0; i < pProgram->UniformsCount(); i++)
 	{
 		Uniforms_aBindersParticleSystem[pProgram->Uniform(i)->eSource](pProgram->Uniform(i)->uiTarget);
 	}

@@ -24,8 +24,9 @@ namespace Resources
 	class SECORE_API CFile3DS : public System::CSEObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassFile3DS; }
-	
+		CString XmlName() _GET { return STRING("File3DS"); }
+		CString ToString() _GET { return STRING("{File3DS}"); }
+
 	public:
 		CFile3DS(_INOUT IStreamRead& rStream);
 		virtual ~CFile3DS();
@@ -54,19 +55,19 @@ namespace Resources
 			CString* pName;
 
 			Float3* pVertices;
-			SCF::USHORT  usVertexCount;
+			USHORT  usVertexCount;
 
 			Short3* pTriangles;
-			SCF::USHORT  usTriangleCount;
+			USHORT  usTriangleCount;
 		
 			Float2* pTexCoords;
-			SCF::USHORT  usTexCoordCount;
+			USHORT  usTexCoordCount;
 			
 			//Per-triangle smooth group mask
-			SCF::UINT*   pSmoothGroups;
+			UINT*   pSmoothGroups;
 
 		}* m_pObjects;
 
-		SCF::UINT m_uiObjectCount;
+		UINT m_uiObjectCount;
 	};
 };

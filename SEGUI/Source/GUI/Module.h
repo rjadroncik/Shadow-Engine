@@ -32,7 +32,7 @@ namespace GUI
 		friend class CDispatcher;
 
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassModule; }
+		CString XmlName() _GET { return STRING("Module"); }
 
 	public:
 		CModule();
@@ -63,8 +63,8 @@ namespace GUI
 			void Show(_IN bool bShow) _SET;
 
 		public:
-			void Use(_IN SCF::UINT uiIndex);
-			void Enlist(_IN SCF::ENUM eType, _IN Resources::CCursor* pCursor);
+			void Use(_IN UINT uiIndex);
+			void Enlist(_IN ENUM eType, _IN Resources::CCursor* pCursor);
 
 		public:
 			inline void          BoundsRect(_IN Float4& rRect) _SET { CopyVector4(m_Bounds, rRect); }

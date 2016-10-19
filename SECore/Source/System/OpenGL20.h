@@ -123,7 +123,7 @@ namespace System
 		static bool Initialize();
 
 	public:
-		static SCF::UINT GLSLVersionNumber();
+		static UINT GLSLVersionNumber();
 
 	private:
 		COpenGL20();

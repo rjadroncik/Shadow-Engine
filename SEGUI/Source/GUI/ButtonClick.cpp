@@ -20,7 +20,7 @@ CButtonClick::~CButtonClick()
 
 /*void CButtonClick::OnWindowPaint(IN CEventWindow& rEvent)
 {
-	SCF::Rect4i rt = this->RectWindow(); rt.iX = 0; rt.iY = 0;
+	Rect4i rt = this->RectWindow(); rt.iX = 0; rt.iY = 0;
 	RectF rect((float)rt.iX, (float)rt.iY, (float)rt.iWidth, (float)rt.iHeight);
 
 	rEvent.Canvas().SetSmoothingMode(SmoothingModeHighQuality);

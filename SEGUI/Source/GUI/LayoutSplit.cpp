@@ -15,7 +15,7 @@ CLayoutSplit::~CLayoutSplit()
 
 void CLayoutSplit::LayOut(_IN CVector<CElement>& rElements, _IN Float4& rRect, _OUT Float2& rOutSize)
 {
-	SCF::BYTE ucCoord[2];
+	BYTE ucCoord[2];
 	//The first coordinate is variable(based on the split value),
 	//the second is bound to the proportions of the container
 	ucCoord[0] = (m_Split.eType & LS_VERTICAL) ? (0) : (1);

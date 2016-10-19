@@ -18,20 +18,20 @@ namespace System
 			static bool Load(_IN SCFXML::CXMLDocument& rDocument);
 
 		public:
-			static SCF::UINT Width()                        { return s_uiWidth; }
-			static void      Width(SCF::UINT uiWidth)       { s_uiWidth = uiWidth; }
+			static UINT Width()                        { return s_uiWidth; }
+			static void      Width(UINT uiWidth)       { s_uiWidth = uiWidth; }
 
-			static SCF::UINT Height()                       { return s_uiHeight; }
-			static void      Height(SCF::UINT uiHeight)     { s_uiHeight = uiHeight; }
+			static UINT Height()                       { return s_uiHeight; }
+			static void      Height(UINT uiHeight)     { s_uiHeight = uiHeight; }
 
-			static SCF::UINT BitDepth()                     { return s_uiBitDepth; }
+			static UINT BitDepth()                     { return s_uiBitDepth; }
 
 			static bool FullScreen() { return s_bFullScreen; }
 
 		private:
-			static SCF::UINT s_uiWidth;
-			static SCF::UINT s_uiHeight;
-			static SCF::UINT s_uiBitDepth;
+			static UINT s_uiWidth;
+			static UINT s_uiHeight;
+			static UINT s_uiBitDepth;
 			
 			static bool s_bFullScreen;
 		};

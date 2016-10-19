@@ -79,7 +79,7 @@ int SEGAME_API __stdcall SEGameRun(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	GUI::Initialize(GetModuleHandle((STRING("SEGUI") + CSystem::DllSuffix() + STRING(".dll")).Value()));
 
 	//Construct resources - XML-deserialization & actual data loading
-	for (SCF::UINT i = 0; i < CSettings::CResources::DefinitionFiles().Size(); i++)
+	for (UINT i = 0; i < CSettings::CResources::DefinitionFiles().Size(); i++)
 	{
 		CManager::ObjectsLoad((CString&)CSettings::CResources::DefinitionFiles()[i]);
 	}

@@ -43,16 +43,16 @@ void CLight::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
 	CObjectScene::XMLSerialize(rWriter);
 
-	PUTVALUENEW("tint",     Tint(),     CFloat3);
-	PUTVALUENEW("ambient",  Ambient(),  CFloat);
-	PUTVALUENEW("diffuse",  Diffuse(),  CFloat);
-	PUTVALUENEW("specular", Specular(), CFloat);
-	PUTVALUENEW("range",    Range(),    CFloat);
-	PUTVALUENEW("shadows",  Shadows(),  CBool);
+	PUTVALUE_TOSTRING("tint",     Tint(),     CFloat3);
+	PUTVALUE_TOSTRING("ambient",  Ambient(),  CFloat);
+	PUTVALUE_TOSTRING("diffuse",  Diffuse(),  CFloat);
+	PUTVALUE_TOSTRING("specular", Specular(), CFloat);
+	PUTVALUE_TOSTRING("range",    Range(),    CFloat);
+	PUTVALUE_TOSTRING("shadows",  Shadows(),  CBool);
 
 	if (Shadows())
 	{
-		PUTVALUENEW("shadowMapLOD", ShadowMapLOD(), CInt);
+		PUTVALUE_TOSTRING("shadowMapLOD", ShadowMapLOD(), CInt);
 	}
 }
 

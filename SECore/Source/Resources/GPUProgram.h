@@ -14,16 +14,16 @@ namespace Resources
 		CString* pName;
 		
 		//Source is a numeric constant interpreted by the engine
-		SCF::ENUM eSource;
+		ENUM eSource;
 		//Target is the numeric position assigned to the ariable by the GL shader compiler
-		SCF::UINT uiTarget;
+		UINT uiTarget;
 	};
 
 	class SECORE_API CGPUProgram : public System::CSEObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassGPUProgram; }
-		CString   ToString() _GET { return STRING("{GPUProgram}"); }
+		CString XmlName() _GET { return STRING("GPUProgram"); }
+		CString ToString() _GET { return STRING("{GPUProgram}"); }
 
 	public:
 		CGPUProgram();
@@ -50,18 +50,18 @@ namespace Resources
 		int __fastcall UniformTarget  (_IN CString& rName);
 
 	public:
-		void __fastcall SamplerAdd  (_IN CString& rName, _IN SCF::ENUM eSource) _SET;
-		void __fastcall UniformAdd  (_IN CString& rName, _IN SCF::ENUM eSource) _SET;
-		void __fastcall AttributeAdd(_IN CString& rName, _IN SCF::ENUM eSource) _SET;
+		void __fastcall SamplerAdd  (_IN CString& rName, _IN ENUM eSource) _SET;
+		void __fastcall UniformAdd  (_IN CString& rName, _IN ENUM eSource) _SET;
+		void __fastcall AttributeAdd(_IN CString& rName, _IN ENUM eSource) _SET;
 
-		inline const SBinding* Sampler(_IN SCF::UINT uiIndex) _GET { return &m_pSamplers[uiIndex]; }
-		inline SCF::UINT       SamplersCount()                _GET { return m_uiSamplersCount; }
+		inline const SBinding* Sampler(_IN UINT uiIndex) _GET { return &m_pSamplers[uiIndex]; }
+		inline UINT       SamplersCount()                _GET { return m_uiSamplersCount; }
 
-		inline const SBinding* Uniform(_IN SCF::UINT uiIndex) _GET { return &m_pUniforms[uiIndex]; }
-		inline SCF::UINT       UniformsCount()                _GET { return m_uiUniformsCount; }
+		inline const SBinding* Uniform(_IN UINT uiIndex) _GET { return &m_pUniforms[uiIndex]; }
+		inline UINT       UniformsCount()                _GET { return m_uiUniformsCount; }
 
-		inline const SBinding* Attribute(_IN SCF::UINT uiIndex) _GET { return &m_pAttributes[uiIndex]; }
-		inline SCF::UINT       AttributesCount()                _GET { return m_uiAttributesCount; }
+		inline const SBinding* Attribute(_IN UINT uiIndex) _GET { return &m_pAttributes[uiIndex]; }
+		inline UINT       AttributesCount()                _GET { return m_uiAttributesCount; }
 
 	public:
 		void XMLSerialize  (_INOUT SCFXML::IXMLStreamWrite& rWriter) const;
@@ -74,13 +74,13 @@ namespace Resources
 
 	protected:
 		SBinding* m_pSamplers;
-		SCF::UINT m_uiSamplersCount;
+		UINT m_uiSamplersCount;
 
 		SBinding* m_pUniforms;
-		SCF::UINT m_uiUniformsCount;
+		UINT m_uiUniformsCount;
 
 		SBinding* m_pAttributes;
-		SCF::UINT m_uiAttributesCount;
+		UINT m_uiAttributesCount;
 
 	protected:
 		CString m_ShaderFileVertex;

@@ -24,7 +24,7 @@ void CGravity::ObjectsAffectedRemove(_IN CObjectScene& rObject)
 	SCF_UNREFERENCED_PARAMETER(rObject);
 }
 
-void CGravity::ObjectsAffectedRemove(_IN SCF::UINT uiIndex)
+void CGravity::ObjectsAffectedRemove(_IN UINT uiIndex)
 {
 	SCF_UNREFERENCED_PARAMETER(uiIndex);
 }

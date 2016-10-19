@@ -25,7 +25,7 @@ namespace System
 		static inline bool IsRunning() { return s_State.bRunning; }
 
 	public:
-		static inline SCF::UINT	UpdatesSinceRender() { return s_State.uiUpdatesSinceRender; }
+		static inline UINT	UpdatesSinceRender() { return s_State.uiUpdatesSinceRender; }
 
 		static inline float	UpdateTime() { return s_State.Timing.fUpdateTime; }
 		static inline float	RenderTime() { return s_State.Timing.fRenderTime; }
@@ -41,7 +41,7 @@ namespace System
 
 			struct STiming
 			{
-				SCF::UINT uiUpdateCount;
+				UINT uiUpdateCount;
 
 				float fLag;
 
@@ -52,15 +52,15 @@ namespace System
 
 			struct SStatistics
 			{
-				SCF::UINT uiUpdateCountPS;
-				SCF::UINT uiRenderCountPS;
+				UINT uiUpdateCountPS;
+				UINT uiRenderCountPS;
 
 				float fUpdateTimePS;
 				float fRenderTimePS;
 
 			} Statistics;
 
-			SCF::UINT uiUpdatesSinceRender;
+			UINT uiUpdatesSinceRender;
 
 		} static s_State;
 

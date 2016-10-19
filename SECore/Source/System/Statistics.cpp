@@ -2,9 +2,9 @@
 
 using namespace System;
 
-SCF::UINT CStatistics::CRendering::s_uiProcessedObjects = 0;
-SCF::UINT CStatistics::CRendering::s_uiProcessedLights  = 0;
-SCF::UINT CStatistics::CRendering::s_uiProcessedShadows = 0;
+UINT CStatistics::CRendering::s_uiProcessedObjects = 0;
+UINT CStatistics::CRendering::s_uiProcessedLights  = 0;
+UINT CStatistics::CRendering::s_uiProcessedShadows = 0;
 
 float CStatistics::CRealTime::s_fUPS = 0;
 float CStatistics::CRealTime::s_fRPS = 0;

@@ -43,8 +43,8 @@ bool __fastcall CObjectScene::BoundsBehindPlane(_IN Float4& rPlane, _IN float fT
 
 void CObjectScene::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
-	PUTVALUENEW("position", Position(), CFloat4);
-	PUTVALUENEW("rotation", Rotation(), CFloat3);
+	PUTVALUE_TOSTRING("position", Position(), CFloat4);
+	PUTVALUE_TOSTRING("rotation", Rotation(), CFloat3);
 }
 
 void CObjectScene::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)

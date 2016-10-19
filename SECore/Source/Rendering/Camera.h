@@ -11,8 +11,8 @@ namespace Rendering
 	class SECORE_API CCamera : public CObjectScene
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassCamera; }
-		CString   ToString() _GET { return STRING("{Camera}"); }
+		CString XmlName() _GET { return STRING("Camera"); }
+		CString ToString() _GET { return STRING("{Camera}"); }
 
 	public:
 		CCamera();
@@ -37,7 +37,7 @@ namespace Rendering
 		void __fastcall    Viewport(_IN int iX, _IN int iY, _IN int iWidth, _IN int iHeight) _SET;
 
 		inline float         Aspect()                  _GET { return m_fAspect; }
-		inline const Float4& FrustumPlane(SCF::BYTE i) _GET { return m_Planes[i]; }
+		inline const Float4& FrustumPlane(BYTE i) _GET { return m_Planes[i]; }
 		inline const Int4&   Scissor()                 _GET { return m_Scissor; }
 
 	public:

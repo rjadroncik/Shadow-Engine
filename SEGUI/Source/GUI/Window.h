@@ -8,7 +8,7 @@ namespace GUI
 	class SEGUI_API CWindow : public CWindowContainer
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassWindow; }
+		CString XmlName() _GET { return STRING("Window"); }
 
 	public:
 		CWindow();
@@ -35,7 +35,7 @@ namespace GUI
 
 		//Returns a bitfield with alignment values describing which sizable part
 		//of the frame the cursor is over, 0 - no sizing possible
-		SCF::DWORD CanStartSizing(_IN Float2& rMousePos);
+		DWORD CanStartSizing(_IN Float2& rMousePos);
 
 	public:
 		inline CText& Text() _GET { return (CText&)m_Text; }

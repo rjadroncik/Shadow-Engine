@@ -18,18 +18,18 @@ namespace Rendering
 		static bool Load(_IN SCFXML::CXMLDocument& rDocument);
 
 	public:
-		static SCF::ENUM CodePath();
-		static void      CodePath(_IN SCF::ENUM eValue);
+		static ENUM CodePath();
+		static void      CodePath(_IN ENUM eValue);
 
 	public:
-		static SCF::UINT MaxModels();
-		static void      MaxModels(_IN SCF::UINT uiValue);
+		static UINT MaxModels();
+		static void      MaxModels(_IN UINT uiValue);
 
-		static SCF::UINT MaxLights();
-		static void      MaxLights(_IN SCF::UINT uiValue);
+		static UINT MaxLights();
+		static void      MaxLights(_IN UINT uiValue);
 
-		static SCF::UINT MaxShadowMapResolution();
-		static void      MaxShadowMapResolution(_IN SCF::UINT uiValue);
+		static UINT MaxShadowMapResolution();
+		static void      MaxShadowMapResolution(_IN UINT uiValue);
 
 	private:
 		CRendererSettings();

@@ -23,7 +23,7 @@ void CWindowContainer::LayOut()
 	}
 	else
 	{
-		for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+		for (UINT i = 0; i < m_Windows.Size(); i++)
 		{
 			((CWindowAbstract&)m_Windows[i]).LayOut();
 		}
@@ -37,7 +37,7 @@ CWindowAbstract* CWindowContainer::MouseOver(_IN Float2& rMousePos, _OPT _OUT Fl
 	Float2 LocalMousePos;
 	SubtractVectors2(LocalMousePos, rMousePos, (Float2&)m_Rect);
 
-	for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+	for (UINT i = 0; i < m_Windows.Size(); i++)
 	{				   
 		CWindowAbstract* pWindow = ((CWindowAbstract&)m_Windows[i]).MouseOver(LocalMousePos, pOutLocalPosition);
 
@@ -56,7 +56,7 @@ bool CWindowContainer::MouseLocalPos(_IN Float2& rMousePos, _IN CWindowAbstract&
 	Float2 LocalMousePos;
 	SubtractVectors2(LocalMousePos, rMousePos, (Float2&)m_Rect);
 
-	for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+	for (UINT i = 0; i < m_Windows.Size(); i++)
 	{				   
 		if (((CWindowAbstract&)m_Windows[i]).MouseLocalPos(LocalMousePos, rWindow, rOutLocalPosition)) { return TRUE; }
 	}					 
@@ -67,7 +67,7 @@ bool CWindowContainer::MouseLocalPos(_IN Float2& rMousePos, _IN CWindowAbstract&
 
 int CWindowContainer::ChildIndexOf(_IN CWindowAbstract& rChild) _GET
 {
-	for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+	for (UINT i = 0; i < m_Windows.Size(); i++)
 	{
 		if (&m_Windows[i] == &rChild) { return i; }
 	}
@@ -100,7 +100,7 @@ void CWindowContainer::Render()
 	
 		this->RenderBackground();
 
- 		for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+ 		for (UINT i = 0; i < m_Windows.Size(); i++)
 		{
 			((CWindowAbstract&)m_Windows[i]).Render();
 		}

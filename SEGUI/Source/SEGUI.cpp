@@ -21,15 +21,15 @@ using namespace Resources;
 
 bool SEGUI_API __fastcall GUI::Initialize(_IN void* hModule)
 {
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassFont,   Resources::CFont,   (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassCursor, Resources::CCursor, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Font",   Resources::CFont,   (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Cursor", Resources::CCursor, (HMODULE)hModule);
 	
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassLabel,       GUI::CLabel,       (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassEditField,   GUI::CEditField,   (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassLayoutSplit, GUI::CLayoutSplit, (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassLayoutTable, GUI::CLayoutTable, (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassWindow,      GUI::CWindow,      (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER(ClassModule,      GUI::CModule,      (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Label",       GUI::CLabel,       (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("EditField",   GUI::CEditField,   (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("LayoutSplit", GUI::CLayoutSplit, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("LayoutTable", GUI::CLayoutTable, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Window",      GUI::CWindow,      (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Module",      GUI::CModule,      (HMODULE)hModule);
 
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);

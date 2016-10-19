@@ -47,7 +47,7 @@ void CText::RangeToRect(_IN Int2& rRange, _OUT Float4& rOutRect)
 	rOutRect[1]  = m_Position[1] - m_pFont->Ascent() + m_pFont->Descent();
 }
 
-SCF::UINT CText::PositionToIndex(_IN Float2& rPosition)
+UINT CText::PositionToIndex(_IN Float2& rPosition)
 {
 	Float4 Rect = { rPosition[0], rPosition[1], 0, 0 };
 	Int2 Range;
@@ -82,7 +82,7 @@ bool CText::RectToRange(_IN Float4& rRect, _OUT Int2& rOutRange)
 
 	bool bStartFound = FALSE;
 
-	for (SCF::UINT i = 0; i < m_csString.Length(); i++)
+	for (UINT i = 0; i < m_csString.Length(); i++)
 	{
 		//Measure the substring starting at the beginning and having the current length
 		m_pFont->StringMeasure(CStringRange(m_csString, 0, i + 1), (Float2&)Tmp);

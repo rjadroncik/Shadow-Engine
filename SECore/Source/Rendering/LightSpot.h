@@ -6,8 +6,8 @@ namespace Rendering
 	class SECORE_API CLightSpot : public CLight
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassLightSpot; }
-		CString   ToString() _GET { return STRING("{LightSpot}"); }
+		CString XmlName() _GET { return STRING("LightSpot"); }
+		CString ToString() _GET { return STRING("{LightSpot}"); }
 
 	public:
 		CLightSpot();

@@ -118,14 +118,14 @@ PFNGLGETATTRIBLOCATIONARBPROC  glGetAttribLocationARB  = NULL;
 
 using namespace System;
 
-extern SCF::UINT OpenGL_uiVersionNumber;
+extern UINT OpenGL_uiVersionNumber;
 extern CString OpenGL_Extensions;
 
 CString OpenGL_GLSLVersion;
 
-SCF::UINT OpenGL_uiGLSLVersionNumber = 0;
+UINT OpenGL_uiGLSLVersionNumber = 0;
 
-inline SCF::UINT COpenGL20::GLSLVersionNumber() { return OpenGL_uiGLSLVersionNumber; }
+inline UINT COpenGL20::GLSLVersionNumber() { return OpenGL_uiGLSLVersionNumber; }
 
 bool COpenGL20::Initialize()
 {
@@ -280,7 +280,7 @@ bool COpenGL20::Initialize()
 		OpenGL_GLSLVersion = (char*)glGetString(GL_SHADING_LANGUAGE_VERSION_ARB);
 
 		CString Temp = CStringRange(OpenGL_GLSLVersion, 0, 3);
-		OpenGL_uiGLSLVersionNumber = (SCF::UINT)(CFloat(Temp).Value() * 10 + 0.5f);
+		OpenGL_uiGLSLVersionNumber = (UINT)(CFloat(Temp).Value() * 10 + 0.5f);
 
 		CEventLog::EventNew(STRING("GLSL version: ") + OpenGL_GLSLVersion);
 

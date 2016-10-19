@@ -8,8 +8,8 @@ namespace Rendering
 	class SECORE_API CMaterial : public System::CSEObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassMaterial; }
-		CString   ToString() _GET { return STRING("{Material}"); }
+		CString XmlName() _GET { return STRING("Material"); }
+		CString ToString() _GET { return STRING("{Material}"); }
 
 	public:
 		CMaterial();
@@ -17,8 +17,8 @@ namespace Rendering
 	 
 	public:
 		const CMaterialUsage* __fastcall Usage(_IN CLight& rLight)   _GET;
-		const CMaterialUsage* __fastcall Usage(_IN SCF::ENUM eUsage) _GET;
-		void                  __fastcall Usage(_IN SCF::ENUM eUsage, _IN CMaterialUsage* pUsage) _SET;
+		const CMaterialUsage* __fastcall Usage(_IN ENUM eUsage) _GET;
+		void                  __fastcall Usage(_IN ENUM eUsage, _IN CMaterialUsage* pUsage) _SET;
 
 	public:
 		//Basic properties
@@ -49,11 +49,11 @@ namespace Rendering
 		inline void Transparent(_IN bool bValue) _SET { m_bTransparent = bValue; }
 		inline bool Transparent()                _GET { return m_bTransparent; }
 
-		inline void      FactorSource(_IN SCF::ENUM eValue) _SET { m_eFactorSource = eValue; }
-		inline SCF::ENUM FactorSource()                     _GET { return m_eFactorSource; }
+		inline void      FactorSource(_IN ENUM eValue) _SET { m_eFactorSource = eValue; }
+		inline ENUM FactorSource()                     _GET { return m_eFactorSource; }
 	
-		inline void      FactorDestination(_IN SCF::ENUM eValue) _SET { m_eFactorDestination = eValue; }
-		inline SCF::ENUM FactorDestination()                     _GET { return m_eFactorDestination; }
+		inline void      FactorDestination(_IN ENUM eValue) _SET { m_eFactorDestination = eValue; }
+		inline ENUM FactorDestination()                     _GET { return m_eFactorDestination; }
 
 	public:
 		void XMLSerialize  (_INOUT SCFXML::IXMLStreamWrite& rWriter) const;
@@ -76,7 +76,7 @@ namespace Rendering
 	protected:
 		bool m_bTransparent;
 
-		SCF::ENUM m_eFactorSource;
-		SCF::ENUM m_eFactorDestination;
+		ENUM m_eFactorSource;
+		ENUM m_eFactorDestination;
 	};
 };

@@ -77,7 +77,7 @@ PFNGLGENERATEMIPMAPEXTPROC                      glGenerateMipmapEXT             
 
 using namespace System;
 
-extern SCF::UINT OpenGL_uiVersionNumber;
+extern UINT OpenGL_uiVersionNumber;
 extern CString OpenGL_Extensions;
 
 bool COpenGL15::Initialize()

@@ -7,7 +7,7 @@ namespace GUI
 	class SEGUI_API CLayoutTable : public CLayout
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassLayoutTable; }
+		CString XmlName() _GET { return STRING("LayoutTable"); }
 
 	public:
 		CLayoutTable();

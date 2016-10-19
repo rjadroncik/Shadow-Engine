@@ -58,6 +58,6 @@ namespace Simulation
 		bool			m_Inert;
 
 		CSimulationPrimitive* m_pPrimitive;
-		SCF::UINT			      m_PrimitiveCount;
+		UINT			      m_PrimitiveCount;
 	};
 };

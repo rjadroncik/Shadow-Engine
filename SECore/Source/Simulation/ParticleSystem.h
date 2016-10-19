@@ -11,8 +11,8 @@ namespace Simulation
 	class SECORE_API CParticleSystem : public Rendering::CObjectScene, public ISimulationObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassParticleSystem; }
-		CString   ToString() _GET { return STRING("{ParticleSystem}"); }
+		CString XmlName() _GET { return STRING("ParticleSystem"); }
+		CString ToString() _GET { return STRING("{ParticleSystem}"); }
 
 	public:
 		CParticleSystem(_IN _REF Rendering::CMaterial& rMaterial);
@@ -40,11 +40,11 @@ namespace Simulation
 		inline Float4* Properties() _GET { return m_pProperties; }
 												
 	public:
-		inline SCF::USHORT ParticleCount()                                _GET { return m_usParticleCount; }
-		inline void        ParticleCount(_IN SCF::USHORT usParticleCount) _SET { m_usParticleCount = usParticleCount; }
+		inline USHORT ParticleCount()                                _GET { return m_usParticleCount; }
+		inline void        ParticleCount(_IN USHORT usParticleCount) _SET { m_usParticleCount = usParticleCount; }
 
-		inline SCF::USHORT ParticleLife()                               _GET { return m_usParticleLife; }
-		inline void        ParticleLife(_IN SCF::USHORT usParticleLife) _SET { m_usParticleLife = usParticleLife; }
+		inline USHORT ParticleLife()                               _GET { return m_usParticleLife; }
+		inline void        ParticleLife(_IN USHORT usParticleLife) _SET { m_usParticleLife = usParticleLife; }
 
 		inline float ParticleSpread()                          _GET { return m_fParticleSpread; }
 		inline void  ParticleSpread(_IN float fParticleSpread) _SET { m_fParticleSpread = fParticleSpread; }
@@ -94,11 +94,11 @@ namespace Simulation
 		inline void          EmitterBox(_IN Float3& emmiterBox) _SET { CopyVector3(m_EmitterBox, emmiterBox); }
 
 	protected:
-		void __fastcall CreateNewParticle(_IN SCF::UINT uiIndex);
+		void __fastcall CreateNewParticle(_IN UINT uiIndex);
 
 	protected:
 		static float       RandomFloat1To1();
-		static SCF::USHORT RandomUSHORT();
+		static USHORT RandomUSHORT();
 
 	public:
 		void XMLSerialize  (_INOUT SCFXML::IXMLStreamWrite& rWriter) const;
@@ -108,13 +108,13 @@ namespace Simulation
 		void Construct(_IN Rendering::CMaterial* pMaterial);
 
 	protected:
-		SCF::BYTE m_ucUpdateCounter;
+		BYTE m_ucUpdateCounter;
 
 		Float3 m_EmitterBox;
 		float  m_fParticleSpread;
 
-		SCF::USHORT m_usParticleCount;
-		SCF::USHORT m_usParticleLife;
+		USHORT m_usParticleCount;
+		USHORT m_usParticleLife;
 		
 		Float4 m_Properties;
 		Float4 m_PropertiesVariation;
@@ -125,7 +125,7 @@ namespace Simulation
 
 	protected:
 		//Per-particle information
-		SCF::USHORT* m_uspTimesLeft;
+		USHORT* m_uspTimesLeft;
 
 		Float4* m_pPositions;
 		Float4* m_pVelocities;

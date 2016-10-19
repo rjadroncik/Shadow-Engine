@@ -112,10 +112,10 @@ void CLayoutTable::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Columns
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 		}
@@ -124,10 +124,10 @@ void CLayoutTable::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Rows
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 		}

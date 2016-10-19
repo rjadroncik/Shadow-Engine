@@ -12,7 +12,7 @@ using namespace Simulation;
 
 namespace Rendering 
 {
-	SCF::UINT* RendererDGC_uipQueries = NULL;
+	UINT* RendererDGC_uipQueries = NULL;
 
 	extern const CScene*           Renderer_pScene;
 	extern const CCamera*          Renderer_pCamera;
@@ -25,12 +25,12 @@ namespace Rendering
 	extern const CModel** Renderer_ppModelsShadow;
 	extern const CLight** Renderer_ppLights;
 
-	extern SCF::UINT Renderer_uiModelCount;
-	extern SCF::UINT Renderer_uiModelShadowCount;
-	extern SCF::UINT Renderer_uiLightCount;
+	extern UINT Renderer_uiModelCount;
+	extern UINT Renderer_uiModelShadowCount;
+	extern UINT Renderer_uiLightCount;
 
 	extern const CGPUProgram* Renderer_pShadowMapProgram;
-	extern SCF::UINT          Renderer_uiShadowMapBuffer;
+	extern UINT          Renderer_uiShadowMapBuffer;
 };
 
 bool __fastcall CRendererDGC::Initialize()
@@ -47,7 +47,7 @@ bool __fastcall CRendererDGC::Initialize()
 
 		//Prepare renderer for visibility queries
 		{
-			RendererDGC_uipQueries = (SCF::UINT*)CMemory::Aligned16Allocate(CRendererSettings::MaxModels() * sizeof(SCF::UINT));
+			RendererDGC_uipQueries = (UINT*)CMemory::Aligned16Allocate(CRendererSettings::MaxModels() * sizeof(UINT));
 			glGenQueriesARB(CRendererSettings::MaxModels(), RendererDGC_uipQueries);
 		}
 
@@ -78,7 +78,7 @@ void CRendererDGC::VisibilityResolve()
 	Renderer_pCamera->ApplyProjection3D();
 
 	//Query visibility information from OpenGL
-	for (SCF::UINT i = 0; i < Renderer_uiModelCount; i++)
+	for (UINT i = 0; i < Renderer_uiModelCount; i++)
 	{
 		glBeginQueryARB(GL_SAMPLES_PASSED_ARB, RendererDGC_uipQueries[i]);
 		glPushMatrix();
@@ -91,9 +91,9 @@ void CRendererDGC::VisibilityResolve()
 	}
 
 	//Finalize visibility determination
-	for (SCF::UINT i = 0; i < Renderer_uiModelCount; i++)
+	for (UINT i = 0; i < Renderer_uiModelCount; i++)
 	{
-		static SCF::UINT RendererDGC_uiSamples;
+		static UINT RendererDGC_uiSamples;
 		glGetQueryObjectuivARB(RendererDGC_uipQueries[i], GL_QUERY_RESULT_ARB, &RendererDGC_uiSamples);
 
 		if (RendererDGC_uiSamples < 16) { ((CModel*)Renderer_ppModels[i])->VisibleToCamera(FALSE); }
@@ -126,7 +126,7 @@ void CRendererDGC::LightDepthMapUpdate()
 		CMaterialUsage::TexturesDisable();
 		GPUProgramBind(*Renderer_pShadowMapProgram);
 
-		for (SCF::UINT i = 0; i < Renderer_uiModelShadowCount; i++)
+		for (UINT i = 0; i < Renderer_uiModelShadowCount; i++)
 		{
 			glPushMatrix();
 			{
@@ -158,7 +158,7 @@ void __fastcall CRendererDGC::Render(_IN CScene& rScene)
 	LightsChoose();
 
 	CStatistics::CRendering::Reset();
-	for (SCF::UINT i = 0 ; i < Renderer_uiLightCount; i++)
+	for (UINT i = 0 ; i < Renderer_uiLightCount; i++)
 	{
 		//Shadow preparation
 		Renderer_pLight = Renderer_ppLights[i];
@@ -203,10 +203,10 @@ void __fastcall CRendererDGC::RenderModels()
 	glEnable(GL_BLEND); 
 	glBlendFunc(GL_ONE, GL_ONE);
 
-	SCF::UINT uiObjectsProcessed = 0;
+	UINT uiObjectsProcessed = 0;
 
 	//Render all models
-	for (SCF::UINT i = 0; i < Renderer_pScene->ModelCount(); i++)
+	for (UINT i = 0; i < Renderer_pScene->ModelCount(); i++)
 	{
 		Renderer_pModel = &Renderer_pScene->Model(i);
 		if (Renderer_pModel->VisibleToCamera()) 
@@ -237,7 +237,7 @@ void __fastcall CRendererDGC::RenderModels()
 
 void __fastcall CRendererDGC::RenderParticleSystems(_IN CScene& rScene)
 {
-	SCF::UINT uiObjectsProcessed = 0;
+	UINT uiObjectsProcessed = 0;
 
 	//MUST BE CALLED BEFORE ENABLING POINT SPRITES .. ROFL
 	glActiveTexture(GL_TEXTURE0);
@@ -256,7 +256,7 @@ void __fastcall CRendererDGC::RenderParticleSystems(_IN CScene& rScene)
 		glBindBufferARB(GL_ARRAY_BUFFER, 0);
 		glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-		for (SCF::UINT i = 0; i < rScene.ParticleSystemCount(); i++)
+		for (UINT i = 0; i < rScene.ParticleSystemCount(); i++)
 		{
 			if (rScene.CameraCurrent()->CheckVisibilityByBounds(rScene.ParticleSystem(i)))
 			{

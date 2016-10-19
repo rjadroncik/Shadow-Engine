@@ -6,10 +6,10 @@ using namespace GUI;
 using namespace System;
 
 Float2 CElement::s_Positions[64] = { 0 };
-SCF::UINT   CElement::s_uiPositionCount = 0;
+UINT   CElement::s_uiPositionCount = 0;
 
 Int4 CElement::s_ScissorRects[64] = { 0 };
-SCF::UINT CElement::s_uiScissorRectCount = 0;
+UINT CElement::s_uiScissorRectCount = 0;
 
 CElement::CElement()
 {
@@ -47,7 +47,7 @@ void CElement::ScissorPush(_IN Float4& rRect)
 	s_ScissorRects[s_uiScissorRectCount][3] = (int)rRect[3]; 
 
 	s_ScissorRects[s_uiScissorRectCount][0] += (int)PositionTop()[0];
-	s_ScissorRects[s_uiScissorRectCount][1] = (CSettings::CDisplay::Height() - ((SCF::UINT)(PositionTop()[1]) + s_ScissorRects[s_uiScissorRectCount][1] + s_ScissorRects[s_uiScissorRectCount][3]));
+	s_ScissorRects[s_uiScissorRectCount][1] = (CSettings::CDisplay::Height() - ((UINT)(PositionTop()[1]) + s_ScissorRects[s_uiScissorRectCount][1] + s_ScissorRects[s_uiScissorRectCount][3]));
 
 	glScissor(s_ScissorRects[s_uiScissorRectCount][0], s_ScissorRects[s_uiScissorRectCount][1], s_ScissorRects[s_uiScissorRectCount][2], s_ScissorRects[s_uiScissorRectCount][3]);
 }

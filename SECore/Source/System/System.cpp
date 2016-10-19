@@ -110,7 +110,7 @@ void CSystem::ShutdownOnError(_IN CString& rErrorMessage)
 	CEventLog::Finish();
 
 	MessageBox(NULL, rErrorMessage.Value(), SCFTEXT("Shutting down on error"), MB_ICONERROR);
-	ExitProcess((SCF::UINT)-1);
+	ExitProcess((UINT)-1);
 }
 
 void CSystem::Shutdown()
@@ -137,7 +137,7 @@ void CSystem::Shutdown()
 		CStreamFileWrite StreamWrite(STRING("ObejctsLeaked.txt"));
 		CStreamWriteText StreamWriteText(StreamWrite);
 
-		for (SCF::UINT i = 0; i < pResults->Size(); i++)
+		for (UINT i = 0; i < pResults->Size(); i++)
 		{
 			StreamWriteText.PutString(pResults->At(i).ToString() + STRING("\n"));
 		}

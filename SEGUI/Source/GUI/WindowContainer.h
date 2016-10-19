@@ -31,7 +31,7 @@ namespace GUI
 	public:
 		int  ChildIndexOf(_IN CWindowAbstract& rChild) _GET;
 		bool ChildHas    (_IN CWindowAbstract& rChild) _GET { return (ChildIndexOf(rChild) != -1); }
-		SCF::UINT ChildCount()                              _GET { return m_Windows.Size(); }
+		UINT ChildCount()                              _GET { return m_Windows.Size(); }
 
 	public:
 		void ChildAdd   (_INOUT CWindowAbstract& rChild) _SET;

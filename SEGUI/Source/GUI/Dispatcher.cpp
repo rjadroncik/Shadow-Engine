@@ -25,9 +25,9 @@ void CDispatcher::HandlerKeyboardKeyDown()
 {
 	if (s_Objects.GUI.Element.pFocused)
 	{
-		SEventKey EventKey = { (SCF::BYTE)CHIDState::CKeyboard::KeyLastDown(), 0 };
+		SEventKey EventKey = { (BYTE)CHIDState::CKeyboard::KeyLastDown(), 0 };
 
-		for (SCF::UINT i = 0; i < CHIDState::CKeyboard::KeyLastRepeat(); i++)
+		for (UINT i = 0; i < CHIDState::CKeyboard::KeyLastRepeat(); i++)
 		{
 			s_Objects.GUI.Element.pFocused->OnKeyPressed(EventKey);
 		}
@@ -38,7 +38,7 @@ void CDispatcher::HandlerKeyboardKeyUp()
 {
 	if (s_Objects.GUI.Element.pFocused)
 	{
-		SEventKey EventKey = { (SCF::BYTE)CHIDState::CKeyboard::KeyLastUp(), 0 };
+		SEventKey EventKey = { (BYTE)CHIDState::CKeyboard::KeyLastUp(), 0 };
 
 		s_Objects.GUI.Element.pFocused->OnKeyReleased(EventKey);
 	}
@@ -50,7 +50,7 @@ void CDispatcher::HandlerKeyboardChar()
 	{
 		SEventKey EventKey = { 0, (TCHAR)CHIDState::CKeyboard::CharLast() };
 
-		for (SCF::UINT i = 0; i < CHIDState::CKeyboard::KeyLastRepeat(); i++)
+		for (UINT i = 0; i < CHIDState::CKeyboard::KeyLastRepeat(); i++)
 		{
 			s_Objects.GUI.Element.pFocused->OnKeyPressed(EventKey);
 		}

@@ -4,22 +4,22 @@
 
 using namespace System;
 
-SCF::ENUM OpenGL_eVendor = VENDOR_NOT_SUPPORTED;
+ENUM OpenGL_eVendor = VENDOR_NOT_SUPPORTED;
 
 CString OpenGL_Extensions;
 CString OpenGL_Vendor;
 CString OpenGL_Renderer;
 CString OpenGL_Version;
 
-SCF::UINT OpenGL_uiVersionNumber = 0;
+UINT OpenGL_uiVersionNumber = 0;
 
 inline CString   COpenGL::Extensions() { return OpenGL_Extensions; }
 inline CString   COpenGL::Vendor()     { return OpenGL_Vendor; }
-inline SCF::ENUM COpenGL::VendorID()   { return OpenGL_eVendor; }
+inline ENUM COpenGL::VendorID()   { return OpenGL_eVendor; }
 inline CString   COpenGL::Renderer()   { return OpenGL_Renderer; }
 
 inline CString   COpenGL::Version()       { return OpenGL_Version; }
-inline SCF::UINT COpenGL::VersionNumber() { return OpenGL_uiVersionNumber; }
+inline UINT COpenGL::VersionNumber() { return OpenGL_uiVersionNumber; }
 
 void COpenGL::InitializeOpenGLState()
 {
@@ -71,16 +71,16 @@ void COpenGL::Initialize()
 
 	//This whole little dance is just to replace spaces with carriage return - line feed pairs
 	{
-		SCF::UINT uiSpaceCount = 0;
-		for (SCF::UINT i = 0; i < OpenGL_Extensions.Length(); i++)
+		UINT uiSpaceCount = 0;
+		for (UINT i = 0; i < OpenGL_Extensions.Length(); i++)
 		{
 			if (OpenGL_Extensions[i] == ' ') { uiSpaceCount++; }
 		}
 
 		Temp.Resize(OpenGL_Extensions.Length() + uiSpaceCount);
 
-		SCF::UINT j = 0;
-		for (SCF::UINT i = 0; i <= OpenGL_Extensions.Length(); i++)
+		UINT j = 0;
+		for (UINT i = 0; i <= OpenGL_Extensions.Length(); i++)
 		{
 			if (OpenGL_Extensions[i] == ' ') { Temp.AtPut(j, '\r'); j++; Temp.AtPut(j, '\n'); j++; }
 			else                             { Temp.AtPut(j, OpenGL_Extensions[i]); j++; }
@@ -90,7 +90,7 @@ void COpenGL::Initialize()
 	}
 
 	Temp = CStringRange(OpenGL_Version, 0, 3);
-	OpenGL_uiVersionNumber = (SCF::UINT)(CFloat(Temp).Value() * 10 + 0.5f);
+	OpenGL_uiVersionNumber = (UINT)(CFloat(Temp).Value() * 10 + 0.5f);
 
 	CStringSearch VendorSearch(OpenGL_Vendor);
 	if (VendorSearch.FindStringIC(STRING("ATI"))    != -1) { OpenGL_eVendor = VENDOR_ATI; }

@@ -39,7 +39,7 @@ void __fastcall CFont::StringMeasure(_IN CString& rString, _OUT Float2& rOutSize
 {
 	register float fWidth = 0;
 
-	for (SCF::UINT i = 0; i < rString.Length(); i++)
+	for (UINT i = 0; i < rString.Length(); i++)
 	{
 		fWidth += m_fpCharWidths[rString[i]];
 	}
@@ -87,7 +87,7 @@ bool __fastcall CFont::CreateDisplayList(_INOUT SCFXML::CXMLStreamRead& rStream)
 {
 	rStream.GetBlock();
 
-	SCF::UINT uiGlyphCount = CInt(*rStream.GetValue()).Value();
+	UINT uiGlyphCount = CInt(*rStream.GetValue()).Value();
 	CFloat4 GlyphInsets(*rStream.GetValue());
 	float fImageSize = CFloat(*rStream.GetValue()).Value();
 
@@ -98,7 +98,7 @@ bool __fastcall CFont::CreateDisplayList(_INOUT SCFXML::CXMLStreamRead& rStream)
 	m_uiListBase = glGenLists(m_uiCharacterMax + 1);	
 	m_fpCharWidths = (float*)CMemory::Allocate(sizeof(float) * (m_uiCharacterMax + 1));
 
-	for (SCF::UINT i = 0; i < uiGlyphCount; i++)
+	for (UINT i = 0; i < uiGlyphCount; i++)
 	{
 		rStream.GetBlock();
 

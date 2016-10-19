@@ -12,8 +12,8 @@ namespace Resources
 	class SEGUI_API CCursor : public System::CSEObject
 	{
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassCursor; }
-		CString   ToString() _GET { return STRING("{Cursor}"); }
+		CString XmlName() _GET { return STRING("Cursor"); }
+		CString ToString() _GET { return STRING("{Cursor}"); }
 
 	public:
 		CCursor(_IN CTexture& rTexture);

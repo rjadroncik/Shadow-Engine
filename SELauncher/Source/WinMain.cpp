@@ -17,7 +17,7 @@ BOOL APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 	HMODULE hGameDLL = LoadLibrary((ExeFile.Path() + STRING("SEGameD.dll")).Value());
 #else
 	//In release mode, we choose the best fitting DLL to load, based on CPU capabilities(instruction sets)
-	SCF::DWORD dwInstructionSets = CInfoCPU::InstructionSets();
+	DWORD dwInstructionSets = CInfoCPU::InstructionSets();
 	HMODULE hGameDLL = NULL;
 
 	//Try loading the SSE3, SSE & default versions in that order(they don't have to be all present in the distribution)

@@ -138,9 +138,9 @@ bool CWindow::Create(_IN HWND hParent)
 	}
 	else
 	{
-		SCF::UINT  uiPixelFormat = 0;
-		SCF::DWORD dwExStyle     = WS_EX_APPWINDOW;
-		SCF::DWORD dwStyle       = NULL;
+		UINT  uiPixelFormat = 0;
+		DWORD dwExStyle     = WS_EX_APPWINDOW;
+		DWORD dwStyle       = NULL;
 
 		if (CSettings::CDisplay::FullScreen())
 		{
@@ -161,7 +161,7 @@ bool CWindow::Create(_IN HWND hParent)
 			return FALSE;
 		}
 
-		static PIXELFORMATDESCRIPTOR pfd = { sizeof(PIXELFORMATDESCRIPTOR), 1, PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER, PFD_TYPE_RGBA, (SCF::BYTE)CSettings::CDisplay::BitDepth(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 8, 0, PFD_MAIN_PLANE, 0, 0, 0, 0	};
+		static PIXELFORMATDESCRIPTOR pfd = { sizeof(PIXELFORMATDESCRIPTOR), 1, PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER, PFD_TYPE_RGBA, (BYTE)CSettings::CDisplay::BitDepth(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 8, 0, PFD_MAIN_PLANE, 0, 0, 0, 0	};
 
 		//Set pixel format
 		if ((s_Runtime.hDC = GetDC(s_Runtime.hWnd)) == 0)                  
@@ -213,7 +213,7 @@ void CWindow::OnSizeChanged()
 	if (s_State.pSizeChanged) { s_State.pSizeChanged(); }
 }
 
-LRESULT CALLBACK CWindow::WindowProcedure(HWND hWnd, SCF::UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK CWindow::WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	SCF_UNREFERENCED_PARAMETER(lParam);
 
@@ -247,22 +247,22 @@ LRESULT CALLBACK CWindow::WindowProcedure(HWND hWnd, SCF::UINT message, WPARAM w
 
 	case WM_KEYDOWN:
 		{
-			CHIDState::CKeyboard::s_uiKeyLastDown   = (SCF::UINT)wParam;
-			CHIDState::CKeyboard::s_uiKeyLastRepeat = (SCF::BYTE)lParam;
+			CHIDState::CKeyboard::s_uiKeyLastDown   = (UINT)wParam;
+			CHIDState::CKeyboard::s_uiKeyLastRepeat = (BYTE)lParam;
 			CHIDState::CKeyboard::s_usCharLast      = 0;
 
-			CHIDState::CKeyboard::s_baKeysDown[(SCF::UINT)wParam] = TRUE;
+			CHIDState::CKeyboard::s_baKeysDown[(UINT)wParam] = TRUE;
 
 			if (CHID::CKeyboard::HandlerKeyDown()) { CHID::CKeyboard::HandlerKeyDown()(); }
 			break;
 		}
 	case WM_KEYUP:
 		{
-			CHIDState::CKeyboard::s_uiKeyLastDown   = (SCF::UINT)wParam;
+			CHIDState::CKeyboard::s_uiKeyLastDown   = (UINT)wParam;
 			CHIDState::CKeyboard::s_uiKeyLastRepeat = 1;
 			CHIDState::CKeyboard::s_usCharLast      = 0;
 
-			CHIDState::CKeyboard::s_baKeysDown[(SCF::UINT)wParam] = FALSE;
+			CHIDState::CKeyboard::s_baKeysDown[(UINT)wParam] = FALSE;
 
 			if (CHID::CKeyboard::HandlerKeyUp()) { CHID::CKeyboard::HandlerKeyUp()(); }
 			break;
@@ -270,8 +270,8 @@ LRESULT CALLBACK CWindow::WindowProcedure(HWND hWnd, SCF::UINT message, WPARAM w
 	case WM_CHAR:
 		{
 			CHIDState::CKeyboard::s_uiKeyLastDown   = 0;
-			CHIDState::CKeyboard::s_uiKeyLastRepeat = (SCF::BYTE)lParam;
-			CHIDState::CKeyboard::s_usCharLast      = (SCF::TCHAR)wParam;
+			CHIDState::CKeyboard::s_uiKeyLastRepeat = (BYTE)lParam;
+			CHIDState::CKeyboard::s_usCharLast      = (TCHAR)wParam;
 
 			if (wParam < 32) { break; }
 			if (CHID::CKeyboard::HandlerChar()) { CHID::CKeyboard::HandlerChar()(); }

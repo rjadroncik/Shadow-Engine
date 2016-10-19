@@ -140,9 +140,9 @@ bool CWindow::CanStartDragging(_IN Float2& rMousePos)
 	return (rMousePos[1] <= m_RectClient[1]);
 }
 
-SCF::DWORD CWindow::CanStartSizing(_IN Float2& rMousePos)
+DWORD CWindow::CanStartSizing(_IN Float2& rMousePos)
 {
-	SCF::DWORD dwResult = 0;
+	DWORD dwResult = 0;
 
 	if (rMousePos[0] <= (int)m_fBorder) { dwResult |= AlignLeft; }
 	if (rMousePos[1] <= (int)m_fBorder) { dwResult |= AlignTop; }
@@ -168,7 +168,7 @@ CWindowAbstract* CWindow::MouseOver(_IN Float2& rMousePos, _OPT _OUT Float2* pOu
 
 	SubtractVectors2(LocalMousePos, LocalMousePos, (Float2&)m_RectClient);
 	{
-		for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+		for (UINT i = 0; i < m_Windows.Size(); i++)
 		{				   
 			pWindow = ((CWindowAbstract&)m_Windows[i]).MouseOver(LocalMousePos, pOutLocalPosition);
 
@@ -195,7 +195,7 @@ bool CWindow::MouseLocalPos(_IN Float2& rMousePos, _IN CWindowAbstract& rWindow,
 
 	SubtractVectors2(LocalMousePos, LocalMousePos, (Float2&)m_RectClient);
 
-	for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+	for (UINT i = 0; i < m_Windows.Size(); i++)
 	{				   
 		if (((CWindowAbstract&)m_Windows[i]).MouseLocalPos(LocalMousePos, rWindow, rOutLocalPosition)) { return TRUE; }
 	}					 
@@ -254,7 +254,7 @@ void CWindow::Render()
 		{
 			Translate(m_RectClient[0], m_RectClient[1]);
 
-			for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+			for (UINT i = 0; i < m_Windows.Size(); i++)
 			{
 				((CWindowAbstract&)m_Windows[i]).Render();
 			}
@@ -362,7 +362,7 @@ void CWindow::LayOut()
 	}
 	else
 	{
-		for (SCF::UINT i = 0; i < m_Windows.Size(); i++)
+		for (UINT i = 0; i < m_Windows.Size(); i++)
 		{
 			((CWindowAbstract&)m_Windows[i]).LayOut();
 		}
@@ -428,10 +428,10 @@ void CWindow::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Elements
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 			GETVALUE { ChildAdd(*(CWindowAbstract*)CScripting::Object(*pValue)); }

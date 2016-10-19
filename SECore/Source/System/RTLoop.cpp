@@ -106,7 +106,7 @@ void CRTLoop::Next()
 	//If we finished early, sleep till it's time for next frame
 	if (GetTime02() < (CSimulation::CSettings::UpdateTime() * 0.8f)) 
 	{
-		SleepEx((SCF::UINT)((CSimulation::CSettings::UpdateTime() - GetTime02()) * 800), TRUE);
+		SleepEx((UINT)((CSimulation::CSettings::UpdateTime() - GetTime02()) * 800), TRUE);
 	}
 }
 
@@ -131,7 +131,7 @@ void CRTLoop::Render()
 
 	//int x = 0;
 
-	//for (SCF::UINT i = 0; i < 10000000; i++)
+	//for (UINT i = 0; i < 10000000; i++)
 	//{
 	//	x = __abs(x*x*x*x*x);
 	//}

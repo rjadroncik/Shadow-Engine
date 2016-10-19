@@ -22,7 +22,6 @@
 #include <OpenGL\glext.h>
 #include <OpenGL\glu.h>
 
-#include "Classes.h"
 #include "Errors.h"
 
 #include "../../SECore/Source/System/EventLog.h"

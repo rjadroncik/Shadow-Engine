@@ -28,12 +28,12 @@ namespace Simulation
 		{
 			struct SSettings
 			{
-				SCF::UINT uiUpdateRate;
+				UINT uiUpdateRate;
 				float fUpdateTime;
 
 			} Settings;
 
-			SCF::UINT uiUpdateCountTotal;
+			UINT uiUpdateCountTotal;
 
 		} Timing;
 
@@ -50,11 +50,11 @@ void CSimulation::Resume() { Simulation_State.bRunning = TRUE; }
 
 inline bool CSimulation::IsRunning() { return Simulation_State.bRunning; }
 
-inline SCF::UINT CSimulation::UpdateCountTotal()   { return Simulation_State.Timing.uiUpdateCountTotal; }
+inline UINT CSimulation::UpdateCountTotal()   { return Simulation_State.Timing.uiUpdateCountTotal; }
 
 
-inline void      CSimulation::CSettings::UpdateRate(SCF::UINT uiUpdateRate) { Simulation_State.Timing.Settings.uiUpdateRate = uiUpdateRate; }
-inline SCF::UINT CSimulation::CSettings::UpdateRate()                       { return Simulation_State.Timing.Settings.uiUpdateRate; }
+inline void      CSimulation::CSettings::UpdateRate(UINT uiUpdateRate) { Simulation_State.Timing.Settings.uiUpdateRate = uiUpdateRate; }
+inline UINT CSimulation::CSettings::UpdateRate()                       { return Simulation_State.Timing.Settings.uiUpdateRate; }
 
 inline void  CSimulation::CSettings::UpdateTime(float fUpdateTime) { Simulation_State.Timing.Settings.fUpdateTime = fUpdateTime; }
 inline float CSimulation::CSettings::UpdateTime()                  { return Simulation_State.Timing.Settings.fUpdateTime; }

@@ -6,7 +6,7 @@
 namespace Rendering
 {
 	typedef void (__fastcall *SCENE_RENDER)(_IN CScene&);
-	typedef void (__fastcall *UNIFORM_BINDER)(_IN SCF::UINT uiTarget);
+	typedef void (__fastcall *UNIFORM_BINDER)(_IN UINT uiTarget);
 
 	class SECORE_API CRenderer
 	{
@@ -17,8 +17,8 @@ namespace Rendering
 		static void GUIRender();
 
 	public:
-		static const Resources::CTexture* ShadowMapFront(_IN SCF::UINT uiLOD);
-		static const Resources::CTexture* ShadowMapBack (_IN SCF::UINT uiLOD);
+		static const Resources::CTexture* ShadowMapFront(_IN UINT uiLOD);
+		static const Resources::CTexture* ShadowMapBack (_IN UINT uiLOD);
 
 		static void __fastcall ShadowMapBindFront();
 		static void __fastcall ShadowMapBindBack();

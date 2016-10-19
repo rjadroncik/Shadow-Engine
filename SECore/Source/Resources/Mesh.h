@@ -10,19 +10,19 @@ namespace Resources
 		//Marks this attribute as a source of a given type of data
 		//(i. e. eDataType == AS_VERTEX_TANGENT
 		//means that vertex tangents are stored in this set)
-		SCF::ENUM eDataType;
+		ENUM eDataType;
 		void* vpData;
 
-		SCF::UINT uiBufferID;
-		SCF::ENUM eBufferUsage;
+		UINT uiBufferID;
+		ENUM eBufferUsage;
 
-		SCF::UINT uiComponents;
+		UINT uiComponents;
 	};
 
 	struct SVertexList  
 	{
-		SCF::USHORT* uspTriangles;
-		SCF::USHORT usCount;
+		USHORT* uspTriangles;
+		USHORT usCount;
 	};
 
 	class SECORE_API CMesh : public System::CSEObject
@@ -30,8 +30,8 @@ namespace Resources
 		friend class CFile3DS;
 	 
 	public:
-		SCF::ENUM ClassKey() _GET { return ClassMesh; }
-		CString   ToString() _GET { return STRING("{Mesh}"); }
+		CString XmlName() _GET { return STRING("Mesh"); }
+		CString ToString() _GET { return STRING("{Mesh}"); }
 
 	public:
 		CMesh();
@@ -46,39 +46,39 @@ namespace Resources
 
 	public:
 		//Mesh data manipulation
-		inline const Float3& Vertex(_IN SCF::UINT uiIndex) _GET { return m_pVertices[uiIndex]; }
+		inline const Float3& Vertex(_IN UINT uiIndex) _GET { return m_pVertices[uiIndex]; }
 		inline const Float3* Vertices()                    _GET { return m_pVertices; }
 		
-		void __fastcall Vertices      (_IN Float3* pVertices, _IN SCF::USHORT usCount) _SET;
-		void __fastcall VerticesUpload(_IN Float3* pVertices, _IN SCF::USHORT usCount) _SET;
+		void __fastcall Vertices      (_IN Float3* pVertices, _IN USHORT usCount) _SET;
+		void __fastcall VerticesUpload(_IN Float3* pVertices, _IN USHORT usCount) _SET;
 
-		inline const Short3& Triangle(_IN SCF::UINT uiIndex) _GET { return m_pTriangles[uiIndex]; }
+		inline const Short3& Triangle(_IN UINT uiIndex) _GET { return m_pTriangles[uiIndex]; }
 		inline const Short3* Triangles()                     _GET { return m_pTriangles; }
 		
-		void __fastcall Triangles      (_IN Short3* pTriangles, _IN SCF::USHORT usCount) _SET;
-		void __fastcall TrianglesUpload(_IN Short3* pTriangles, _IN SCF::USHORT usCount) _SET;
+		void __fastcall Triangles      (_IN Short3* pTriangles, _IN USHORT usCount) _SET;
+		void __fastcall TrianglesUpload(_IN Short3* pTriangles, _IN USHORT usCount) _SET;
 
-		inline SCF::USHORT VertexCount()   _GET { return m_usVertexCount; }
-		inline SCF::USHORT TriangleCount() _GET { return m_usTriangleCount; }
+		inline USHORT VertexCount()   _GET { return m_usVertexCount; }
+		inline USHORT TriangleCount() _GET { return m_usTriangleCount; }
 
 	public:
 		inline void BufferIndexBind()  const { glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, m_uiBufferIndex); }
 		inline void BufferVertexBind() const { glBindBufferARB(GL_ARRAY_BUFFER,         m_uiBufferVertex); }
 
 	public:
-		void __fastcall AttributeAdd   (_IN SCF::ENUM eDataType, _IN void* vpData, _IN SCF::UINT uiComponents) _SET;
-		void __fastcall AttributeUpload(_IN SCF::ENUM eDataType, _IN void* vpData, _IN SCF::UINT uiComponents) _SET;
+		void __fastcall AttributeAdd   (_IN ENUM eDataType, _IN void* vpData, _IN UINT uiComponents) _SET;
+		void __fastcall AttributeUpload(_IN ENUM eDataType, _IN void* vpData, _IN UINT uiComponents) _SET;
 
-		inline const SAttribute* Attribute(_IN SCF::UINT uiIndex) _GET { return &m_pAttributes[uiIndex]; }
-		inline SCF::USHORT       AttributesCount()                _GET { return m_usAttributesCount; }
+		inline const SAttribute* Attribute(_IN UINT uiIndex) _GET { return &m_pAttributes[uiIndex]; }
+		inline USHORT       AttributesCount()                _GET { return m_usAttributesCount; }
 
 		//A helper function which computes tangents & binormals & sets them as vertex attributes with the specified indexes 
 		void __fastcall AttributeTNCompute(); 
 
 	protected:
-		void __fastcall BufferIndexEnable    (_IN SCF::ENUM eUsage) _SET;
-		void __fastcall BufferVertexEnable   (_IN SCF::ENUM eUsage) _SET;
-		void __fastcall BufferAttributeEnable(_IN SCF::ENUM eSource, _IN SCF::ENUM eUsage) _SET;
+		void __fastcall BufferIndexEnable    (_IN ENUM eUsage) _SET;
+		void __fastcall BufferVertexEnable   (_IN ENUM eUsage) _SET;
+		void __fastcall BufferAttributeEnable(_IN ENUM eSource, _IN ENUM eUsage) _SET;
 
 	protected:
 		//Bump mapping internal functions
@@ -94,24 +94,24 @@ namespace Resources
 
 	protected:
 		//Vertex buffer
-		SCF::UINT m_uiBufferVertex;
-		SCF::ENUM m_eBufferVertexUsage;
+		UINT m_uiBufferVertex;
+		ENUM m_eBufferVertexUsage;
 
 		//Index buffer
-		SCF::UINT m_uiBufferIndex;
-		SCF::ENUM m_eBufferIndexUsage;
+		UINT m_uiBufferIndex;
+		ENUM m_eBufferIndexUsage;
 
 	protected:
 		Float3*     m_pVertices;
-		SCF::USHORT m_usVertexCount;
+		USHORT m_usVertexCount;
 
 		Short3*     m_pTriangles;
-		SCF::USHORT m_usTriangleCount;
+		USHORT m_usTriangleCount;
 
 	protected:
 		//Vertex attribute sets
 		SAttribute* m_pAttributes;
-		SCF::USHORT m_usAttributesCount;
+		USHORT m_usAttributesCount;
 
 		bool m_bHasTBNs;
 
@@ -120,11 +120,11 @@ namespace Resources
 		SVertexList* m_pSeamVertices;
 		SVertexList* m_pSmoothingGroups;
 
-		SCF::USHORT m_usSeamVertexListCount;
-		SCF::USHORT m_usSmoothingGroupCount;
+		USHORT m_usSeamVertexListCount;
+		USHORT m_usSmoothingGroupCount;
 
 	protected:
-		static void __fastcall AddIndex(_INOUT SVertexList& rVertexList, _IN SCF::USHORT usIndex);
-		static bool __fastcall IsIn    (_INOUT SVertexList& rVertexList, _IN SCF::USHORT uisIndex);
+		static void __fastcall AddIndex(_INOUT SVertexList& rVertexList, _IN USHORT usIndex);
+		static bool __fastcall IsIn    (_INOUT SVertexList& rVertexList, _IN USHORT uisIndex);
 	};
 };

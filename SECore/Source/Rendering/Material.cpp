@@ -13,7 +13,7 @@ using namespace Resources;
 
 CMaterial::CMaterial()
 {
-	for (SCF::UINT i = 0 ; i < UsageCount; i++)
+	for (UINT i = 0 ; i < UsageCount; i++)
 	{
 		m_paUsages[i] = NULL;
 	}
@@ -36,7 +36,7 @@ CMaterial::CMaterial()
 
 CMaterial::~CMaterial()
 {
-	for (SCF::UINT i = 0 ; i < UsageCount; i++)
+	for (UINT i = 0 ; i < UsageCount; i++)
 	{
 		if (m_paUsages[i]) { delete m_paUsages[i]; }
 	}
@@ -48,12 +48,12 @@ const CMaterialUsage* __fastcall CMaterial::Usage(_IN CLight& rLight) _GET
 	else                  { return m_paUsages[rLight.ClassKey() - ClassLightSpot]; }
 }
 
-const CMaterialUsage* __fastcall CMaterial::Usage(_IN SCF::ENUM eUsage) _GET
+const CMaterialUsage* __fastcall CMaterial::Usage(_IN ENUM eUsage) _GET
 {
 	return m_paUsages[eUsage];
 }
 
-void __fastcall CMaterial::Usage(_IN SCF::ENUM eUsage, _IN CMaterialUsage* pUsage) _SET
+void __fastcall CMaterial::Usage(_IN ENUM eUsage, _IN CMaterialUsage* pUsage) _SET
 {
 	m_paUsages[eUsage] = pUsage;
 }
@@ -95,10 +95,10 @@ void CMaterial::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 	//Usages
 	rReader.GetBlock();
 	{
-		SCF::UINT uiCount = 0;
+		UINT uiCount = 0;
 		GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-		for (SCF::UINT i = 0; i < uiCount; i++)
+		for (UINT i = 0; i < uiCount; i++)
 		{
 			rReader.GetBlock();
 
@@ -123,10 +123,10 @@ void CMaterial::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 				//Textures
 				rReader.GetBlock();
 				{
-					SCF::UINT uiCount = 0;
+					UINT uiCount = 0;
 					GETVALUE { uiCount = CInt(*pValue).Value(); }
 
-					for (SCF::UINT i = 0; i < uiCount; i++)
+					for (UINT i = 0; i < uiCount; i++)
 					{
 						rReader.GetBlock();
 
@@ -138,7 +138,7 @@ void CMaterial::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 							CEnum* pEnum = SCFXML::CXMLEnumeration::Translate(STRING("SourcesSamplers"), *pSource);
 							if (pEnum) 
 							{
-								for (SCF::UINT j = 0; j < pUsage->Program().SamplersCount(); j++)
+								for (UINT j = 0; j < pUsage->Program().SamplersCount(); j++)
 								{
 									if (pUsage->Program().Sampler(j)->eSource == pEnum->Value()) 
 									{
@@ -154,7 +154,7 @@ void CMaterial::XMLDeserialize(_INOUT SCFXML::IXMLStreamRead& rReader)
 					}
 				}
 
-				for (SCF::UINT i = 0; i < pUsage->Program().SamplersCount(); i++)
+				for (UINT i = 0; i < pUsage->Program().SamplersCount(); i++)
 				{
 					if (pUsage->Program().Sampler(i)->eSource == SS_LIGHT_DEPTHMAP0) { pUsage->ShadowMapTargetFront(pUsage->Program().Sampler(i)->uiTarget); }
 					if (pUsage->Program().Sampler(i)->eSource == SS_LIGHT_DEPTHMAP1) { pUsage->ShadowMapTargetBack (pUsage->Program().Sampler(i)->uiTarget); }
