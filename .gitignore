@@ -11,3 +11,4 @@ ipch
 *.tlog
 *.opensdf
 *.db
+/Shadow Engine.VC.VC.opendb
