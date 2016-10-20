@@ -27,56 +27,56 @@ bool __fastcall CManager::Initialize()
 {
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassTexture);
+		//pClassKeys->AtPut(0, ClassTexture);
 
 		CManager::ObjectTypesAdd(STRING("textures"), STRING("Resources"),  *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassGPUProgram);
+		//pClassKeys->AtPut(0, ClassGPUProgram);
 
 		CManager::ObjectTypesAdd(STRING("GPUPrograms"), STRING("Resources"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassMaterial);
+		//pClassKeys->AtPut(0, ClassMaterial);
 
 		CManager::ObjectTypesAdd(STRING("materials"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassMesh);
+		//pClassKeys->AtPut(0, ClassMesh);
 
 		CManager::ObjectTypesAdd(STRING("meshes"), STRING("Resources"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassModel);
+		//pClassKeys->AtPut(0, ClassModel);
 
 		CManager::ObjectTypesAdd(STRING("models"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(2);
-		pClassKeys->AtPut(0, ClassLightSpot);
-		pClassKeys->AtPut(1, ClassLightOmni);
+		//pClassKeys->AtPut(0, ClassLightSpot);
+		//pClassKeys->AtPut(1, ClassLightOmni);
 
 		CManager::ObjectTypesAdd(STRING("lights"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassCamera);
+		//pClassKeys->AtPut(0, ClassCamera);
 
 		CManager::ObjectTypesAdd(STRING("cameras"), STRING("Rendering"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassParticleSystem);
+		//pClassKeys->AtPut(0, ClassParticleSystem);
 
 		CManager::ObjectTypesAdd(STRING("particleSystems"), STRING("Simulation"), *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);
-		pClassKeys->AtPut(0, ClassScene);
+		//pClassKeys->AtPut(0, ClassScene);
 
 		CManager::ObjectTypesAdd(STRING("scenes"), STRING("Rendering"), *pClassKeys);
 	}
@@ -228,7 +228,7 @@ void __fastcall CManager::ObjectsSave(_OUT CXMLStreamWriteObject& rStream, _IN C
 	{
 		for (UINT i = 0; i < rClassKeys.Size(); i++)
 		{ 
-			if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
+			//if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
 			{
 				rStream.Next((CXMLObjectSerializable*)pEnumerator->Current());
 				break;
@@ -264,7 +264,7 @@ void __fastcall CManager::ObjectsDelete(_IN CArrayInt& rClassKeys, _IN CString& 
 		{
 			for (UINT i = 0; i < rClassKeys.Size(); i++)
 			{ 
-				if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
+				//if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
 				{
 					CEventLog::EventNew(pEnumerator->CurrentPath());
 					pEnumerator->CurrentShallowDelete();

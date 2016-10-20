@@ -17,6 +17,9 @@ namespace Rendering
 	class SECORE_API CLight : public CObjectScene
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Lights; }
+
+	public:
 		CLight();
 		virtual ~CLight();
 

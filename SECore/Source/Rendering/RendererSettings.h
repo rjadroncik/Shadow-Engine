@@ -19,17 +19,17 @@ namespace Rendering
 
 	public:
 		static ENUM CodePath();
-		static void      CodePath(_IN ENUM eValue);
+		static void CodePath(_IN ENUM eValue);
 
 	public:
 		static UINT MaxModels();
-		static void      MaxModels(_IN UINT uiValue);
+		static void MaxModels(_IN UINT uiValue);
 
 		static UINT MaxLights();
-		static void      MaxLights(_IN UINT uiValue);
+		static void MaxLights(_IN UINT uiValue);
 
 		static UINT MaxShadowMapResolution();
-		static void      MaxShadowMapResolution(_IN UINT uiValue);
+		static void MaxShadowMapResolution(_IN UINT uiValue);
 
 	private:
 		CRendererSettings();

@@ -7,40 +7,40 @@
 
 namespace Simulation
 {
-	class SECORE_API CSimulation
-	{
-	public:
-		static CScene* Scene();
-		static void    Scene(CScene* pScene);
+    class SECORE_API CSimulation
+    {
+    public:
+        static CScene* Scene();
+        static void    Scene(CScene* pScene);
 
-	public:
-		static void Start();
-		static void Next();
+    public:
+        static void Start();
+        static void Next();
 
-		static void Pause();
-		static void Resume();
+        static void Pause();
+        static void Resume();
 
-		static bool IsRunning();
+        static bool IsRunning();
 
-	public:
-		static UINT UpdateCountTotal();
+    public:
+        static UINT UpdateCountTotal();
 
- 		class SECORE_API CSettings
-		{
-		public:
-			static void      UpdateRate(UINT uiUpdateRate);
-			static UINT UpdateRate();
+        class SECORE_API CSettings
+        {
+        public:
+            static void UpdateRate(UINT uiUpdateRate);
+            static UINT UpdateRate();
 
-			static void  UpdateTime(float fUpdateTime);
-			static float UpdateTime();
-		};
+            static void  UpdateTime(float fUpdateTime);
+            static float UpdateTime();
+        };
 
-	private:
-		static void SceneUpdate();
-		static void SceneRender();
+    private:
+        static void SceneUpdate();
+        static void SceneRender();
 
-	private:
-		CSimulation();
-		~CSimulation();
-	};
+    private:
+        CSimulation();
+        ~CSimulation();
+    };
 };

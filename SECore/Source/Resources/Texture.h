@@ -10,6 +10,9 @@ namespace Resources
 	class SECORE_API CTexture : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Textures; }
+
+	public:
 		CString XmlName() _GET { return STRING("Texture"); }
 		CString ToString() _GET { return STRING("{Texture}"); }
 

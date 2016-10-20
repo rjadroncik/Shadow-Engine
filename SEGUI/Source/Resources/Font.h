@@ -16,7 +16,11 @@ namespace Resources
 	class SEGUI_API CFont : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Fonts; }
+
+	public:
 		CString XmlName() _GET { return STRING("Font"); }
+		CString ToString() _GET { return STRING("{Font}"); }
 
 	public:
 		CFont();

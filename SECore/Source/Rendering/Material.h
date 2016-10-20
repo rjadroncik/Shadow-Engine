@@ -8,6 +8,9 @@ namespace Rendering
 	class SECORE_API CMaterial : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Materials; }
+
+	public:
 		CString XmlName() _GET { return STRING("Material"); }
 		CString ToString() _GET { return STRING("{Material}"); }
 

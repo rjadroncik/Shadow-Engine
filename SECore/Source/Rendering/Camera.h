@@ -11,6 +11,9 @@ namespace Rendering
 	class SECORE_API CCamera : public CObjectScene
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Cameras; }
+
+	public:
 		CString XmlName() _GET { return STRING("Camera"); }
 		CString ToString() _GET { return STRING("{Camera}"); }
 

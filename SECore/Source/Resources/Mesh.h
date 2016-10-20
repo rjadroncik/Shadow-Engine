@@ -28,7 +28,10 @@ namespace Resources
 	class SECORE_API CMesh : public System::CSEObject
 	{
 		friend class CFile3DS;
-	 
+
+	public:
+		System::Category Category() _GET { return System::Category::Meshes; }
+
 	public:
 		CString XmlName() _GET { return STRING("Mesh"); }
 		CString ToString() _GET { return STRING("{Mesh}"); }

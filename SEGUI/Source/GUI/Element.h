@@ -13,6 +13,9 @@ namespace GUI
 	class SEGUI_API CElement : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Controls; }
+
+	public:
 		virtual ~CElement();
 
 	public:

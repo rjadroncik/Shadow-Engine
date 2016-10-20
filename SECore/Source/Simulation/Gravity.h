@@ -6,10 +6,17 @@ namespace Simulation
 	class SECORE_API CGravity : public Rendering::CObjectScene
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Forces; }
+
+	public:
+		CString XmlName() _GET { return STRING("Gravity"); }
+		CString ToString() _GET { return STRING("{Gravity}"); }
+
+	public:
 		CGravity();
 		virtual ~CGravity();
 
-		void ObjectsAffectedAdd   (_IN Rendering::CObjectScene& rObject);
+	    void ObjectsAffectedAdd   (_IN Rendering::CObjectScene& rObject);
 		
 		void ObjectsAffectedRemove(_IN Rendering::CObjectScene& rObject);
 		void ObjectsAffectedRemove(_IN UINT uiIndex);

@@ -10,6 +10,9 @@ namespace Rendering
 	class SECORE_API CModel : public CObjectScene
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Models; }
+
+	public:
 		CString XmlName() _GET { return STRING("Model"); }
 		CString ToString() _GET { return STRING("{Model}"); }
 

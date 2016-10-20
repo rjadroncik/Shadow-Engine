@@ -31,7 +31,7 @@ namespace Rendering
 
 	public:
 		bool __fastcall CameraSelect(_IN UINT i) _SET;
-		void __fastcall CameraSelectNext()            _SET;
+		void __fastcall CameraSelectNext()       _SET;
 
 		inline CCamera*	CameraCurrent()                     _GET { return m_pCameraCurrent; }
 		inline void     CameraCurrent(_IN CCamera* pCamera) _SET { m_pCameraCurrent = (CCamera*)pCamera; }
@@ -74,7 +74,7 @@ namespace Rendering
 		UINT m_uiModelCount;
 		CModel**  m_ppModels;
 
-		UINT                     m_uiParticleSystemCount;
+		UINT                          m_uiParticleSystemCount;
 		Simulation::CParticleSystem** m_ppParticleSystems;
 
 	private:

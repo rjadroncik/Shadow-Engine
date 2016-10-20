@@ -17,7 +17,31 @@ namespace System
 	enum Namespace 
 	{
 		Resources,
-		Rendering
+		Rendering,
+		Simulation,
+		GUI
+	};
+
+	enum Category
+	{
+		Cameras,
+		Forces,
+		GPUPrograms,
+		Lights,
+		Materials,
+		Meshes,
+		Models,
+		ParticleSystems,
+		Scenes,
+		Textures,
+
+		Controls,
+		Cursors,
+		Carrets,
+		Fonts,
+		Layouts,
+		Modules,
+		Windows
 	};
 
 	class SECORE_API CNamespace : public CObject
@@ -29,12 +53,6 @@ namespace System
 	private:
 		Namespace m_eNamespace;
 		CString m_Name;
-	};
-
-	enum Category
-	{
-		ParticleSystems
-
 	};
 
 	class SECORE_API CCategory : public CObject

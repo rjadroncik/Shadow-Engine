@@ -22,6 +22,9 @@ namespace Resources
 	class SECORE_API CGPUProgram : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::GPUPrograms; }
+
+	public:
 		CString XmlName() _GET { return STRING("GPUProgram"); }
 		CString ToString() _GET { return STRING("{GPUProgram}"); }
 

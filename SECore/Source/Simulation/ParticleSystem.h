@@ -11,6 +11,9 @@ namespace Simulation
 	class SECORE_API CParticleSystem : public Rendering::CObjectScene, public ISimulationObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::ParticleSystems; }
+
+	public:
 		CString XmlName() _GET { return STRING("ParticleSystem"); }
 		CString ToString() _GET { return STRING("{ParticleSystem}"); }
 

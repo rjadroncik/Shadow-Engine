@@ -25,7 +25,7 @@ namespace Simulation
 
 	protected:
 
-		float		m_Friction;
+		float m_Friction;
 
 		Float3	m_Position;
 		Float3	m_Rotation;

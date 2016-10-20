@@ -10,6 +10,9 @@ namespace Resources
 	class SEGUI_API CCarret : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Carrets; }
+
+	public:
 		CString XmlName() _GET { return STRING("Carret"); }
 		CString ToString() _GET { return STRING("{Carret}"); }
 

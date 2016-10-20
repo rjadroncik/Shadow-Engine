@@ -21,6 +21,9 @@ namespace Rendering
 	class SECORE_API CMaterialUsage : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Materials; }
+
+	public:
 		CString XmlName() _GET { return STRING("MaterialUsage"); }
 		CString ToString() _GET { return STRING("{MaterialUsage}"); }
 

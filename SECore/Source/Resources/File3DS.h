@@ -24,6 +24,9 @@ namespace Resources
 	class SECORE_API CFile3DS : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Meshes; }
+
+	public:
 		CString XmlName() _GET { return STRING("File3DS"); }
 		CString ToString() _GET { return STRING("{File3DS}"); }
 
