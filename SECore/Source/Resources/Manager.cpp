@@ -12,10 +12,9 @@ using namespace SCFXML;
 using namespace Resources;
 using namespace System;
 
-CVector<CAssociation<CString, CArrayInt>> Manager_ObjectTypes;
-CDictionaryString<CString> Manager_ObjectTypeNamespaces;
+CVector<CCategory> Manager_Categories;
 
-bool __fastcall CManager::ObjectTypesAdd(_IN CString& rCategory, _IN CString& rNamespace, _IN _REF CArrayInt& rClassKeys) 
+bool __fastcall CManager::CategoryAdd(_IN CString& rCategory, _IN CNamespace& rNamespace) 
 {
 	 Manager_ObjectTypes.LastAdd(*(new CAssociation<CString, CArrayInt>(*(new CString(rCategory)), rClassKeys)));
 	 Manager_ObjectTypeNamespaces.AtPut(rCategory, *(new CString(rNamespace)));
@@ -25,11 +24,10 @@ bool __fastcall CManager::ObjectTypesAdd(_IN CString& rCategory, _IN CString& rN
 
 bool __fastcall CManager::Initialize()
 {
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassTexture);
+	CNamespace& rResources = new CNamespace
 
-		CManager::ObjectTypesAdd(STRING("textures"), STRING("Resources"),  *pClassKeys);
+
+	Manager_Categories.LastAdd(*(new CCategory(Textures, STRING("textures"), STRING("Resources"),  *pClassKeys);
 	}
 	{
 		CArrayInt* pClassKeys = new CArrayInt(1);

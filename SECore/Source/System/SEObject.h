@@ -50,6 +50,8 @@ namespace System
 		Namespace Value() _GET { return m_eNamespace; }
 		CString Name() _GET { return STRINGREF(m_Name); }
 
+	public:
+
 	private:
 		Namespace m_eNamespace;
 		CString m_Name;
@@ -58,17 +60,20 @@ namespace System
 	class SECORE_API CCategory : public CObject
 	{
 	public:
-		Category Value() _GET { return m_eCategory; }
+		Category Value() _GET { return m_eValue; }
 		CString Name() _GET { return STRINGREF(m_Name); }
 
 	public:
-		CNamespace& Namespace() _GET { return m_Namespace; }
+		const CNamespace& Namespace() _GET { return m_Namespace; }
+
+	public:
+		CCategory(_IN Category value, _IN CString name, _IN _REF CNamespace& rNamespace) : m_eValue(value), m_Name(name), m_Namespace(rNamespace) {}
 
 	private: 
-		Category m_eCategory;
+		Category m_eValue;
 		CString m_Name;
 
-		CNamespace& m_Namespace;
+		const CNamespace& m_Namespace;
 	};
 
 	class SECORE_API CSEObject : public SCFXML::CXMLObjectSerializable

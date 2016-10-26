@@ -1,7 +1,6 @@
 #pragma once
 				
 #include "Model.h"
-#include "Model.h"
 #include "../Simulation/ParticleSystem.h"
 
 namespace Resources { class SECORE_API CWorld; };
