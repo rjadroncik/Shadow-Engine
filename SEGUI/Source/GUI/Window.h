@@ -15,6 +15,10 @@ namespace GUI
 		virtual ~CWindow();
 
 	public:
+		virtual bool IsDraggable() _GET { return TRUE; }
+
+
+	public:
 		CButtonClick& ButtonMin()   { return *m_pButtonMin; }
 		CButtonClick& ButtonMax()   { return *m_pButtonMax; }
 		CButtonClick& ButtonClose() { return *m_pButtonClose; }

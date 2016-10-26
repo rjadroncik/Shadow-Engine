@@ -168,7 +168,7 @@ void __fastcall CRendererDGC::Render(_IN CScene& rScene)
 			CStatistics::CRendering::ProcessedShadows(CStatistics::CRendering::ProcessedShadows() + Renderer_uiModelShadowCount);
 
 			ShadowMapBindFront();
-			if (Renderer_pLight->ClassKey() == ClassLightOmni) { ShadowMapBindBack(); }
+			if (Renderer_pLight->Type() == LightOmni) { ShadowMapBindBack(); }
 		}
 
 		//Final lighting

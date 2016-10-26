@@ -14,6 +14,9 @@ namespace Rendering
 		virtual ~CLightOmni();
 
 	public:
+		virtual LightType Type() _GET { return LightOmni; }
+
+	public:
 		void __fastcall BoundsUpdate();
 		void __fastcall Update(); 
 

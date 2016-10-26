@@ -20,6 +20,7 @@ namespace GUI
 
 	public:
 		virtual bool IsContainer() _GET { return FALSE; }
+		virtual bool IsDraggable() _GET { return FALSE; }
 
 	public:
 		virtual void Render() = 0;

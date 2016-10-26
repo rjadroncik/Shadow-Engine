@@ -14,6 +14,12 @@ namespace Rendering
 		FP_TOP,
 	};
 
+	enum LightType
+	{
+		LightSpot,
+		LightOmni		
+	};
+
 	class SECORE_API CLight : public CObjectScene
 	{
 	public:
@@ -22,6 +28,9 @@ namespace Rendering
 	public:
 		CLight();
 		virtual ~CLight();
+
+	public:
+		virtual LightType Type() _GET = 0;
 
 	public:
 		inline void Shadows(_IN bool bCastShadows) _SET { m_bCastShadows = bCastShadows; }

@@ -44,8 +44,8 @@ CMaterial::~CMaterial()
 
 const CMaterialUsage* __fastcall CMaterial::Usage(_IN CLight& rLight) _GET
 {
-	if (rLight.Shadows()) { return m_paUsages[rLight.ClassKey() - ClassLightSpot + 1]; }
-	else                  { return m_paUsages[rLight.ClassKey() - ClassLightSpot]; }
+	if (rLight.Shadows()) { return m_paUsages[rLight.Type() + 1]; }
+	else                  { return m_paUsages[rLight.Type()]; }
 }
 
 const CMaterialUsage* __fastcall CMaterial::Usage(_IN ENUM eUsage) _GET

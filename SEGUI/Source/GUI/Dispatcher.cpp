@@ -185,7 +185,7 @@ bool CDispatcher::HandlerMouseMoveDraggingUpdateCursor(_INOUT CWindowAbstract& r
 {
 	if (!s_Objects.GUI.pModule) { return FALSE; }
 
-	if (rWindow.ClassKey() == ClassWindow)
+	if (rWindow.IsDraggable())
 	{
 		if (rWindow.Resizable())
 		{
@@ -214,7 +214,7 @@ bool CDispatcher::HandlerMouseMoveDraggingTry(_INOUT CWindowAbstract& rWindow)
 {
 	if (!s_Objects.GUI.pModule) { return FALSE; }
 
-	if (rWindow.ClassKey() == ClassWindow)
+	if (rWindow.IsDraggable())
 	{
 		if (CHIDState::CMouse::ButtonLastDown() == VK_LBUTTON)
 		{

@@ -14,6 +14,9 @@ namespace Rendering
 		virtual ~CLightSpot();
 
 	public:
+		virtual LightType Type() _GET { return LightSpot; }
+
+	public:
 		inline void          TargetObject(_IN _REF CObjectScene* pObject) _SET { m_pTargetObject = (CObjectScene*)pObject; }
 		inline CObjectScene* TargetObject()                               _GET { return m_pTargetObject; }
 
