@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../SECore.h"
+#include "../System/SEObject.h"
 #include "../Rendering/Scene.h"
 #include "World.h"
 
@@ -13,7 +14,12 @@ namespace Resources
 	public:
 		//Initializations
 		static bool __fastcall Initialize();
-		static bool __fastcall ObjectTypesAdd(_IN _REF CString& rCategory, _IN CString& rNamespace, _IN _REF CArrayInt& rClassKeys);
+
+	public:
+		static System::CNamespace& __fastcall Namespace(_IN System::Namespace eNamespace);
+		
+		static void __fastcall NamespaceAdd(_IN _REF System::CNamespace& rNamespace);
+		static void __fastcall CategoryAdd(_IN _REF System::CCategory& rCategory);
 
 	public:
 		//Load objects that are defined in the specified file OR save existing objects
@@ -28,10 +34,10 @@ namespace Resources
 		static void __fastcall ObjectsDelete();
 
 	private:
-		static void __fastcall ObjectsLoad(_IN  CXMLNode& rNode, _IN CString& rBlockText);
-		static void __fastcall ObjectsSave(_OUT CXMLStreamWriteObject& rStream, _IN CArrayInt& rClassKeys);
+		static void __fastcall ObjectsLoad(_IN CXMLNode& rNode, _IN System::CCategory& rCategory);
+		static void __fastcall ObjectsSave(_OUT CXMLStreamWriteObject& rStream, _IN System::CCategory& rCategory);
 
-		static void __fastcall ObjectsDelete(_IN CArrayInt& rClassKeys, _IN CString& rBlockText);
+		static void __fastcall ObjectsDelete(_IN System::CCategory& rCategory);
 
 	private:
 		static bool __fastcall ResolveIncludes(_INOUT CXMLDocument& rDocument, _IN CString& rPath);

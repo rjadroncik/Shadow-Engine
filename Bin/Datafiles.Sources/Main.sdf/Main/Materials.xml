@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<materials xmlns:Rendering="ProjectShadow.Rendering">
+<Materials xmlns:Rendering="ProjectShadow.Rendering">
   
   <Rendering:Material id='material.void' transparent='false' tint='1.0 1.0 1.0' ambient='1.0' diffuse='1.0' specular='0.0' shininess='0'>
     <usages count='2'>
@@ -184,4 +184,4 @@
     </usages>
   </Rendering:Material>
 
-</materials>
+</Materials>

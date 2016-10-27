@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<fonts xmlns:Resources="ProjectShadow.Resources">
+<Fonts xmlns:Resources="ProjectShadow.Resources">
 
   <Resources:Font id='Tahoma_12px' xmlFile='\GUI\Fonts\Tahoma_12px.xml' imageFile='\GUI\Fonts\Tahoma_12px.tga'/>
   <Resources:Font id='Tahoma_13px' xmlFile='\GUI\Fonts\Tahoma_13px.xml' imageFile='\GUI\Fonts\Tahoma_13px.tga'/>
 
-</fonts>
+</Fonts>

@@ -67,8 +67,8 @@ void CModel::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
 	CObjectScene::XMLSerialize(rWriter);
 
-	PUTVALUE_TOSTRING("mesh",     m_pMesh->ID(), CString);
-	PUTVALUE_TOSTRING("material", m_pMaterial->ID(), CString);
+	PUTVALUE_STRING("mesh",     m_pMesh->ID());
+	PUTVALUE_STRING("material", m_pMaterial->ID());
 
 	PUTVALUE_TOSTRING("shadowCasts", ShadowCasts(), CBool);
 }

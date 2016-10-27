@@ -19,7 +19,7 @@
 
 using namespace System;
 
-CDictionaryString<CObject> CScripting::s_Objects;
+CDictionaryString<CSEObject> CScripting::s_Objects;
 
 #include <SCFWinAPIUndef.h>
 #define WIN32_LEAN_AND_MEAN
@@ -27,17 +27,20 @@ CDictionaryString<CObject> CScripting::s_Objects;
 
 void __fastcall CScripting::Initialize(_IN void* hModule)
 {
-	CLASS_XMLSERIALIZABLE_REGISTER("Texture",    Resources::CTexture,    (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("GPUProgram", Resources::CGPUProgram, (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("Mesh",       Resources::CMesh,       (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Resources:Texture",    Resources::CTexture,    (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Resources:GPUProgram", Resources::CGPUProgram, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Resources:Mesh",       Resources::CMesh,       (HMODULE)hModule);
 	
-	CLASS_XMLSERIALIZABLE_REGISTER("Material",       Rendering::CMaterial,        (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("Model",          Rendering::CModel,           (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("LightSpot",      Rendering::CLightSpot,       (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("LightOmni",      Rendering::CLightOmni,       (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("Camera",         Rendering::CCamera,          (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("ParticleSystem", Simulation::CParticleSystem, (HMODULE)hModule);
-	CLASS_XMLSERIALIZABLE_REGISTER("Scene",          Rendering::CScene,           (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Rendering:Material",  Rendering::CMaterial,  (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Rendering:Model",     Rendering::CModel,     (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Rendering:LightSpot", Rendering::CLightSpot, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Rendering:LightOmni", Rendering::CLightOmni, (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Rendering:Camera",    Rendering::CCamera,    (HMODULE)hModule);
+	CLASS_XMLSERIALIZABLE_REGISTER("Rendering:Scene",     Rendering::CScene,     (HMODULE)hModule);
+
+	CLASS_XMLSERIALIZABLE_REGISTER("Simulation:ParticleSystem", Simulation::CParticleSystem, (HMODULE)hModule);
+
+	CNamespace& rGUI = CREATE_NAMESPACE(GUI);
 
 	SCFXML::CXMLEnumeration* pEnumeration = new SCFXML::CXMLEnumeration();
 	{

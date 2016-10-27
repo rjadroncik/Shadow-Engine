@@ -299,11 +299,11 @@ void __fastcall CGPUProgram::AttributeAdd(_IN CString& rName, _IN ENUM eSource) 
 void CGPUProgram::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
 	rWriter.BlockStart(STRING("shaderVertex"));
-	PUTVALUE_TOSTRING("file", ShaderVertex(), CString);
+	PUTVALUE_STRING("file", ShaderVertex());
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("shaderFragment"));
-	PUTVALUE_TOSTRING("file", ShaderFragment(), CString);
+	PUTVALUE_STRING("file", ShaderFragment());
 	rWriter.BlockEnd();
 
 	rWriter.BlockStart(STRING("attributes"));
@@ -313,8 +313,8 @@ void CGPUProgram::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 	{
 		rWriter.BlockStart(STRING("attribute"));
 
-		PUTVALUE_TOSTRING("name",    *(Attribute(i)->pName), CString);
-		PUTVALUE_TOSTRING("source",  *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesAttributes"), Attribute(i)->eSource)), CString);
+		PUTVALUE_STRING("name",    *(Attribute(i)->pName));
+		PUTVALUE_STRING("source",  *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesAttributes"), Attribute(i)->eSource)));
 
 		rWriter.BlockEnd();
 	}
@@ -327,8 +327,8 @@ void CGPUProgram::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 	{
 		rWriter.BlockStart(STRING("uniform"));
 
-		PUTVALUE_TOSTRING("name",   *(Uniform(i)->pName), CString);
-		PUTVALUE_TOSTRING("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesUniforms"), Uniform(i)->eSource)), CString);
+		PUTVALUE_STRING("name",   *(Uniform(i)->pName));
+		PUTVALUE_STRING("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesUniforms"), Uniform(i)->eSource)));
 
 		rWriter.BlockEnd();
 	}
@@ -341,8 +341,8 @@ void CGPUProgram::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 	{
 		rWriter.BlockStart(STRING("sampler"));
 
-		PUTVALUE_TOSTRING("name",   *(Sampler(i)->pName), CString);
-		PUTVALUE_TOSTRING("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesSamplers"), Sampler(i)->eSource)), CString);
+		PUTVALUE_STRING("name",   *(Sampler(i)->pName));
+		PUTVALUE_STRING("source", *(SCFXML::CXMLEnumeration::Translate(STRING("SourcesSamplers"), Sampler(i)->eSource)));
 
 		rWriter.BlockEnd();
 	}

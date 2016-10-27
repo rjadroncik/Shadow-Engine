@@ -229,8 +229,8 @@ CObjectScene* __fastcall CScene::CameraCurrentLookingAt() _GET
 
 void CScene::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 {
-	if (m_pCameraCurrent) { PUTVALUE_TOSTRING("activeCamera", m_pCameraCurrent->ID(), CString); }
-	else                  { PUTVALUE_TOSTRING("activeCamera", STRING(""), CString); }
+	if (m_pCameraCurrent) { PUTVALUE_STRING("activeCamera", m_pCameraCurrent->ID()); }
+	else                  { PUTVALUE_STRING("activeCamera", STRING("")); }
 
 	rWriter.BlockStart(STRING("cameras"));
 	PUTVALUE_TOSTRING("count", m_uiCameraCount, CInt);
@@ -238,7 +238,7 @@ void CScene::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 	for (UINT i = 0; i < m_uiCameraCount; i++)
 	{
 		rWriter.BlockStart(STRING("camera"));
-		PUTVALUE_TOSTRING("id", m_ppCameras[i]->ID(), CString);
+		PUTVALUE_STRING("id", m_ppCameras[i]->ID());
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
@@ -249,7 +249,7 @@ void CScene::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 	for (UINT i = 0; i < m_uiLightCount; i++)
 	{
 		rWriter.BlockStart(STRING("light"));
-		PUTVALUE_TOSTRING("id", m_ppLights[i]->ID(), CString);
+		PUTVALUE_STRING("id", m_ppLights[i]->ID());
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
@@ -260,7 +260,7 @@ void CScene::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 	for (UINT i = 0; i < m_uiModelCount; i++)
 	{
 		rWriter.BlockStart(STRING("model"));
-		PUTVALUE_TOSTRING("id", m_ppModels[i]->ID(), CString);
+		PUTVALUE_STRING("id", m_ppModels[i]->ID());
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();
@@ -271,7 +271,7 @@ void CScene::XMLSerialize(_INOUT SCFXML::IXMLStreamWrite& rWriter) const
 	for (UINT i = 0; i < m_uiParticleSystemCount; i++)
 	{
 		rWriter.BlockStart(STRING("particleSystem"));
-		PUTVALUE_TOSTRING("id", m_ppParticleSystems[i]->ID(), CString);
+		PUTVALUE_STRING("id", m_ppParticleSystems[i]->ID());
 		rWriter.BlockEnd();
 	}
 	rWriter.BlockEnd();

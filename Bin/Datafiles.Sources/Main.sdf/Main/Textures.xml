@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<textures xmlns:Resources="ProjectShadow.Resources">
+<Textures xmlns:Resources="ProjectShadow.Resources">
 
   <Resources:Texture id='D3_Sample_01_Diffuse'    file='\Main\Textures\D3Sample01D.dds' target='2D' mipmaps='true' minification='linearMipmapLinear' magnification='linear' anisotropy='4' coordClamp='clamp'/>
   <Resources:Texture id='D3_Sample_01_Normal_Map' file='\Main\Textures\D3Sample01N.dds' target='2D' mipmaps='true' minification='linearMipmapLinear' magnification='linear' anisotropy='4' coordClamp='clamp'/>
@@ -26,4 +26,4 @@
   <Resources:Texture id='Tiles_01_Diffuse'        file='\Main\Textures\Tiles02D.dds'    target='2D' mipmaps='true' minification='linearMipmapLinear' magnification='linear' anisotropy='4' coordClamp='repeat'/>
   <Resources:Texture id='Tiles_01_Normal_Map'     file='\Main\Textures\Tiles02N.dds'    target='2D' mipmaps='true' minification='linearMipmapLinear' magnification='linear' anisotropy='4' coordClamp='repeat'/>
 
-</textures>
+</Textures>

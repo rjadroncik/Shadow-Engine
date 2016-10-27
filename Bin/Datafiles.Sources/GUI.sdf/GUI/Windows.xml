@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<windows xmlns:GUI="ProjectShadow.GUI">
+<Windows xmlns:GUI="ProjectShadow.GUI">
 
   <GUI:Window id='Window.Console' rect='0 200 300 200' sizeMin='0 0' sizeMax='300 300' resizable='1' buttonMin='0' buttonMax='0' buttonClose='1'>
 
@@ -72,4 +72,4 @@
 
   </GUI:Window>
 
-</windows>
+</Windows>

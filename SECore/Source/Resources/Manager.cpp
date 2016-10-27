@@ -12,72 +12,45 @@ using namespace SCFXML;
 using namespace Resources;
 using namespace System;
 
-CVector<CCategory> Manager_Categories;
+CDictionaryInt64<CCategory> Manager_Categories;
+CDictionaryInt64<CNamespace> Manager_Namespaces;
 
-bool __fastcall CManager::CategoryAdd(_IN CString& rCategory, _IN CNamespace& rNamespace) 
+CNamespace& __fastcall CManager::Namespace(_IN System::Namespace eNamespace)
 {
-	 Manager_ObjectTypes.LastAdd(*(new CAssociation<CString, CArrayInt>(*(new CString(rCategory)), rClassKeys)));
-	 Manager_ObjectTypeNamespaces.AtPut(rCategory, *(new CString(rNamespace)));
+	return *Manager_Namespaces.At(eNamespace);
+}
 
-	 return TRUE;
+void __fastcall CManager::NamespaceAdd(_IN _REF CNamespace& rNamespace)
+{
+	Manager_Namespaces.AtPut(rNamespace.Value(), rNamespace);
+}
+
+void __fastcall CManager::CategoryAdd(_IN _REF CCategory& rCategory)
+{
+	Manager_Categories.AtPut(rCategory.Value(), rCategory);
 }
 
 bool __fastcall CManager::Initialize()
 {
-	CNamespace& rResources = new CNamespace
+	CNamespace& rResources  = CREATE_NAMESPACE(Resources);
+	CNamespace& rRendering  = CREATE_NAMESPACE(Rendering);
+	CNamespace& rSimulation = CREATE_NAMESPACE(Simulation);
 
+	NamespaceAdd(rResources);
+	NamespaceAdd(rRendering);
+	NamespaceAdd(rSimulation);
 
-	Manager_Categories.LastAdd(*(new CCategory(Textures, STRING("textures"), STRING("Resources"),  *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassGPUProgram);
+	CategoryAdd(CREATE_CATEGORY(Textures,    rResources));
+	CategoryAdd(CREATE_CATEGORY(GPUPrograms, rResources));
+	CategoryAdd(CREATE_CATEGORY(Meshes,      rResources));
 
-		CManager::ObjectTypesAdd(STRING("GPUPrograms"), STRING("Resources"), *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassMaterial);
+	CategoryAdd(CREATE_CATEGORY(Materials, rRendering));
+	CategoryAdd(CREATE_CATEGORY(Models,    rRendering));
+	CategoryAdd(CREATE_CATEGORY(Lights,    rRendering));
+	CategoryAdd(CREATE_CATEGORY(Cameras,   rRendering));
+	CategoryAdd(CREATE_CATEGORY(Scenes,    rRendering));
 
-		CManager::ObjectTypesAdd(STRING("materials"), STRING("Rendering"), *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassMesh);
-
-		CManager::ObjectTypesAdd(STRING("meshes"), STRING("Resources"), *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassModel);
-
-		CManager::ObjectTypesAdd(STRING("models"), STRING("Rendering"), *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(2);
-		//pClassKeys->AtPut(0, ClassLightSpot);
-		//pClassKeys->AtPut(1, ClassLightOmni);
-
-		CManager::ObjectTypesAdd(STRING("lights"), STRING("Rendering"), *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassCamera);
-
-		CManager::ObjectTypesAdd(STRING("cameras"), STRING("Rendering"), *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassParticleSystem);
-
-		CManager::ObjectTypesAdd(STRING("particleSystems"), STRING("Simulation"), *pClassKeys);
-	}
-	{
-		CArrayInt* pClassKeys = new CArrayInt(1);
-		//pClassKeys->AtPut(0, ClassScene);
-
-		CManager::ObjectTypesAdd(STRING("scenes"), STRING("Rendering"), *pClassKeys);
-	}
+	CategoryAdd(CREATE_CATEGORY(ParticleSystems, rSimulation));
 
 	return TRUE;
 }
@@ -148,14 +121,13 @@ bool __fastcall CManager::ObjectsLoad(_IN CString& rFile)
 				Source.Write(FWTS);
 			}
 
-			for (UINT i = 0; i < Manager_ObjectTypes.Size(); i++)
+			CEnumeratorDictionaryInt64<CCategory> categories = CEnumeratorDictionaryInt64<CCategory>(Manager_Categories);
+			while (categories.Next())
 			{
-				CString* pCategory = (CString*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i]).Key();
-
-				CXMLNode* pNode = Source.RootElement()->ChildNamed(*pCategory);
+				CXMLNode* pNode = Source.RootElement()->ChildNamed(categories.Current()->Name());
 				if (pNode) 
 				{ 
-					ObjectsLoad(*pNode, *pCategory);
+					ObjectsLoad(*pNode, *categories.Current());
 				}
 			}
 		}
@@ -170,33 +142,33 @@ bool __fastcall CManager::ObjectsLoad(_IN CString& rFile)
 
 bool  __fastcall CManager::ObjectsSave(_IN CString& rDirectory)
 {
-	CDirectory directory(rDirectory);
-	if (!directory.Exists()) { directory.Create(); }
+	//CDirectory directory(rDirectory);
+	//if (!directory.Exists()) { directory.Create(); }
 
-	for (UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
-	{
-		CString*   pCategory  = (CString*)  &((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Key();
-		CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Value();
-		CString*   pNamespace = Manager_ObjectTypeNamespaces.At(*pCategory);
+	//for (UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
+	//{
+	//	CString*   pCategory  = (CString*)  &((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Key();
+	//	CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Value();
+	//	CString*   pNamespace = Manager_ObjectTypeNamespaces.At(*pCategory);
 
-		CFile* pFile = new CFile(rDirectory, *pCategory, STRING("xml"));
-		if (pFile->Exists()) { pFile->Delete(); }
+	//	CFile* pFile = new CFile(rDirectory, *pCategory, STRING("xml"));
+	//	if (pFile->Exists()) { pFile->Delete(); }
 
-		CXMLDocumentFile Document(*pFile);
-		CXMLStreamWrite Writer(Document, *pCategory, *pNamespace, STRING("ProjectShadow.") + *pNamespace);
+	//	CXMLDocumentFile Document(*pFile);
+	//	CXMLStreamWrite Writer(Document, *pCategory, *pNamespace, STRING("ProjectShadow.") + *pNamespace);
 
-		CXMLStreamWriteObject WriterObject(Document);
-		ObjectsSave(WriterObject, *pClassKeys);
+	//	CXMLStreamWriteObject WriterObject(Document);
+	//	ObjectsSave(WriterObject, *pClassKeys);
 
-		Document.Write();
-	}
+	//	Document.Write();
+	//}
 
 	return TRUE;
 }
 
-void __fastcall CManager::ObjectsLoad(_IN CXMLNode& rNode, _IN CString& rBlockText)
+void __fastcall CManager::ObjectsLoad(_IN CXMLNode& rNode, _IN CCategory& rCategory)
 {
-	CEventLog::BlockNew(rBlockText);
+	CEventLog::BlockNew(rCategory.Name());
 	{
 		CXMLStreamReadObject Reader(rNode, TRUE);
 
@@ -218,19 +190,16 @@ void __fastcall CManager::ObjectsLoad(_IN CXMLNode& rNode, _IN CString& rBlockTe
 	CEventLog::BlockClose();
 }
 
-void __fastcall CManager::ObjectsSave(_OUT CXMLStreamWriteObject& rStream, _IN CArrayInt& rClassKeys)
+void __fastcall CManager::ObjectsSave(_OUT CXMLStreamWriteObject& rStream, _IN CCategory& rCategory)
 {
-	CEnumeratorDictionaryString<CObject>* pEnumerator = &CScripting::Objects();
+	CEnumeratorDictionaryString<CSEObject>* pEnumerator = CScripting::EnumarateObjects();
 
 	while (pEnumerator->Next()) 
 	{
-		for (UINT i = 0; i < rClassKeys.Size(); i++)
-		{ 
-			//if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
-			{
-				rStream.Next((CXMLObjectSerializable*)pEnumerator->Current());
-				break;
-			}
+		if (pEnumerator->Current()->Category() == rCategory.Value())
+		{
+			rStream.Next((CXMLObjectSerializable*)pEnumerator->Current());
+			break;
 		}
 	}
 
@@ -241,33 +210,28 @@ void __fastcall CManager::ObjectsDelete()
 {
 	CEventLog::BlockNew(STRING("Deleting objects"));
 	{
-		for (UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
+		CEnumeratorDictionaryInt64<CCategory> categories = CEnumeratorDictionaryInt64<CCategory>(Manager_Categories);
+		while (categories.Next())
 		{
-			CString*   pCategory  = (CString*)  &((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Key();
-			CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Value();
-
-			ObjectsDelete(*pClassKeys, *pCategory);
+			ObjectsDelete(*categories.Current());
 		}
 	}
 	CEventLog::BlockClose();
 }
 
-void __fastcall CManager::ObjectsDelete(_IN CArrayInt& rClassKeys, _IN CString& rBlockText)
+void __fastcall CManager::ObjectsDelete(_IN CCategory& rCategory)
 {
-	CEventLog::BlockNew(rBlockText);
+	CEventLog::BlockNew(rCategory.Name());
 	{
-		CEnumeratorDictionaryString<CObject>* pEnumerator = &CScripting::Objects();
+		CEnumeratorDictionaryString<CSEObject>* pEnumerator = CScripting::EnumarateObjects();
 
 		while (pEnumerator->Next()) 
 		{
-			for (UINT i = 0; i < rClassKeys.Size(); i++)
-			{ 
-				//if (pEnumerator->Current()->ClassKey() == (ENUM)rClassKeys[i])
-				{
-					CEventLog::EventNew(pEnumerator->CurrentPath());
-					pEnumerator->CurrentShallowDelete();
-					break;
-				}
+			if (pEnumerator->Current()->Category() == rCategory.Value())
+			{
+				CEventLog::EventNew(pEnumerator->CurrentPath());
+				pEnumerator->CurrentShallowDelete();
+				break;
 			}
 		}
 

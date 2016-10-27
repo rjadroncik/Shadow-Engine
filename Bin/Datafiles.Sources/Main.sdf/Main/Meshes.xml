@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<meshes xmlns:Resources="ProjectShadow.Resources">
+<Meshes xmlns:Resources="ProjectShadow.Resources">
   
   <Resources:Mesh id='Spaceship_Mesh'  file='\Main\Meshes\Spaceship.3ds'/>
   <Resources:Mesh id='Sphere_Mesh'     file='\Main\Meshes\Box2.3DS'/>
@@ -8,4 +8,4 @@
   <Resources:Mesh id='Tiger_Tank_Mesh' file='\Main\Meshes\TigerTank.3ds'/>
   <Resources:Mesh id='Box_Mesh'        file='\Main\Meshes\Box.3ds'/>
   
-</meshes>
+</Meshes>

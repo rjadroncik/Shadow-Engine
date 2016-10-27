@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<cursors xmlns:Resources="ProjectShadow.Resources">
+<Cursors xmlns:Resources="ProjectShadow.Resources">
 
   <Resources:Cursor id='Cursor.Arrow' texture='Texture.Cursor.Arrow' size='32 32' hotSpot='0 4'/>
   <Resources:Cursor id='Cursor.Beam'  texture='Texture.Cursor.Beam'  size='32 32' hotSpot='16 16'/>
@@ -18,4 +18,4 @@
  
   <Resources:Cursor id='Cursor.Wait'  texture='Texture.Cursor.Wait'  size='32 32' hotSpot='0 4'/>
 
-</cursors>
+</Cursors>

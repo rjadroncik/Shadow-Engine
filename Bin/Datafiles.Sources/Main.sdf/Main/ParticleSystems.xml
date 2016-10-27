@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<particleSystems xmlns:Simulation="ProjectShadow.Simulation">
+<ParticleSystems xmlns:Simulation="ProjectShadow.Simulation">
 
   <Simulation:ParticleSystem id='ParticleSystem_01' position='-200.0 20.0 200.0' rotation='-90.0 0.0 0.0' material='Fire'>
 
@@ -47,4 +47,4 @@
 
   </Simulation:ParticleSystem>
 
-</particleSystems>
+</ParticleSystems>

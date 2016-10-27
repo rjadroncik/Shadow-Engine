@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<textures xmlns:Resources="ProjectShadow.Resources">
+<Textures xmlns:Resources="ProjectShadow.Resources">
 
   <Resources:Texture id='Texture.Cursor.Arrow' file='\GUI\Textures\Cursors\Arrow.tga' target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
   <Resources:Texture id='Texture.Cursor.Beam'  file='\GUI\Textures\Cursors\Beam.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
@@ -18,4 +18,4 @@
 
   <Resources:Texture id='Texture.Cursor.Wait'  file='\GUI\Textures\Cursors\Wait.tga'  target='2D' mipmaps='false' minification='linear' magnification='linear' anisotropy='1' coordClamp='clamp'/>
 
-</textures>
+</Textures>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<controls xmlns:GUI="ProjectShadow.GUI">
+<Controls xmlns:GUI="ProjectShadow.GUI">
 
   <GUI:Label id='Label.Console.History'>
     <text font='Tahoma_12px' alignment='left'></text>
@@ -74,4 +74,4 @@
     <text font='Tahoma_12px' alignment='left'></text>
   </GUI:Label>
 
-</controls>
+</Controls>

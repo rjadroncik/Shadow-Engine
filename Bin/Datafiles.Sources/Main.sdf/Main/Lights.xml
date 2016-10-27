@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<lights xmlns:Rendering="ProjectShadow.Rendering">
+<Lights xmlns:Rendering="ProjectShadow.Rendering">
   
   <Rendering:LightSpot id='Light_01' position=' 300.0 500.0   0.0' rotation='-90 0 0' tint='1.0 1.0 1.0' ambient='0.05' diffuse='1.2' specular='1.2' range='1200' shadows='true' shadowMapLOD='0' cutoff='75' />
 
@@ -10,4 +10,4 @@
 
   <Rendering:LightOmni id='Light_04' position='-200.0  75.0 200.0' rotation='  0 0 0' tint='1.0 1.0 1.0' ambient='0.09' diffuse='1.0' specular='1.0' range='1200' shadows='true' shadowMapLOD='0' />
 
-</lights>
+</Lights>

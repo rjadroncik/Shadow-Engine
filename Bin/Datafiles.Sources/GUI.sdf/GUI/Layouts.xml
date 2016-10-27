@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<layouts xmlns:GUI="ProjectShadow.GUI">
+<Layouts xmlns:GUI="ProjectShadow.GUI">
 
   <GUI:LayoutSplit id='Layout.Console' splitType='horizontalFixedBottom' splitValue='20' splitPadding='2'/>
 
@@ -48,4 +48,4 @@
 
   </GUI:LayoutTable>
 
-</layouts>
+</Layouts>

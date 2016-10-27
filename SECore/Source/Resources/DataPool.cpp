@@ -11,7 +11,7 @@ using namespace System;
 SCFDatafileIO::CDataPool DataPool_Pool;
 
 //Common variables (although usage is slightly different depending on mode)
-CDictionaryInt64 DataPool_FilesOpen;
+CDictionaryInt64<CStreamFileRead> DataPool_FilesOpen;
 
 //Used only in file native system mode (contains a mapping between 
 //logical file names & their respective file system names)

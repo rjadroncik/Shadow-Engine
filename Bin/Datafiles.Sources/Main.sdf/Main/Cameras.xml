@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<cameras xmlns:Rendering="ProjectShadow.Rendering">
+<Cameras xmlns:Rendering="ProjectShadow.Rendering">
 
   <Rendering:Camera id='Camera_01' position='3000.0 0.0 0.0'      rotation='0.0 90.0 0.0'   fov='30' near='10' far='6000'/>
   <Rendering:Camera id='Camera_02' position='800.0 1100.0 1700.0' rotation='-35.0 25.0 0.0' fov='30' near='10' far='10000'/>
   <Rendering:Camera id='Camera_03' position='0.0 1500.0 0.0'      rotation='-90.0 0.0 0.0'  fov='45' near='10' far='1500'/>
 
-</cameras>
+</Cameras>
