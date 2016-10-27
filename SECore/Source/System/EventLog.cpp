@@ -37,7 +37,7 @@ void CEventLog::EventNew(_IN CString& rString)
 
 		EventLog_pStream->PutLine(rString);
 
-		//EventLog_pStreamFile->Commit();
+		EventLog_pStreamFile->Commit();
 	}
 }
 
@@ -49,7 +49,7 @@ void CEventLog::EventContinue(_IN CString& rString)
 
 		EventLog_pStream->PutLine(rString);
 		
-		//EventLog_pStreamFile->Commit();
+		EventLog_pStreamFile->Commit();
 	}
 }
 
@@ -62,7 +62,7 @@ void CEventLog::WarningNew(_IN CString& rString)
 		EventLog_pStream->PutString(SCFTEXT("Warning: "), 9);
 		EventLog_pStream->PutLine(rString);
 		
-		//EventLog_pStreamFile->Commit();
+		EventLog_pStreamFile->Commit();
 	}
 }
 
@@ -75,7 +75,7 @@ void CEventLog::ErrorNew(_IN CString& rString)
 		EventLog_pStream->PutString(SCFTEXT("Error: "), 7);
 		EventLog_pStream->PutLine(rString);
 
-		//EventLog_pStreamFile->Commit();
+		EventLog_pStreamFile->Commit();
 	}
 }
 
@@ -116,7 +116,7 @@ void CEventLog::BlockNew(_IN CString& rString)
 
 		//EventLog_pStream->PutLine();
 		
-		//EventLog_pStreamFile->Commit();
+		EventLog_pStreamFile->Commit();
 
 		EventLog_BlockStack.Push(*pStringTransformed);
 	}
@@ -137,7 +137,7 @@ void CEventLog::BlockClose()
 
 		//EventLog_pStream->PutLine();
 		
-		//EventLog_pStreamFile->Commit();
+		EventLog_pStreamFile->Commit();
 
 		EventLog_BlockStack.PopAndDelete();
 	}

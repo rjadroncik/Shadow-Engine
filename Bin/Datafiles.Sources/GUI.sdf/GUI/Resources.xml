@@ -5,7 +5,6 @@
   <include file='Textures.xml'/>
   <include file='Fonts.xml'/>
   <include file='Cursors.xml'/>
-  <include file='Layouts.xml'/>
   <include file='Controls.xml'/>
   <include file='Layouts.xml'/>
   <include file='Windows.xml'/>

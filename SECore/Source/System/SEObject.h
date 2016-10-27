@@ -24,24 +24,30 @@ namespace System
 
     enum Category
     {
-        Cameras,
-        Forces,
+        Textures,
         GPUPrograms,
-        Lights,
         Materials,
         Meshes,
         Models,
-        ParticleSystems,
-        Scenes,
-        Textures,
 
-        Controls,
+        Lights,
+        Cameras,
+
+        Forces,
+        ParticleSystems,
+
+        Scenes,
+
+        Fonts,
         Cursors,
         Carrets,
-        Fonts,
+
+        Controls,
         Layouts,
+        Windows,
         GUIModules,
-        Windows
+
+        CategoriesCount
     };
 
     class SECORE_API CNamespace : public CObject

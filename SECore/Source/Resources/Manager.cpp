@@ -115,19 +115,22 @@ bool __fastcall CManager::ObjectsLoad(_IN CString& rFile)
 			_PENDING;
 			{
 				//For debugging only
-				CStreamFileWrite FWS(STRING("ComposedSource.xml"));
+				CStreamFileWrite FWS(CStringRange(FilePath, 1, FilePath.Length() -2) + "Composed.xml");
 				CStreamWriteTextUTF8 FWTS(FWS);
 
 				Source.Write(FWTS);
 			}
 
-			CEnumeratorDictionaryInt64<CCategory> categories = CEnumeratorDictionaryInt64<CCategory>(Manager_Categories);
-			while (categories.Next())
+			for (UINT i = 0; i < CategoriesCount; i++)
 			{
-				CXMLNode* pNode = Source.RootElement()->ChildNamed(categories.Current()->Name());
-				if (pNode) 
-				{ 
-					ObjectsLoad(*pNode, *categories.Current());
+				CCategory* pCategory = Manager_Categories.At(i);
+				if (pCategory) 
+				{
+					CXMLNode* pNode = Source.RootElement()->ChildNamed(pCategory->Name());
+					if (pNode)
+					{
+						ObjectsLoad(*pNode, *pCategory);
+					}
 				}
 			}
 		}
@@ -210,10 +213,13 @@ void __fastcall CManager::ObjectsDelete()
 {
 	CEventLog::BlockNew(STRING("Deleting objects"));
 	{
-		CEnumeratorDictionaryInt64<CCategory> categories = CEnumeratorDictionaryInt64<CCategory>(Manager_Categories);
-		while (categories.Next())
+		for (UINT i = CategoriesCount -1; i >= 0; i--)
 		{
-			ObjectsDelete(*categories.Current());
+			CCategory* pCategory = Manager_Categories.At(i);
+			if (pCategory)
+			{
+				ObjectsDelete(*pCategory);
+			}
 		}
 	}
 	CEventLog::BlockClose();
@@ -224,7 +230,6 @@ void __fastcall CManager::ObjectsDelete(_IN CCategory& rCategory)
 	CEventLog::BlockNew(rCategory.Name());
 	{
 		CEnumeratorDictionaryString<CSEObject>* pEnumerator = CScripting::EnumarateObjects();
-
 		while (pEnumerator->Next()) 
 		{
 			if (pEnumerator->Current()->Category() == rCategory.Value())
