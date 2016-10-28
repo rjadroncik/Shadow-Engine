@@ -30,7 +30,7 @@ namespace Rendering
 	extern UINT Renderer_uiLightCount;
 
 	extern const CGPUProgram* Renderer_pShadowMapProgram;
-	extern UINT          Renderer_uiShadowMapBuffer;
+	extern UINT               Renderer_uiShadowMapBuffer;
 };
 
 bool __fastcall CRendererDGC::Initialize()

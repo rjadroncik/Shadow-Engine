@@ -135,7 +135,7 @@ bool __fastcall CRenderer::Initialize()
 	{
 		Renderer_ppModels       = (const CModel**)CMemory::Aligned16Allocate(CRendererSettings::MaxModels() * sizeof(const CModel*));
 		Renderer_ppModelsShadow = (const CModel**)CMemory::Aligned16Allocate(CRendererSettings::MaxModels() * sizeof(const CModel*));
-		Renderer_ppLights       = (const CLight**)CMemory::Aligned16Allocate(CRendererSettings::MaxModels() * sizeof(const CLight*));
+		Renderer_ppLights       = (const CLight**)CMemory::Aligned16Allocate(CRendererSettings::MaxLights() * sizeof(const CLight*));
 
 		//Prepare depth map textures & framebuffer
 		{
