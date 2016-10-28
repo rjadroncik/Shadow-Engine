@@ -145,26 +145,26 @@ bool __fastcall CManager::ObjectsLoad(_IN CString& rFile)
 
 bool  __fastcall CManager::ObjectsSave(_IN CString& rDirectory)
 {
-	//CDirectory directory(rDirectory);
-	//if (!directory.Exists()) { directory.Create(); }
+	CDirectory directory(rDirectory);
+	if (!directory.Exists()) { directory.Create(); }
 
-	//for (UINT i = Manager_ObjectTypes.Size(); i > 0; i--)
-	//{
-	//	CString*   pCategory  = (CString*)  &((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Key();
-	//	CArrayInt* pClassKeys = (CArrayInt*)&((CAssociation<CString, CArrayInt>&)Manager_ObjectTypes[i - 1]).Value();
-	//	CString*   pNamespace = Manager_ObjectTypeNamespaces.At(*pCategory);
+	for (UINT i = 0; i < CategoriesCount; i++)
+	{
+		CCategory* pCategory = Manager_Categories.At(i);
+		if (pCategory)
+		{
+			CFile* pFile = new CFile(rDirectory, pCategory->Name(), STRING("xml"));
+			if (pFile->Exists()) { pFile->Delete(); }
 
-	//	CFile* pFile = new CFile(rDirectory, *pCategory, STRING("xml"));
-	//	if (pFile->Exists()) { pFile->Delete(); }
+			CXMLDocumentFile Document(*pFile);
+			CXMLStreamWrite Writer(Document, pCategory->Name(), pCategory->Namespace().Name(), STRING("ProjectShadow.") + pCategory->Namespace().Name());
 
-	//	CXMLDocumentFile Document(*pFile);
-	//	CXMLStreamWrite Writer(Document, *pCategory, *pNamespace, STRING("ProjectShadow.") + *pNamespace);
+			CXMLStreamWriteObject WriterObject(Document);
+			ObjectsSave(WriterObject, *pCategory);
 
-	//	CXMLStreamWriteObject WriterObject(Document);
-	//	ObjectsSave(WriterObject, *pClassKeys);
-
-	//	Document.Write();
-	//}
+			Document.Write();
+		}
+	}
 
 	return TRUE;
 }
@@ -213,7 +213,7 @@ void __fastcall CManager::ObjectsDelete()
 {
 	CEventLog::BlockNew(STRING("Deleting objects"));
 	{
-		for (UINT i = CategoriesCount -1; i >= 0; i--)
+		for (int i = CategoriesCount -1; i >= 0; i--)
 		{
 			CCategory* pCategory = Manager_Categories.At(i);
 			if (pCategory)
@@ -236,7 +236,6 @@ void __fastcall CManager::ObjectsDelete(_IN CCategory& rCategory)
 			{
 				CEventLog::EventNew(pEnumerator->CurrentPath());
 				pEnumerator->CurrentShallowDelete();
-				break;
 			}
 		}
 

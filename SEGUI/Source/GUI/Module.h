@@ -32,6 +32,9 @@ namespace GUI
 		friend class CDispatcher;
 
 	public:
+		System::Category Category() _GET { return System::Category::GUIModules; }
+
+	public:
 		CString XmlName() _GET { return STRING("Module"); }
 
 	public:

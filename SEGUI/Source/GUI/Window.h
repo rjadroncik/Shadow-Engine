@@ -8,6 +8,9 @@ namespace GUI
 	class SEGUI_API CWindow : public CWindowContainer
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Windows; }
+
+	public:
 		CString XmlName() _GET { return STRING("Window"); }
 
 	public:

@@ -12,7 +12,7 @@ namespace Resources
 	class SEGUI_API CCursor : public System::CSEObject
 	{
 	public:
-		System::Category Category() _GET { return System::Category::Models; }
+		System::Category Category() _GET { return System::Category::Cursors; }
 
 	public:
 		CString XmlName() _GET { return STRING("Cursor"); }

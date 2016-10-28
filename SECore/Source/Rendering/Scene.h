@@ -10,6 +10,9 @@ namespace Rendering
 	class SECORE_API CScene : public System::CSEObject
 	{
 	public:
+		System::Category Category() _GET { return System::Category::Scenes; }
+
+	public:
 		CString XmlName() _GET { return STRING("Scene"); }
 		CString ToString() _GET { return STRING("{Scene}"); }
 
